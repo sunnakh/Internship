@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard - CRM{% endblock %}
+{% block content %}
+<div class="card">
+  <h2>Dashboard</h2>
+  <p class="muted">You're signed in as <strong>{{ current_user.email }}</strong>.</p>
+  <p>From here you can start building the CRM features.</p>
+  <a class="btn secondary" href="{{ url_for('auth.logout') }}">Sign out</a>
+</div>
+{% endblock %}
