@@ -8,8 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
-
-
         :root {
             --primary: #007AFF;
             --primary-dark: #0056CC;
@@ -77,70 +75,6 @@
 
         .dark .header {
             background: rgba(0, 0, 0, 0.8);
-        }
-
-        /* Dark mode specific adjustments */
-        .dark .skill-card,
-        .dark .certification-card,
-        .dark .experience-card,
-        .dark .education-card {
-            background: var(--surface);
-            border-color: var(--border);
-        }
-
-        .dark .btn:hover {
-            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
-        }
-
-        .dark .skill-card:hover,
-        .dark .certification-card:hover,
-        .dark .experience-card:hover {
-            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.1);
-        }
-
-        .dark .profile-card {
-            border-color: var(--border);
-        }
-
-        .dark .university-logo {
-            background: var(--surface);
-        }
-
-        /* Additional dark mode styles */
-        .dark .section-title {
-            color: var(--text);
-        }
-
-        .dark .section-subtitle {
-            color: var(--text-light);
-        }
-
-        .dark .skill-title,
-        .dark .certification-title,
-        .dark .experience-title {
-            color: var(--text);
-        }
-
-        .dark .tag {
-            background: var(--surface);
-            color: var(--text);
-            border-color: var(--border);
-        }
-
-        .dark .form-group input,
-        .dark .form-group textarea {
-            background: var(--surface);
-            color: var(--text);
-            border-color: var(--border);
-        }
-
-        .dark .form-group input:focus,
-        .dark .form-group textarea:focus {
-            border-color: var(--primary);
-        }
-
-        .dark .form-group label {
-            color: var(--text);
         }
 
         .nav {
@@ -249,7 +183,8 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 8rem 0 4rem;
+            padding-top: 80px;
+            background: linear-gradient(135deg, var(--background) 0%, var(--surface) 100%);
         }
 
         .hero-content {
@@ -259,11 +194,15 @@
             align-items: center;
         }
 
+        .hero-text {
+            max-width: 600px;
+        }
+
         .hero-icon {
             font-size: 3rem;
             color: var(--primary);
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
+            margin-bottom: 2rem;
+            animation: pulse 3s ease-in-out infinite;
         }
 
         .hero-text h1 {
@@ -271,30 +210,15 @@
             font-weight: 700;
             margin-bottom: 1rem;
             color: var(--text);
-            position: relative;
-            display: inline-block;
-            padding: 1rem 2rem;
-            letter-spacing: -0.02em;
             line-height: 1.1;
-        }
-
-        .hero-text h1::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 122, 255, 0.05);
-            border-radius: 16px;
-            z-index: -1;
+            letter-spacing: -0.02em;
         }
 
         .hero-text h2 {
             font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
             font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
             letter-spacing: -0.01em;
         }
 
@@ -302,7 +226,7 @@
             font-size: 1.1rem;
             color: var(--text-light);
             margin-bottom: 2rem;
-            max-width: 500px;
+            line-height: 1.6;
         }
 
         .btn {
@@ -324,44 +248,64 @@
 
         .btn:hover {
             background: var(--primary-dark);
-            transform: scale(1.02);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
         }
 
         .hero-image {
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
         .profile-card {
             width: 300px;
             height: 300px;
-            background: var(--surface);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-lg);
-            animation: float 6s ease-in-out infinite;
+            background: var(--surface);
+            border: 4px solid var(--border);
             overflow: hidden;
-            position: relative;
-            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        .profile-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .profile-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 50%;
         }
 
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Dark mode specific adjustments */
+        .dark .profile-card {
+            border-color: var(--border);
+        }
+
+        .dark .btn:hover {
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
         }
 
         @keyframes pulse {
@@ -370,747 +314,13 @@
         }
 
         @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200px 0; }
-            100% { background-position: calc(200px + 100%) 0; }
-        }
-
-        @keyframes dots {
-            0%, 20% { content: ''; }
-            40% { content: '.'; }
-            60% { content: '..'; }
-            80%, 100% { content: '...'; }
-        }
-
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.1); opacity: 0.5; }
-        }
-
-        /* Sections */
-        .section {
-            padding: 6rem 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text);
-            position: relative;
-            display: inline-block;
-            padding: 0 2rem;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-        }
-
-
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-            padding: 1rem 0;
-        }
-
-
-
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-card {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .skill-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            width: 80px;
-            height: 80px;
-            background: var(--surface);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            position: relative;
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .skill-card:hover .skill-icon {
-            transform: scale(1.05);
-            background: rgba(0, 122, 255, 0.05);
-        }
-
-        .skill-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text);
-            letter-spacing: -0.01em;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tag {
-            padding: 0.5rem 1rem;
-            background: rgba(0, 122, 255, 0.1);
-            color: var(--primary);
-            border-radius: 16px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-        }
-
-        /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: var(--surface);
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .project-header {
-            background: var(--primary);
-            color: white;
-            padding: 1.5rem;
-            position: relative;
-        }
-
-        .project-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            opacity: 0.9;
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-company {
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-            opacity: 0.9;
-        }
-
-        .project-date {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-features {
-            list-style: none;
-        }
-
-        .project-features li {
-            padding: 0.75rem 0;
-            color: var(--text-light);
-            position: relative;
-            padding-left: 1.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .project-features li:last-child {
-            border-bottom: none;
-        }
-
-        .project-features li::before {
-            content: '▶';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-size: 0.8rem;
-        }
-
-        /* Education */
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .education-card {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .education-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .logo-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            transition: var(--transition);
-        }
-
-        .logo-link:hover {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .logo-link:hover .university-logo {
-            transform: scale(1.1);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .education-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-        }
-
-        .education-icon {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-
-        .university-logo {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            border-radius: 8px;
-            background: white;
-            padding: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-
-        .university-logo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .education-info {
-            flex: 1;
-        }
-
-        .education-card h3 {
-            color: var(--text);
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.01em;
-        }
-
-        .degree-info {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-            margin-bottom: 1rem;
-        }
-
-        .degree-type {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .certificate-link {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .certificate-link:hover {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .certificate-link:hover .degree-type {
-            color: var(--primary-dark);
-            text-decoration: underline;
-        }
-
-        .degree-field {
-            color: var(--text);
-            font-weight: 500;
-            font-size: 1rem;
-            line-height: 1.4;
-        }
-
-        .education-details {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .gpa, .duration {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* Experience */
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .experience-card {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .experience-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .experience-icon {
-            margin-bottom: 1rem;
-        }
-
-        .company-logo {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            border-radius: 50%;
-            background: white;
-            padding: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-            margin: 0 auto;
-        }
-
-        .company-logo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .experience-card h3 {
-            color: var(--text);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.01em;
-        }
-
-        .company-info {
-            margin-bottom: 1rem;
-        }
-
-        .company-name {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 1rem;
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-
-        .position-type {
-            color: var(--text-light);
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-details {
-            margin-bottom: 1.5rem;
-        }
-
-        .duration {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .experience-description {
-            color: var(--text-light);
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        .experience-achievements {
-            list-style: none;
-            padding: 0;
-        }
-
-        .experience-achievements li {
-            padding: 0.5rem 0;
-            color: var(--text-light);
-            position: relative;
-            padding-left: 1.5rem;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.95rem;
-        }
-
-        .experience-achievements li:last-child {
-            border-bottom: none;
-        }
-
-        .experience-achievements li::before {
-            content: '▶';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-size: 0.7rem;
-            top: 0.8rem;
-        }
-
-        /* Certifications */
-        .certifications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .certification-card {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .certification-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .certification-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .certification-card h3 {
-            color: var(--text);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.01em;
-        }
-
-        .certification-card p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .certification-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 20px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: var(--transition);
-            letter-spacing: -0.01em;
-        }
-
-        .certification-btn:hover {
-            background: var(--primary-dark);
-            transform: scale(1.02);
-            color: white;
-            text-decoration: none;
-        }
-
-        /* Contact */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .contact-info p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            text-decoration: none;
-            color: var(--text);
-            transition: var(--transition);
-        }
-
-        .contact-link:hover {
-            border-color: var(--primary);
-            transform: translateX(5px);
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .contact-link:hover .contact-icon {
-            transform: scale(1.05);
-            background: var(--primary-dark);
-        }
-
-        .contact-details .label {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-            letter-spacing: -0.01em;
-        }
-
-        .contact-details .value {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        .contact-form {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        .form-group label i {
-            color: var(--primary);
-            font-size: 0.9rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            background: var(--background);
-            color: var(--text);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--surface);
-            padding: 3rem 0;
-            text-align: center;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary);
-            letter-spacing: -0.01em;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .footer-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        .copyright {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
-            }
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         /* Apple-style animations */
@@ -1134,140 +344,39 @@
             animation: slideInRight 1.2s ease-out 0.4s both;
         }
 
-        /* Subtle icon animations */
-        .section-icon {
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        .skill-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .skill-card:hover .skill-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .certification-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .certification-card:hover .certification-icon {
-            transform: scale(1.1);
-        }
-
-        .experience-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .experience-card:hover .experience-icon {
-            transform: scale(1.1);
-        }
-
-        .contact-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .contact-link:hover .contact-icon {
-            transform: scale(1.1);
-        }
-
-        /* Button hover effect */
-        .btn {
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
-        }
-
-        /* Card hover effects */
-        .skill-card,
-        .certification-card,
-        .experience-card {
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover,
-        .certification-card:hover,
-        .experience-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Overview Grid */
-        .overview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .overview-card {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            transition: var(--transition);
-            text-decoration: none;
-            color: var(--text);
-            display: block;
-        }
-
-        .overview-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-            border-color: var(--primary);
-        }
-
-        .overview-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .overview-card h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .overview-card p {
-            color: var(--text-light);
-            line-height: 1.6;
-            text-align: center;
-        }
-
-        /* Loading animation for page load */
-        .fade-in {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .profile-card {
+                width: 250px;
+                height: 250px;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.8rem;
             }
         }
     </style>
 </head>
 <body>
-
-        <!-- Header -->
+    <!-- Header -->
     <header class="header">
         <nav class="nav container">
-            <a href="#home" class="logo">SUNNAT AXMADOV</a>
+            <a href="index.html" class="logo">SUNNAT AXMADOV</a>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About</a></li>
@@ -1306,476 +415,6 @@
                     <div class="profile-card">
                         <img src="image.png" alt="Sunnat Axmadov" class="profile-image">
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-icon">
-                    <i class="fas fa-user-graduate"></i>
-                </div>
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">
-                    A dedicated data professional with expertise in analytics, engineering, and machine learning
-                </p>
-            </div>
-            <div class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto;">
-                <p style="font-size: 1.1rem; color: var(--text-light); line-height: 1.8; text-align: left;">
-                    I am Sunnat Axmadov, a dedicated and detail-oriented data professional currently studying at Inha University in Tashkent, majoring in Computer Science and Information Engineering. My academic journey has equipped me with strong foundations in <strong>Python programming</strong>, <strong>SQL</strong>, <strong>data analytics</strong>, <strong>machine learning</strong>, and <strong>cloud technologies</strong>, along with hands-on experience using <strong>Power BI</strong>, <strong>SSIS</strong>, and <strong>Azure Data Factory</strong>.
-                </p>
-                <p style="font-size: 1.1rem; color: var(--text-light); line-height: 1.8; text-align: left; margin-top: 1rem;">
-                    Beyond my coursework, I have gained practical expertise through a variety of projects — from designing data pipelines and real-time analytics systems to building OOP-based software applications — applying both analytical thinking and robust software engineering principles.
-                </p>
-                <p style="font-size: 1.1rem; color: var(--text-light); line-height: 1.8; text-align: left; margin-top: 1rem;">
-                    With a long-term career goal of becoming an AI & ML Engineer, I am committed to continuous learning, exploring cutting-edge technologies, and delivering impactful, data-driven solutions.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-        <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-icon">
-                    <i class="fas fa-tools"></i>
-                </div>
-                <h2 class="section-title">Technical Skills</h2>
-                <p class="section-subtitle">My expertise across various technologies and tools</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-card fade-in">
-                    <div class="skill-icon"><i class="fas fa-code"></i></div>
-                    <h3 class="skill-title">Programming</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">SQL</span>
-                        <span class="tag">Java</span>
-                        <span class="tag">C++</span>
-                        <span class="tag">DAX</span>
-                    </div>
-                </div>
-                <div class="skill-card fade-in">
-                    <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3 class="skill-title">Data Analytics</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Power BI</span>
-                        <span class="tag">Pandas</span>
-                        <span class="tag">NumPy</span>
-                        <span class="tag">Matplotlib</span>
-                        <span class="tag">Seaborn</span>
-                    </div>
-                </div>
-                <div class="skill-card fade-in">
-                    <div class="skill-icon"><i class="fas fa-database"></i></div>
-                    <h3 class="skill-title">Data Engineering</h3>
-                    <div class="skill-tags">
-                        <span class="tag">SSIS</span>
-                        <span class="tag">Azure Data Factory</span>
-                        <span class="tag">ETL Pipelines</span>
-                        <span class="tag">Data Warehousing</span>
-                        <span class="tag">Big Data</span>
-                    </div>
-                </div>
-                <div class="skill-card fade-in">
-                    <div class="skill-icon"><i class="fas fa-brain"></i></div>
-                    <h3 class="skill-title">Machine Learning</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Scikit-learn</span>
-                        <span class="tag">TensorFlow</span>
-                        <span class="tag">Predictive Modeling</span>
-                        <span class="tag">Deep Learning</span>
-                        <span class="tag">NLP</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience with Projects Section -->
-    <section id="experience" class="section">
-        <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <h2 class="section-title">Experience with Projects</h2>
-                <p class="section-subtitle">My professional journey and project achievements</p>
-            </div>
-            <div class="experience-grid">
-                <div class="experience-card fade-in">
-                    <div class="experience-icon">
-                        <img src="codveda-internship.png" alt="Codveda Technologies" class="company-logo">
-                    </div>
-                    <h3>Python Development Intern</h3>
-                    <div class="company-info">
-                        <span class="company-name">Codveda Technologies</span>
-                        <span class="position-type">Internship</span>
-                    </div>
-                    <div class="experience-details">
-                        <span class="duration">May 2025 - Present</span>
-                    </div>
-                    <div class="experience-description">
-                        <p>Contributed to developing and maintaining Python-based applications. Responsibilities included writing clean code, building backend components and APIs, testing/debugging, collaborating with teams, and following best software development practices.</p>
-                    </div>
-                </div>
-                <div class="experience-card fade-in">
-                    <div class="experience-icon">
-                        <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
-                    </div>
-                    <h3>Market Analysis Dashboard</h3>
-                    <div class="company-info">
-                        <span class="company-name">MAAB Innovation</span>
-                        <span class="position-type">Data Analytics Project</span>
-                    </div>
-                    <div class="experience-details">
-                        <span class="duration">Sep 2024 - Dec 2024</span>
-                    </div>
-                    <div class="experience-description">
-                        <ul class="experience-achievements">
-                            <li>Designed and implemented complete data pipeline to analyze job market dynamics</li>
-                            <li>Employed Python and BeautifulSoup to scrape job postings from multiple sources</li>
-                            <li>Used SSIS to automate ETL into MS SQL Server</li>
-                            <li>Built interactive Power BI dashboards to visualize trends in job demand, skills, locations, and salaries</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="experience-card fade-in">
-                    <div class="experience-icon">
-                        <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
-                    </div>
-                    <h3>CRM Data Transformation</h3>
-                    <div class="company-info">
-                        <span class="company-name">MAAB Innovation</span>
-                        <span class="position-type">Data Engineering Project</span>
-                    </div>
-                    <div class="experience-details">
-                        <span class="duration">Feb 2025 - Apr 2025</span>
-                    </div>
-                    <div class="experience-description">
-                        <ul class="experience-achievements">
-                            <li>Automated migration and transformation of large CRM datasets using SQL and Python</li>
-                            <li>Performed data cleansing, normalization, and validation</li>
-                            <li>Streamlined ETL to improve accuracy and reduce manual work</li>
-                            <li>Enhanced data quality and processing efficiency</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="experience-card fade-in">
-                    <div class="experience-icon">
-                        <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
-                    </div>
-                    <h3>Banking System Data Modeling</h3>
-                    <div class="company-info">
-                        <span class="company-name">MAAB Innovation</span>
-                        <span class="position-type">Database Design Project</span>
-                    </div>
-                    <div class="experience-details">
-                        <span class="duration">Apr 2025 - May 2025</span>
-                    </div>
-                    <div class="experience-description">
-                        <ul class="experience-achievements">
-                            <li>Designed relational database schema with 30+ tables for core banking operations</li>
-                            <li>Applied normalization and primary/foreign key relationships</li>
-                            <li>Developed optimized SQL queries for large financial datasets</li>
-                            <li>Applied Java Networking for One-to-Many server-client communication</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="experience-card fade-in">
-                    <div class="experience-icon">
-                        <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
-                    </div>
-                    <h3>Electronic Store Sales Analysis</h3>
-                    <div class="company-info">
-                        <span class="company-name">MAAB Innovation</span>
-                        <span class="position-type">Business Intelligence Project</span>
-                    </div>
-                    <div class="experience-details">
-                        <span class="duration">May 2025 - Jun 2025</span>
-                    </div>
-                    <div class="experience-description">
-                        <ul class="experience-achievements">
-                            <li>Conducted comprehensive sales analysis for electronics retail (phones, tablets, laptops)</li>
-                            <li>Cleaned and transformed transactional data using SQL and Python</li>
-                            <li>Built Power BI dashboards for performance monitoring, revenue trends, and inventory tracking</li>
-                            <li>Identified top-selling products and seasonal patterns for marketing optimization</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="section">
-        <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-icon">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <h2 class="section-title">Education & Certifications</h2>
-                <p class="section-subtitle">My academic background and professional achievements</p>
-            </div>
-            <div class="education-grid">
-                <div class="education-card fade-in">
-                    <div class="education-header">
-                        <div class="education-icon">
-                            <a href="https://inha.uz/" target="_blank" class="logo-link">
-                                <img src="inha-university.png" alt="INHA University in Tashkent" class="university-logo">
-                            </a>
-                        </div>
-                        <div class="education-info">
-                            <h3>INHA University in Tashkent</h3>
-                            <div class="degree-info">
-                                <span class="degree-type">Bachelor</span>
-                                <span class="degree-field">School of Computer Science and Information Engineering</span>
-                            </div>
-                            <div class="education-details">
-                                <span class="gpa">GPA: 3.75/4.5</span>
-                                <span class="duration">2023 - Present</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="education-card fade-in">
-                    <div class="education-header">
-                        <div class="education-icon">
-                            <a href="https://academy.maab.uz/en/" target="_blank" class="logo-link">
-                                <img src="maab-academy.png" alt="MAAB Academy" class="university-logo">
-                            </a>
-                        </div>
-                        <div class="education-info">
-                            <h3>MAAB Academy</h3>
-                            <div class="degree-info">
-                                <a href="https://academy.maab.uz/media/certificates/sunnat-axmadov_000048.pdf" target="_blank" class="certificate-link">
-                                    <span class="degree-type">Certificate</span>
-                                </a>
-                                <span class="degree-field">Data Analytics & Engineering</span>
-                            </div>
-                            <div class="education-details">
-                                <span class="gpa">Grade: 98/100</span>
-                                <span class="duration">2024 - 2025</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="section">
-        <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-icon">
-                    <i class="fas fa-award"></i>
-                </div>
-                <h2 class="section-title">Certifications</h2>
-                <p class="section-subtitle">Professional certifications and achievements</p>
-            </div>
-            <div class="certifications-grid">
-                <div class="certification-card fade-in">
-                    <div class="certification-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Programming for Everybody</h3>
-                    <p>University of Michigan</p>
-                    <a href="https://www.coursera.org/account/accomplishments/verify/759F64I17HUD" target="_blank" class="certification-btn">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Certificate
-                    </a>
-                </div>
-                <div class="certification-card fade-in">
-                    <div class="certification-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3>Accelerate Your Job Search with AI</h3>
-                    <p>Google</p>
-                    <a href="https://www.coursera.org/account/accomplishments/verify/RQTYDKD246Z6" target="_blank" class="certification-btn">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Certificate
-                    </a>
-                </div>
-                <div class="certification-card fade-in">
-                    <div class="certification-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h3>Google Business Intelligence</h3>
-                    <p>Google</p>
-                    <a href="https://www.credly.com/badges/11a00f6d-deb3-4ae1-9cdc-6a5d38bba010/public_url" target="_blank" class="certification-btn">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Badge
-                    </a>
-                </div>
-                <div class="certification-card fade-in">
-                    <div class="certification-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Introduction to Data Engineering</h3>
-                    <p>IBM</p>
-                    <a href="https://www.coursera.org/account/accomplishments/verify/XD2QAE732I76?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course" target="_blank" class="certification-btn">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Certificate
-                    </a>
-                </div>
-                <div class="certification-card fade-in">
-                    <div class="certification-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Data Analytics and Engineering</h3>
-                    <p>MAAB Academy</p>
-                    <a href="https://academy.maab.uz/media/certificates/sunnat-axmadov_000048.pdf" target="_blank" class="certification-btn">
-                        <i class="fas fa-file-pdf"></i>
-                        View Certificate
-                    </a>
-                </div>
-                <div class="certification-card fade-in">
-                    <div class="certification-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>AI Python</h3>
-                    <p>DeepLearning.AI</p>
-                    <a href="https://learn.deeplearning.ai/accomplishments/74afd0f8-74b8-4256-913f-5fa078e42cf7?usp=sharing" target="_blank" class="certification-btn">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Certificate
-                    </a>
-                </div>
-                <div class="certification-card fade-in">
-                    <div class="certification-icon">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <h3>Python</h3>
-                    <p>Kaggle</p>
-                    <a href="https://www.kaggle.com/learn/certification/sunnatakhmadov/python" target="_blank" class="certification-btn">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Certificate
-                    </a>
-                </div>
-                <div class="certification-card fade-in">
-                    <div class="certification-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Certificate of Foundation Studies with C++</h3>
-                    <p>PDP Academy</p>
-                    <a href="https://online.pdp.uz/checkCertificateQr/babeed10-ddfb-442c-ae31-ccd278058055" target="_blank" class="certification-btn">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Certificate
-                    </a>
-                </div>
-                <div class="certification-card fade-in">
-                    <div class="certification-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>C++ Programming - From Beginner to Beyond</h3>
-                    <p>Udemy</p>
-                    <a href="https://www.udemy.com/certificate/UC-bd20080b-cfa9-4db7-851e-25cab77d2674/" target="_blank" class="certification-btn">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Certificate
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-icon">
-                    <i class="fas fa-paper-plane"></i>
-                </div>
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Let's discuss your next data project</p>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info fade-in">
-                    <p>
-                        I'm always interested in new opportunities and exciting projects. 
-                        Whether you have a question or just want to say hi, feel free to reach out!
-                    </p>
-                    <div class="contact-links">
-                        <a href="mailto:sunnatakhmad@gmail.com" class="contact-link">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <div class="label">Email</div>
-                                <div class="value">sunnatakhmad@gmail.com</div>
-                            </div>
-                        </a>
-                        <a href="tel:+998337174499" class="contact-link">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-details">
-                                <div class="label">Phone</div>
-                                <div class="value">+998 33 717 44 99</div>
-                            </div>
-                        </a>
-                        <a href="https://t.me/sunnakh" target="_blank" class="contact-link">
-                            <div class="contact-icon">
-                                <i class="fab fa-telegram-plane"></i>
-                            </div>
-                            <div class="contact-details">
-                                <div class="label">Telegram</div>
-                                <div class="value">@sunnakh</div>
-                            </div>
-                        </a>
-                        <a href="https://linkedin.com/in/sunnakh" target="_blank" class="contact-link">
-                            <div class="contact-icon">
-                                <i class="fab fa-linkedin-in"></i>
-                            </div>
-                            <div class="contact-details">
-                                <div class="label">LinkedIn</div>
-                                <div class="value">linkedin.com/in/sunnakh</div>
-                            </div>
-                        </a>
-                        <a href="https://github.com/sunnakh" target="_blank" class="contact-link">
-                            <div class="contact-icon">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <div class="contact-details">
-                                <div class="label">GitHub</div>
-                                <div class="value">github.com/sunnakh</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="contact-form fade-in">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">
-                                <i class="fas fa-user"></i>
-                                Name
-                            </label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">
-                                <i class="fas fa-envelope"></i>
-                                Email
-                            </label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">
-                                <i class="fas fa-comment"></i>
-                                Message
-                            </label>
-                            <textarea id="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%;">
-                            <i class="fas fa-paper-plane"></i>
-                            Send Message
-                        </button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -1824,185 +463,6 @@
         // Debug: Log current theme on page load
         console.log('Current theme:', body.classList.contains('dark') ? 'dark' : 'light');
         console.log('Saved theme:', localStorage.getItem('theme'));
-
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Scroll Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Header Scroll Effect
-        const header = document.querySelector('.header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                if (body.classList.contains('dark')) {
-                    header.style.background = 'rgba(15, 23, 42, 0.98)';
-                }
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                if (body.classList.contains('dark')) {
-                    header.style.background = 'rgba(15, 23, 42, 0.95)';
-                }
-            }
-        });
-
-        // Contact Form
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // Show loading state
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            // Try EmailJS first, fallback to mailto
-            try {
-                // Initialize EmailJS (you'll need to set up EmailJS account)
-                emailjs.init("YOUR_EMAILJS_USER_ID"); // Replace with your EmailJS user ID
-                
-                emailjs.send("service_segmk0f", "YOUR_TEMPLATE_ID", {
-                    to_email: "sunnatakhmad@gmail.com",
-                    from_name: name,
-                    from_email: email,
-                    message: message,
-                    subject: `Portfolio Contact from ${name}`
-                }).then(
-                    function(response) {
-                        alert('Thank you for your message! I\'ll get back to you soon.');
-                        document.getElementById('contactForm').reset();
-                    },
-                    function(error) {
-                        // Fallback to mailto if EmailJS fails
-                        const subject = `Portfolio Contact from ${name}`;
-                        const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-                        const mailtoLink = `mailto:sunnatakhmad@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                        window.open(mailtoLink);
-                        alert('Thank you for your message! Your email client will open to send the message.');
-                        document.getElementById('contactForm').reset();
-                    }
-                );
-            } catch (error) {
-                // Fallback to mailto if EmailJS is not configured
-                const subject = `Portfolio Contact from ${name}`;
-                const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-                const mailtoLink = `mailto:sunnatakhmad@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                window.open(mailtoLink);
-                alert('Thank you for your message! Your email client will open to send the message.');
-                document.getElementById('contactForm').reset();
-            }
-            
-            // Reset button state
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        });
-
-        // Active Navigation
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-links a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Simple scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        // Observe fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Add staggered animation to grid items
-        function addStaggeredAnimation() {
-            const gridItems = document.querySelectorAll('.skill-card, .certification-card, .experience-card');
-            gridItems.forEach((item, index) => {
-                item.style.animationDelay = `${index * 0.1}s`;
-            });
-        }
-
-        // Active navigation highlighting
-        function updateActiveNav() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        // Initialize animations and navigation when page loads
-        window.addEventListener('load', () => {
-            addStaggeredAnimation();
-            updateActiveNav();
-        });
-
-        // Update active navigation on scroll
-        window.addEventListener('scroll', updateActiveNav);
     </script>
 </body>
 </html>
