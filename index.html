@@ -15,7 +15,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: white;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -30,70 +30,79 @@
 
         .loading-content {
             text-align: center;
-            color: #007AFF;
+            position: relative;
         }
 
-        .loading-logo {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            animation: pulse 2s ease-in-out infinite;
+        .loading-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #007AFF, #0056CC);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 2rem;
+            position: relative;
+            animation: rotate 2s linear infinite;
+            box-shadow: 0 10px 30px rgba(0, 122, 255, 0.3);
+        }
+
+        .loading-circle::before {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .loading-icon {
+            font-size: 2.5rem;
             color: #007AFF;
+            position: relative;
+            z-index: 2;
+            animation: bounce 1s ease-in-out infinite;
         }
 
         .loading-text {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 2rem;
-            letter-spacing: 0.1em;
             color: #007AFF;
+            margin-bottom: 1rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
         }
 
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(0, 122, 255, 0.3);
-            border-top: 3px solid #007AFF;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        .loading-progress {
+            width: 200px;
+            height: 4px;
+            background: rgba(0, 122, 255, 0.2);
+            border-radius: 2px;
             margin: 0 auto;
+            overflow: hidden;
+            position: relative;
         }
 
-        .loading-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
+        .loading-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #007AFF, #0056CC);
+            border-radius: 2px;
+            animation: progress 0.5s ease-out forwards;
         }
 
-        .loading-dot {
-            width: 8px;
-            height: 8px;
-            background: #007AFF;
-            border-radius: 50%;
-            animation: dotPulse 1.5s ease-in-out infinite;
-        }
-
-        .loading-dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .loading-dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-
-        @keyframes spin {
+        @keyframes rotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
-        @keyframes dotPulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 1; }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
         }
 
         :root {
@@ -466,15 +475,12 @@
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-content">
-            <div class="loading-logo">
-                <i class="fas fa-brain"></i>
+            <div class="loading-circle">
+                <i class="fas fa-brain loading-icon"></i>
             </div>
-            <div class="loading-text">Loading...</div>
-            <div class="loading-spinner"></div>
-            <div class="loading-dots">
-                <div class="loading-dot"></div>
-                <div class="loading-dot"></div>
-                <div class="loading-dot"></div>
+            <div class="loading-text">Loading</div>
+            <div class="loading-progress">
+                <div class="loading-bar"></div>
             </div>
         </div>
     </div>
