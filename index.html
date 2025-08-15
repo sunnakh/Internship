@@ -140,6 +140,35 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            position: relative;
+            display: inline-block;
+            padding: 1rem 2rem;
+        }
+
+        .hero-text h1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(16, 185, 129, 0.1));
+            border-radius: 20px;
+            z-index: -1;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .hero-text h1::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border-radius: 24px;
+            z-index: -2;
         }
 
         .hero-text h2 {
@@ -190,6 +219,21 @@
             box-shadow: var(--shadow-lg);
             animation: float 6s ease-in-out infinite;
             overflow: hidden;
+            position: relative;
+            border: 8px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            right: -12px;
+            bottom: -12px;
+            background: linear-gradient(45deg, var(--primary), var(--accent), var(--primary));
+            border-radius: 50%;
+            z-index: -1;
+            animation: rotate 4s linear infinite;
         }
 
         .profile-image {
@@ -197,6 +241,11 @@
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         @keyframes float {
@@ -219,6 +268,47 @@
             font-weight: 700;
             margin-bottom: 1rem;
             color: var(--text);
+            position: relative;
+            display: inline-block;
+            padding: 0 2rem;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .section-title::before {
+            left: -80px;
+        }
+
+        .section-title::after {
+            right: -80px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-header::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(16, 185, 129, 0.1));
+            border-radius: 50%;
+            z-index: -1;
         }
 
         .section-subtitle {
@@ -252,6 +342,40 @@
             font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 1rem;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(16, 185, 129, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            position: relative;
+            border: 3px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .skill-icon::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .skill-card:hover .skill-icon::before {
+            opacity: 1;
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1);
+            border-color: var(--accent);
         }
 
         .skill-title {
@@ -415,6 +539,32 @@
             justify-content: center;
             color: white;
             font-size: 1.2rem;
+            position: relative;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .contact-icon::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .contact-link:hover .contact-icon::before {
+            opacity: 1;
+        }
+
+        .contact-link:hover .contact-icon {
+            transform: scale(1.1);
+            border-color: var(--accent);
         }
 
         .contact-details .label {
