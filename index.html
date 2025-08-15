@@ -142,6 +142,13 @@
             align-items: center;
         }
 
+        .hero-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
         .hero-text h1 {
             font-size: 3.5rem;
             font-weight: 700;
@@ -182,7 +189,9 @@
         }
 
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             padding: 1rem 2rem;
             background: var(--primary);
             color: white;
@@ -264,6 +273,13 @@
             text-align: center;
             margin-bottom: 4rem;
             position: relative;
+        }
+
+        .section-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
         }
 
         .section-header::before {
@@ -375,6 +391,13 @@
             background: var(--primary);
             color: white;
             padding: 1.5rem;
+            position: relative;
+        }
+
+        .project-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
         }
 
         .project-title {
@@ -430,10 +453,18 @@
             border: 1px solid var(--border);
         }
 
+        .education-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
         .education-card h3 {
             color: var(--primary);
             font-size: 1.3rem;
             margin-bottom: 1rem;
+            letter-spacing: -0.01em;
         }
 
         .education-card p {
@@ -522,10 +553,17 @@
         }
 
         .form-group label {
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             margin-bottom: 0.5rem;
             color: var(--text);
             font-weight: 500;
+        }
+
+        .form-group label i {
+            color: var(--primary);
+            font-size: 0.9rem;
         }
 
         .form-group input,
@@ -648,13 +686,19 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
+                    <div class="hero-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
                     <h1>Data Scientist & Engineer</h1>
                     <h2>Transforming Data into Insights</h2>
                     <p>
                         Passionate about leveraging cutting-edge technology to solve complex data challenges. 
                         Specializing in machine learning, data engineering, and business intelligence.
                     </p>
-                    <a href="#projects" class="btn">View My Work</a>
+                    <a href="#projects" class="btn">
+                        <i class="fas fa-arrow-right"></i>
+                        View My Work
+                    </a>
                 </div>
                 <div class="hero-image">
                     <div class="profile-card">
@@ -669,6 +713,9 @@
     <section id="about" class="section">
         <div class="container">
             <div class="section-header fade-in">
+                <div class="section-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
                 <h2 class="section-title">About Me</h2>
                 <p class="section-subtitle">
                     A dedicated data professional with expertise in analytics, engineering, and machine learning
@@ -689,6 +736,9 @@
     <section id="skills" class="section">
         <div class="container">
             <div class="section-header fade-in">
+                <div class="section-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
                 <h2 class="section-title">Technical Skills</h2>
                 <p class="section-subtitle">My expertise across various technologies and tools</p>
             </div>
@@ -745,12 +795,18 @@
     <section id="projects" class="section">
         <div class="container">
             <div class="section-header fade-in">
+                <div class="section-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
                 <h2 class="section-title">Featured Projects</h2>
                 <p class="section-subtitle">Recent work showcasing my technical expertise</p>
             </div>
             <div class="projects-grid">
                 <div class="project-card fade-in">
                     <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
                         <h3 class="project-title">Market Intelligence Platform</h3>
                         <div class="project-date">Sep 2024 - Dec 2024</div>
                     </div>
@@ -765,6 +821,9 @@
                 </div>
                 <div class="project-card fade-in">
                     <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
                         <h3 class="project-title">CRM Data Migration System</h3>
                         <div class="project-date">Feb 2025 - Apr 2025</div>
                     </div>
@@ -779,6 +838,9 @@
                 </div>
                 <div class="project-card fade-in">
                     <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
                         <h3 class="project-title">Banking Database Architecture</h3>
                         <div class="project-date">Apr 2025 - May 2025</div>
                     </div>
@@ -793,6 +855,9 @@
                 </div>
                 <div class="project-card fade-in">
                     <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
                         <h3 class="project-title">Retail Analytics Engine</h3>
                         <div class="project-date">May 2025 - Jun 2025</div>
                     </div>
@@ -813,17 +878,26 @@
     <section id="education" class="section">
         <div class="container">
             <div class="section-header fade-in">
+                <div class="section-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
                 <h2 class="section-title">Education & Certifications</h2>
                 <p class="section-subtitle">My academic background and professional achievements</p>
             </div>
             <div class="education-grid">
                 <div class="education-card fade-in">
+                    <div class="education-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
                     <h3>INHA University</h3>
                     <p><strong>Bachelor of Computer Science</strong></p>
                     <p>GPA: 3.75/4.5</p>
                     <p>2023 - Present</p>
                 </div>
                 <div class="education-card fade-in">
+                    <div class="education-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
                     <h3>MAAB Academy</h3>
                     <p><strong>Data Analytics & Engineering</strong></p>
                     <p>Grade: 98/100</p>
@@ -837,6 +911,9 @@
     <section id="contact" class="section">
         <div class="container">
             <div class="section-header fade-in">
+                <div class="section-icon">
+                    <i class="fas fa-paper-plane"></i>
+                </div>
                 <h2 class="section-title">Get In Touch</h2>
                 <p class="section-subtitle">Let's discuss your next data project</p>
             </div>
@@ -879,18 +956,30 @@
                 <div class="contact-form fade-in">
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name">
+                                <i class="fas fa-user"></i>
+                                Name
+                            </label>
                             <input type="text" id="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">
+                                <i class="fas fa-envelope"></i>
+                                Email
+                            </label>
                             <input type="email" id="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
+                            <label for="message">
+                                <i class="fas fa-comment"></i>
+                                Message
+                            </label>
                             <textarea id="message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                        <button type="submit" class="btn" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
                     </form>
                 </div>
             </div>
