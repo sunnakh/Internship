@@ -568,6 +568,69 @@
             font-weight: 500;
         }
 
+        /* Certifications */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .certification-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .certification-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .certification-card h3 {
+            color: var(--text);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .certification-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .certification-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            letter-spacing: -0.01em;
+        }
+
+        .certification-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.02);
+            color: white;
+            text-decoration: none;
+        }
+
         /* Contact */
         .contact-container {
             display: grid;
@@ -769,6 +832,7 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="theme-toggle" id="themeToggle">
@@ -1022,6 +1086,76 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h2 class="section-title">Certifications</h2>
+                <p class="section-subtitle">Professional certifications and achievements</p>
+            </div>
+            <div class="certifications-grid">
+                <div class="certification-card fade-in">
+                    <div class="certification-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Credly Badge</h3>
+                    <p>Professional certification badge</p>
+                    <a href="https://www.credly.com/badges/11a00f6d-deb3-4ae1-9cdc-6a5d38bba010/public_url" target="_blank" class="certification-btn">
+                        <i class="fas fa-external-link-alt"></i>
+                        View Badge
+                    </a>
+                </div>
+                <div class="certification-card fade-in">
+                    <div class="certification-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Coursera Certificate</h3>
+                    <p>Online learning achievement</p>
+                    <a href="https://coursera.org/share/38ed3c6551c8123c51df721f2ebf1e1d" target="_blank" class="certification-btn">
+                        <i class="fas fa-external-link-alt"></i>
+                        View Certificate
+                    </a>
+                </div>
+                <div class="certification-card fade-in">
+                    <div class="certification-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>MAAB Academy</h3>
+                    <p>Data Analytics & Engineering</p>
+                    <a href="https://academy.maab.uz/media/certificates/sunnat-axmadov_000048.pdf" target="_blank" class="certification-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        View Certificate
+                    </a>
+                </div>
+                <div class="certification-card fade-in">
+                    <div class="certification-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>DeepLearning.AI</h3>
+                    <p>Machine Learning specialization</p>
+                    <a href="https://learn.deeplearning.ai/accomplishments/74afd0f8-74b8-4256-913f-5fa078e42cf7?usp=sharing" target="_blank" class="certification-btn">
+                        <i class="fas fa-external-link-alt"></i>
+                        View Certificate
+                    </a>
+                </div>
+                <div class="certification-card fade-in">
+                    <div class="certification-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Kaggle Python</h3>
+                    <p>Python programming certification</p>
+                    <a href="https://www.kaggle.com/learn/certification/sunnatakhmadov/python" target="_blank" class="certification-btn">
+                        <i class="fas fa-external-link-alt"></i>
+                        View Certificate
+                    </a>
                 </div>
             </div>
         </div>
