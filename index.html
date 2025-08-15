@@ -1181,8 +1181,19 @@
                                 }
                             });
                         } else {
-                            // If no nested spans, translate the element itself
-                            element.textContent = originalText;
+                            // For elements without nested spans, replace the text content
+                            // but preserve any HTML structure (like icons)
+                            const hasHTML = element.innerHTML !== element.textContent;
+                            if (hasHTML) {
+                                // If element has HTML structure, find and replace only the text
+                                const textContent = element.textContent.trim();
+                                if (textContent) {
+                                    element.innerHTML = element.innerHTML.replace(textContent, originalText);
+                                }
+                            } else {
+                                // If element is pure text, replace directly
+                                element.textContent = originalText;
+                            }
                         }
                     }
                 }
