@@ -202,6 +202,23 @@
             opacity: 0.3;
         }
 
+        .nav-links a.active {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
         .theme-toggle {
             background: none;
             border: none;
@@ -1910,10 +1927,37 @@
             });
         }
 
-        // Initialize animations when page loads
+        // Active navigation highlighting
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize animations and navigation when page loads
         window.addEventListener('load', () => {
             addStaggeredAnimation();
+            updateActiveNav();
         });
+
+        // Update active navigation on scroll
+        window.addEventListener('scroll', updateActiveNav);
     </script>
 </body>
 </html>
