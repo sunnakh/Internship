@@ -322,27 +322,23 @@
         .language-toggle {
             background: none;
             border: none;
-            color: var(--text);
-            font-size: 1rem;
             cursor: pointer;
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius);
-            transition: var(--transition);
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            border: 1px solid var(--border);
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            color: var(--text);
         }
 
         .language-toggle:hover {
             background: rgba(0, 122, 255, 0.1);
-            border-color: var(--primary);
-            transform: translateY(-2px);
+            transform: scale(1.05);
         }
 
         .current-lang {
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         .language-dropdown {
@@ -350,16 +346,15 @@
             top: 100%;
             right: 0;
             background: var(--background);
-            border: 1px solid var(--border);
             border-radius: var(--radius);
             box-shadow: var(--shadow-lg);
-            min-width: 180px;
+            min-width: 150px;
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
             transition: var(--transition);
             z-index: 1001;
-            margin-top: 0.5rem;
+            border: 1px solid var(--border);
         }
 
         .language-dropdown.show {
@@ -371,35 +366,27 @@
         .language-option {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             padding: 0.75rem 1rem;
-            color: var(--text);
             text-decoration: none;
+            color: var(--text);
             transition: var(--transition);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .language-option:last-child {
-            border-bottom: none;
+            border-radius: var(--radius);
+            margin: 0.25rem;
         }
 
         .language-option:hover {
             background: rgba(0, 122, 255, 0.1);
-            color: var(--primary);
-        }
-
-        .language-option.active {
-            background: rgba(0, 122, 255, 0.15);
-            color: var(--primary);
-            font-weight: 600;
         }
 
         .flag {
-            font-size: 1.2rem;
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
         }
 
         .lang-name {
-            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         /* Hero Section - Redesigned */
