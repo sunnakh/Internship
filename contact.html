@@ -882,6 +882,10 @@
     </footer>
 
     <script>
+        const EMAILJS_SERVICE_ID = 'service_segmk0f';
+        const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+        const EMAILJS_PUBLIC_KEY = 'YOUR_EMAILJS_USER_ID';
+
         // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
@@ -931,9 +935,9 @@
             // Try EmailJS first, fallback to mailto
             try {
                 // Initialize EmailJS (you'll need to set up EmailJS account)
-                emailjs.init("YOUR_EMAILJS_USER_ID"); // Replace with your EmailJS user ID
+                emailjs.init(EMAILJS_PUBLIC_KEY);
                 
-                emailjs.send("service_segmk0f", "YOUR_TEMPLATE_ID", {
+                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
                     to_email: "sunnatakhmad@gmail.com",
                     from_name: name,
                     from_email: email,
