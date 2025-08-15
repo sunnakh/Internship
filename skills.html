@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Sunnat Axmadov</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        :root {
+            --primary: #007AFF;
+            --primary-dark: #0056CC;
+            --secondary: #8E8E93;
+            --accent: #34C759;
+            --background: #FFFFFF;
+            --surface: #F2F2F7;
+            --text: #1D1D1F;
+            --text-light: #86868B;
+            --border: #E5E5EA;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --font-primary: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'SF Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+
+        .dark {
+            --background: #000000;
+            --surface: #1C1C1E;
+            --text: #FFFFFF;
+            --text-light: #8E8E93;
+            --border: #38383A;
+            --shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+            --shadow-lg: 0 8px 24px rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.5;
+            transition: var(--transition);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-feature-settings: "kern" 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .dark .header {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+            position: relative;
+            animation: logoGlow 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(0, 122, 255, 0.5);
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), transparent, var(--primary));
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .logo:hover::before {
+            opacity: 0.3;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            letter-spacing: -0.01em;
+            position: relative;
+            border: 1px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(0, 122, 255, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::before {
+            opacity: 0.3;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            min-height: 40px;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(0, 122, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+            position: relative;
+            display: inline-block;
+            padding: 0 2rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            padding: 1rem 0;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            width: 80px;
+            height: 80px;
+            background: var(--surface);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            position: relative;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.05);
+            background: rgba(0, 122, 255, 0.05);
+        }
+
+        .skill-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+            text-align: center;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .tag {
+            background: var(--background);
+            color: var(--text);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+
+
+        /* Dark mode specific adjustments */
+        .dark .skill-card,
+        .dark .certification-card,
+        .dark .experience-card,
+        .dark .education-card {
+            background: var(--surface);
+            border-color: var(--border);
+        }
+
+        .dark .btn:hover {
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
+        }
+
+        .dark .skill-card:hover,
+        .dark .certification-card:hover,
+        .dark .experience-card:hover {
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .dark .profile-card {
+            border-color: var(--border);
+        }
+
+        .dark .university-logo {
+            background: var(--surface);
+        }
+
+        /* Additional dark mode styles */
+        .dark .section-title {
+            color: var(--text);
+        }
+
+        .dark .section-subtitle {
+            color: var(--text-light);
+        }
+
+        .dark .skill-title,
+        .dark .certification-title,
+        .dark .experience-title {
+            color: var(--text);
+        }
+
+        .dark .tag {
+            background: var(--surface);
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .dark .form-group input,
+        .dark .form-group textarea {
+            background: var(--surface);
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .dark .form-group input:focus,
+        .dark .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .dark .form-group label {
+            color: var(--text);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: calc(200px + 100%) 0; }
+        }
+
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        /* Apple-style animations */
+        .hero-text h1 {
+            animation: slideInLeft 1.2s ease-out;
+        }
+
+        .hero-text h2 {
+            animation: slideInLeft 1.2s ease-out 0.3s both;
+        }
+
+        .hero-text p {
+            animation: slideInLeft 1.2s ease-out 0.6s both;
+        }
+
+        .hero-text .btn {
+            animation: slideInLeft 1.2s ease-out 0.9s both;
+        }
+
+        .hero-image {
+            animation: slideInRight 1.2s ease-out 0.4s both;
+        }
+
+        /* Subtle icon animations */
+        .section-icon {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .skill-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .certification-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .certification-card:hover .certification-icon {
+            transform: scale(1.1);
+        }
+
+        .experience-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover .experience-icon {
+            transform: scale(1.1);
+        }
+
+        .contact-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .contact-link:hover .contact-icon {
+            transform: scale(1.1);
+        }
+
+        /* Button hover effect */
+        .btn {
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+        }
+
+        /* Card hover effects */
+        .skill-card,
+        .certification-card,
+        .experience-card {
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover,
+        .certification-card:hover,
+        .experience-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation for page load */
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { 
+                text-shadow: 0 0 5px rgba(0, 122, 255, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 0 0 15px rgba(0, 122, 255, 0.6);
+                transform: scale(1.02);
+            }
+        }
+
+        /* Skills page specific animations */
+        .skills-grid {
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .skill-card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .skill-card:nth-child(1) { animation-delay: 0.5s; }
+        .skill-card:nth-child(2) { animation-delay: 0.7s; }
+        .skill-card:nth-child(3) { animation-delay: 0.9s; }
+        .skill-card:nth-child(4) { animation-delay: 1.1s; }
+
+        .skill-icon {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .skill-card:hover .skill-icon {
+            animation: pulse 1s ease-in-out;
+        }
+
+        .skill-title {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            transition: left 0.5s ease;
+        }
+
+        .skill-card:hover .skill-title::after {
+            left: 0;
+        }
+
+        .skill-tags {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .skill-card:nth-child(1) .skill-tags { animation-delay: 0.6s; }
+        .skill-card:nth-child(2) .skill-tags { animation-delay: 0.8s; }
+        .skill-card:nth-child(3) .skill-tags { animation-delay: 1.0s; }
+        .skill-card:nth-child(4) .skill-tags { animation-delay: 1.2s; }
+
+        .tag {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tag:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            animation: slideInRight 1.5s ease-out 0.5s forwards;
+        }
+
+        .skills-actions {
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .skills-actions .btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skills-actions .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skills-actions .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Enhanced hover effects */
+        .skill-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Staggered tag animations */
+        .skill-tags .tag {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.4s ease-out forwards;
+        }
+
+        .skill-card:nth-child(1) .tag:nth-child(1) { animation-delay: 0.7s; }
+        .skill-card:nth-child(1) .tag:nth-child(2) { animation-delay: 0.8s; }
+        .skill-card:nth-child(1) .tag:nth-child(3) { animation-delay: 0.9s; }
+        .skill-card:nth-child(1) .tag:nth-child(4) { animation-delay: 1.0s; }
+        .skill-card:nth-child(1) .tag:nth-child(5) { animation-delay: 1.1s; }
+
+        .skill-card:nth-child(2) .tag:nth-child(1) { animation-delay: 0.9s; }
+        .skill-card:nth-child(2) .tag:nth-child(2) { animation-delay: 1.0s; }
+        .skill-card:nth-child(2) .tag:nth-child(3) { animation-delay: 1.1s; }
+        .skill-card:nth-child(2) .tag:nth-child(4) { animation-delay: 1.2s; }
+        .skill-card:nth-child(2) .tag:nth-child(5) { animation-delay: 1.3s; }
+
+        .skill-card:nth-child(3) .tag:nth-child(1) { animation-delay: 1.1s; }
+        .skill-card:nth-child(3) .tag:nth-child(2) { animation-delay: 1.2s; }
+        .skill-card:nth-child(3) .tag:nth-child(3) { animation-delay: 1.3s; }
+        .skill-card:nth-child(3) .tag:nth-child(4) { animation-delay: 1.4s; }
+        .skill-card:nth-child(3) .tag:nth-child(5) { animation-delay: 1.5s; }
+
+        .skill-card:nth-child(4) .tag:nth-child(1) { animation-delay: 1.3s; }
+        .skill-card:nth-child(4) .tag:nth-child(2) { animation-delay: 1.4s; }
+        .skill-card:nth-child(4) .tag:nth-child(3) { animation-delay: 1.5s; }
+        .skill-card:nth-child(4) .tag:nth-child(4) { animation-delay: 1.6s; }
+        .skill-card:nth-child(4) .tag:nth-child(5) { animation-delay: 1.7s; }
+
+        /* Responsive animations */
+        @media (max-width: 768px) {
+            .skill-card:nth-child(1) { animation-delay: 0.4s; }
+            .skill-card:nth-child(2) { animation-delay: 0.6s; }
+            .skill-card:nth-child(3) { animation-delay: 0.8s; }
+            .skill-card:nth-child(4) { animation-delay: 1.0s; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">Sunnat Axmadov</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html" class="active">Skills</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="section-subtitle">My expertise across various technologies and tools</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <div class="skill-icon"><i class="fas fa-code"></i></div>
+                    <h3 class="skill-title">Programming</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">DAX</span>
+                    </div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="skill-title">Data Analytics</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Pandas</span>
+                        <span class="tag">NumPy</span>
+                        <span class="tag">Matplotlib</span>
+                        <span class="tag">Seaborn</span>
+                    </div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon"><i class="fas fa-database"></i></div>
+                    <h3 class="skill-title">Data Engineering</h3>
+                    <div class="skill-tags">
+                        <span class="tag">SSIS</span>
+                        <span class="tag">Azure Data Factory</span>
+                        <span class="tag">SQL Server</span>
+                        <span class="tag">ETL</span>
+                        <span class="tag">Data Modeling</span>
+                    </div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                    <h3 class="skill-title">Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Scikit-learn</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">Neural Networks</span>
+                        <span class="tag">Deep Learning</span>
+                        <span class="tag">AI</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-actions fade-in" style="text-align: center; margin-top: 3rem;">
+                <a href="contact.html" class="btn" style="background: var(--primary); color: white; padding: 1rem 2rem; border-radius: var(--radius); text-decoration: none; font-weight: 600; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-envelope"></i>
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    © 2025 Sunnat Axmadov. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference or default to light mode
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark');
+            icon.className = 'fas fa-sun';
+        }
+
+        // Add click event listener
+        themeToggle.addEventListener('click', function() {
+            console.log('Theme toggle clicked'); // Debug log
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('dark')) {
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+                console.log('Switched to dark mode'); // Debug log
+            } else {
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+                console.log('Switched to light mode'); // Debug log
+            }
+        });
+
+        // Debug: Log current theme on page load
+        console.log('Current theme:', body.classList.contains('dark') ? 'dark' : 'light');
+        console.log('Saved theme:', localStorage.getItem('theme'));
+
+        // Simple scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add staggered animation to grid items
+        function addStaggeredAnimation() {
+            const gridItems = document.querySelectorAll('.skill-card, .certification-card, .experience-card');
+            gridItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+            });
+        }
+
+        // Initialize animations when page loads
+        window.addEventListener('load', () => {
+            addStaggeredAnimation();
+        });
+    </script>
+</body>
+</html>
