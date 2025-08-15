@@ -532,6 +532,23 @@
             letter-spacing: 0.5px;
         }
 
+        .certificate-link {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .certificate-link:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .certificate-link:hover .degree-type {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
         .degree-field {
             color: var(--text);
             font-weight: 500;
@@ -994,7 +1011,9 @@
                         <div class="education-info">
                             <h3>MAAB Academy</h3>
                             <div class="degree-info">
-                                <span class="degree-type">Certificate</span>
+                                <a href="https://academy.maab.uz/media/certificates/sunnat-axmadov_000048.pdf" target="_blank" class="certificate-link">
+                                    <span class="degree-type">Certificate</span>
+                                </a>
                                 <span class="degree-field">Data Analytics & Engineering</span>
                             </div>
                             <div class="education-details">
