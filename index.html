@@ -105,6 +105,17 @@
             100% { width: 100%; }
         }
 
+        @keyframes logoGlow {
+            0%, 100% { 
+                text-shadow: 0 0 5px rgba(0, 122, 255, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 0 0 15px rgba(0, 122, 255, 0.6);
+                transform: scale(1.02);
+            }
+        }
+
         :root {
             --primary: #007AFF;
             --primary-dark: #0056CC;
@@ -187,6 +198,32 @@
             color: var(--primary);
             text-decoration: none;
             letter-spacing: -0.01em;
+            position: relative;
+            animation: logoGlow 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(0, 122, 255, 0.5);
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), transparent, var(--primary));
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .logo:hover::before {
+            opacity: 0.3;
         }
 
         .nav-links {
