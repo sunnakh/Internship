@@ -572,6 +572,119 @@
                 transform: scale(1.02);
             }
         }
+
+        /* About page specific animations */
+        .about-content {
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .about-text-content {
+            animation: slideInLeft 1.2s ease-out 0.5s both;
+        }
+
+        .about-image {
+            animation: slideInRight 1.2s ease-out 0.7s both;
+        }
+
+        .about-profile-card {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .about-profile-image {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .about-profile-card:hover .about-profile-image {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .about-text:nth-child(1) { animation-delay: 0.8s; }
+        .about-text:nth-child(2) { animation-delay: 1.0s; }
+        .about-text:nth-child(3) { animation-delay: 1.2s; }
+        .about-text:nth-child(4) { animation-delay: 1.4s; }
+        .about-text:nth-child(5) { animation-delay: 1.6s; }
+        .about-text:nth-child(6) { animation-delay: 1.8s; }
+        .about-text:nth-child(7) { animation-delay: 2.0s; }
+
+        .about-text strong {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .section-title {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            animation: slideInRight 1.5s ease-out 0.5s forwards;
+        }
+
+        .about-actions {
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .about-actions .btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-actions .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .about-actions .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Enhanced hover effects */
+        .about-profile-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-profile-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Text highlight animation */
+        .about-text:hover strong {
+            animation: pulse 1s ease-in-out;
+        }
+
+        /* Responsive animations */
+        @media (max-width: 768px) {
+            .about-text:nth-child(1) { animation-delay: 0.6s; }
+            .about-text:nth-child(2) { animation-delay: 0.8s; }
+            .about-text:nth-child(3) { animation-delay: 1.0s; }
+            .about-text:nth-child(4) { animation-delay: 1.2s; }
+            .about-text:nth-child(5) { animation-delay: 1.4s; }
+            .about-text:nth-child(6) { animation-delay: 1.6s; }
+            .about-text:nth-child(7) { animation-delay: 1.8s; }
+        }
     </style>
 </head>
 <body>
