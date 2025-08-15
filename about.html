@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Sunnat Ahmadov</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        body.dark {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-screen.dark {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        body.dark header {
+            background: rgba(26, 26, 46, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        body.dark .logo {
+            color: #8b9dc3;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        body.dark .nav-links a {
+            color: #fff;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        body.dark .nav-links a:hover {
+            color: #8b9dc3;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s ease;
+        }
+
+        body.dark .nav-links a::after {
+            background: #8b9dc3;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+            margin-right: 1rem;
+        }
+
+        .language-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            color: #333;
+        }
+
+        body.dark .language-toggle {
+            color: #fff;
+        }
+
+        .language-toggle:hover {
+            background-color: rgba(102, 126, 234, 0.1);
+        }
+
+        body.dark .language-toggle:hover {
+            background-color: rgba(139, 157, 195, 0.1);
+        }
+
+        .current-lang {
+            font-weight: 500;
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        body.dark .language-dropdown {
+            background: #1a1a2e;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .language-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s ease;
+            border-radius: 8px;
+            margin: 0.25rem;
+        }
+
+        body.dark .language-option {
+            color: #fff;
+        }
+
+        .language-option:hover {
+            background-color: rgba(102, 126, 234, 0.1);
+        }
+
+        body.dark .language-option:hover {
+            background-color: rgba(139, 157, 195, 0.1);
+        }
+
+        .flag {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+        }
+
+        .lang-name {
+            font-weight: 500;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        body.dark .theme-toggle {
+            color: #fff;
+        }
+
+        .theme-toggle:hover {
+            color: #667eea;
+        }
+
+        body.dark .theme-toggle:hover {
+            color: #8b9dc3;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        body.dark .about-section {
+            background: rgba(26, 26, 46, 0.95);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+
+        body.dark .about-description {
+            color: #ccc;
+        }
+
+        .skills-section {
+            margin-top: 3rem;
+        }
+
+        .skills-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        body.dark .skills-title {
+            color: #fff;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        body.dark .skill-category {
+            background: rgba(139, 157, 195, 0.1);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        body.dark .skill-category h3 {
+            color: #8b9dc3;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        body.dark .skill-list li::before {
+            color: #8b9dc3;
+        }
+
+        .experience-section {
+            margin-top: 3rem;
+        }
+
+        .experience-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        body.dark .experience-title {
+            color: #fff;
+        }
+
+        .experience-item {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        body.dark .experience-item {
+            background: rgba(26, 26, 46, 0.8);
+            border-left-color: #8b9dc3;
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+        }
+
+        .experience-role {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        body.dark .experience-role {
+            color: #fff;
+        }
+
+        .experience-company {
+            font-size: 1rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        body.dark .experience-company {
+            color: #8b9dc3;
+        }
+
+        .experience-period {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        body.dark .experience-period {
+            color: #ccc;
+        }
+
+        .experience-description {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        body.dark .experience-description {
+            color: #ddd;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        body.dark footer {
+            background: rgba(26, 26, 46, 0.95);
+            box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: #667eea;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        body.dark .social-links a {
+            color: #8b9dc3;
+        }
+
+        .social-links a:hover {
+            color: #764ba2;
+        }
+
+        body.dark .social-links a:hover {
+            color: #667eea;
+        }
+
+        .copyright {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        body.dark .copyright {
+            color: #ccc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .language-switcher {
+                margin-right: 0.5rem;
+            }
+
+            main {
+                padding: 1rem;
+                margin-top: 70px;
+            }
+
+            .about-section {
+                padding: 2rem;
+            }
+
+            .about-title {
+                font-size: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                gap: 0.5rem;
+            }
+
+            .about-section {
+                padding: 1.5rem;
+            }
+
+            .about-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text" data-en="Loading..." data-uz="Yuklanmoqda..." data-ru="Загрузка...">Loading...</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo" data-en="Sunnat Ahmadov" data-uz="Sunnat Ahmadov" data-ru="Суннат Ахмадов">Sunnat Ahmadov</a>
+            <ul class="nav-links">
+                <li><a href="index.html" data-en="Home" data-uz="Bosh sahifa" data-ru="Главная">Home</a></li>
+                <li><a href="about.html" data-en="About" data-uz="Haqida" data-ru="Обо мне">About</a></li>
+                <li><a href="#contact" data-en="Contact" data-uz="Aloqa" data-ru="Контакты">Contact</a></li>
+                
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <button class="language-toggle" id="languageToggle">
+                        <i class="fas fa-globe"></i>
+                        <span class="current-lang">EN</span>
+                    </button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <a href="#" class="language-option" data-lang="en">
+                            <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag">
+                            <span class="lang-name">English</span>
+                        </a>
+                        <a href="#" class="language-option" data-lang="uz">
+                            <img src="https://flagcdn.com/w20/uz.png" alt="Uzbek" class="flag">
+                            <span class="lang-name">O'zbekcha</span>
+                        </a>
+                        <a href="#" class="language-option" data-lang="ru">
+                            <img src="https://flagcdn.com/w20/ru.png" alt="Russian" class="flag">
+                            <span class="lang-name">Русский</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="about-section">
+            <h1 class="about-title" data-en="About Me" data-uz="Men haqida" data-ru="Обо мне">About Me</h1>
+            <p class="about-description" data-en="I am a passionate software developer with expertise in web development, mobile applications, and backend systems. With a strong foundation in modern technologies and a keen eye for user experience, I create innovative solutions that solve real-world problems." data-uz="Men veb-islab chiqish, mobil ilovalar va backend tizimlari bo'yicha tajribaga ega bo'lgan ishtiyoqli dasturiy ta'minot ishlab chiquvchisiman. Zamonaviy texnologiyalar asosida kuchli asos va foydalanuvchi tajribasiga e'tibor bilan men haqiqiy dunyo muammolarini hal qiladigan innovatsion yechimlar yarataman." data-ru="Я страстный разработчик программного обеспечения с опытом в веб-разработке, мобильных приложениях и серверных системах. Имея прочную основу в современных технологиях и острый взгляд на пользовательский опыт, я создаю инновационные решения, которые решают реальные проблемы.">I am a passionate software developer with expertise in web development, mobile applications, and backend systems. With a strong foundation in modern technologies and a keen eye for user experience, I create innovative solutions that solve real-world problems.</p>
+            
+            <div class="skills-section">
+                <h2 class="skills-title" data-en="Skills & Expertise" data-uz="Ko'nikmalar va tajriba" data-ru="Навыки и опыт">Skills & Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 data-en="Frontend Development" data-uz="Frontend ishlab chiqish" data-ru="Frontend разработка">Frontend Development</h3>
+                        <ul class="skill-list">
+                            <li data-en="HTML5, CSS3, JavaScript" data-uz="HTML5, CSS3, JavaScript" data-ru="HTML5, CSS3, JavaScript">HTML5, CSS3, JavaScript</li>
+                            <li data-en="React.js, Vue.js" data-uz="React.js, Vue.js" data-ru="React.js, Vue.js">React.js, Vue.js</li>
+                            <li data-en="Responsive Design" data-uz="Responsive dizayn" data-ru="Адаптивный дизайн">Responsive Design</li>
+                            <li data-en="UI/UX Design" data-uz="UI/UX dizayn" data-ru="UI/UX дизайн">UI/UX Design</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3 data-en="Backend Development" data-uz="Backend ishlab chiqish" data-ru="Backend разработка">Backend Development</h3>
+                        <ul class="skill-list">
+                            <li data-en="Node.js, Python" data-uz="Node.js, Python" data-ru="Node.js, Python">Node.js, Python</li>
+                            <li data-en="Express.js, Django" data-uz="Express.js, Django" data-ru="Express.js, Django">Express.js, Django</li>
+                            <li data-en="RESTful APIs" data-uz="RESTful API" data-ru="RESTful API">RESTful APIs</li>
+                            <li data-en="Database Design" data-uz="Ma'lumotlar bazasi dizayni" data-ru="Проектирование баз данных">Database Design</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3 data-en="Mobile Development" data-uz="Mobil ishlab chiqish" data-ru="Мобильная разработка">Mobile Development</h3>
+                        <ul class="skill-list">
+                            <li data-en="React Native" data-uz="React Native" data-ru="React Native">React Native</li>
+                            <li data-en="Flutter" data-uz="Flutter" data-ru="Flutter">Flutter</li>
+                            <li data-en="iOS & Android" data-uz="iOS va Android" data-ru="iOS и Android">iOS & Android</li>
+                            <li data-en="Mobile UI/UX" data-uz="Mobil UI/UX" data-ru="Мобильный UI/UX">Mobile UI/UX</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3 data-en="Tools & Technologies" data-uz="Asboblar va texnologiyalar" data-ru="Инструменты и технологии">Tools & Technologies</h3>
+                        <ul class="skill-list">
+                            <li data-en="Git, GitHub" data-uz="Git, GitHub" data-ru="Git, GitHub">Git, GitHub</li>
+                            <li data-en="Docker, AWS" data-uz="Docker, AWS" data-ru="Docker, AWS">Docker, AWS</li>
+                            <li data-en="CI/CD Pipelines" data-uz="CI/CD pipeline" data-ru="CI/CD пайплайны">CI/CD Pipelines</li>
+                            <li data-en="Agile Methodologies" data-uz="Agile metodologiyalari" data-ru="Agile методологии">Agile Methodologies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-section">
+                <h2 class="experience-title" data-en="Professional Experience" data-uz="Kasbiy tajriba" data-ru="Профессиональный опыт">Professional Experience</h2>
+                <div class="experience-item">
+                    <h3 class="experience-role" data-en="Senior Software Developer" data-uz="Katta dasturiy ta'minot ishlab chiquvchisi" data-ru="Старший разработчик программного обеспечения">Senior Software Developer</h3>
+                    <p class="experience-company" data-en="Tech Solutions Inc." data-uz="Tech Solutions Inc." data-ru="Tech Solutions Inc.">Tech Solutions Inc.</p>
+                    <p class="experience-period" data-en="2022 - Present" data-uz="2022 - Hozirgi kungacha" data-ru="2022 - Настоящее время">2022 - Present</p>
+                    <p class="experience-description" data-en="Leading development of scalable web applications and mentoring junior developers. Implemented microservices architecture and improved application performance by 40%." data-uz="Kengaytiriladigan veb-ilovalarni ishlab chiqishni boshqarish va yosh ishlab chiquvchilarni yo'riqlash. Mikroservis arxitekturasini amalga oshirish va ilova ishlashini 40% ga yaxshilash." data-ru="Руководство разработкой масштабируемых веб-приложений и наставничество младших разработчиков. Внедрение микросервисной архитектуры и улучшение производительности приложений на 40%.">Leading development of scalable web applications and mentoring junior developers. Implemented microservices architecture and improved application performance by 40%.</p>
+                </div>
+                <div class="experience-item">
+                    <h3 class="experience-role" data-en="Full Stack Developer" data-uz="Full Stack ishlab chiquvchi" data-ru="Full Stack разработчик">Full Stack Developer</h3>
+                    <p class="experience-company" data-en="Digital Innovations Ltd." data-uz="Digital Innovations Ltd." data-ru="Digital Innovations Ltd.">Digital Innovations Ltd.</p>
+                    <p class="experience-period" data-en="2020 - 2022" data-uz="2020 - 2022" data-ru="2020 - 2022">2020 - 2022</p>
+                    <p class="experience-description" data-en="Developed and maintained multiple client projects using modern web technologies. Collaborated with cross-functional teams to deliver high-quality software solutions." data-uz="Zamonaviy veb texnologiyalaridan foydalanib, bir nechta mijoz loyihalarini ishlab chiqish va saqlash. Yuqori sifatli dasturiy ta'minot yechimlarini taqdim etish uchun turli funksiyali jamoalar bilan hamkorlik qilish." data-ru="Разработка и поддержка множественных клиентских проектов с использованием современных веб-технологий. Сотрудничество с межфункциональными командами для предоставления высококачественных программных решений.">Developed and maintained multiple client projects using modern web technologies. Collaborated with cross-functional teams to deliver high-quality software solutions.</p>
+                </div>
+                <div class="experience-item">
+                    <h3 class="experience-role" data-en="Junior Developer" data-uz="Yosh ishlab chiquvchi" data-ru="Младший разработчик">Junior Developer</h3>
+                    <p class="experience-company" data-en="StartUp Ventures" data-uz="StartUp Ventures" data-ru="StartUp Ventures">StartUp Ventures</p>
+                    <p class="experience-period" data-en="2018 - 2020" data-uz="2018 - 2020" data-ru="2018 - 2020">2018 - 2020</p>
+                    <p class="experience-description" data-en="Started career in software development, working on various projects and learning modern development practices. Contributed to the development of innovative startup solutions." data-uz="Dasturiy ta'minot ishlab chiqish sohasida martaba boshlash, turli loyihalar ustida ishlash va zamonaviy ishlab chiqish amaliyotlarini o'rganish. Innovatsion startap yechimlarini ishlab chiqishga hissa qo'shish." data-ru="Начало карьеры в разработке программного обеспечения, работа над различными проектами и изучение современных практик разработки. Вклад в разработку инновационных стартап-решений.">Started career in software development, working on various projects and learning modern development practices. Contributed to the development of innovative startup solutions.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="social-links">
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="copyright" data-en="© 2024 Sunnat Ahmadov. All rights reserved." data-uz="© 2024 Sunnat Ahmadov. Barcha huquqlar himoyalangan." data-ru="© 2024 Суннат Ахмадов. Все права защищены.">© 2024 Sunnat Ahmadov. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loadingScreen');
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const loadingScreen = document.getElementById('loadingScreen');
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.classList.toggle('dark', savedTheme === 'dark');
+            loadingScreen.classList.toggle('dark', savedTheme === 'dark');
+            updateThemeIcon();
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            loadingScreen.classList.toggle('dark');
+            localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
+            updateThemeIcon();
+        });
+
+        function updateThemeIcon() {
+            const icon = themeToggle.querySelector('i');
+            if (body.classList.contains('dark')) {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+
+        // Language Switcher
+        const languageToggle = document.getElementById('languageToggle');
+        const languageDropdown = document.getElementById('languageDropdown');
+        const currentLang = document.querySelector('.current-lang');
+
+        // Check for saved language preference
+        const savedLanguage = localStorage.getItem('language') || 'en';
+        setLanguage(savedLanguage);
+
+        languageToggle.addEventListener('click', () => {
+            languageDropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!languageToggle.contains(e.target) && !languageDropdown.contains(e.target)) {
+                languageDropdown.classList.remove('show');
+            }
+        });
+
+        // Handle language selection
+        document.querySelectorAll('.language-option').forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = option.getAttribute('data-lang');
+                setLanguage(lang);
+                languageDropdown.classList.remove('show');
+            });
+        });
+
+        function setLanguage(lang) {
+            const langNames = { en: 'EN', uz: 'UZ', ru: 'RU' };
+            currentLang.textContent = langNames[lang];
+            document.documentElement.lang = lang;
+            localStorage.setItem('language', lang);
+            translateContent(lang);
+        }
+
+        function translateContent(lang) {
+            const elements = document.querySelectorAll(`[data-${lang}]`);
+            elements.forEach(element => {
+                const originalText = element.getAttribute(`data-${lang}`);
+                
+                // Check if element has nested spans with data attributes
+                const nestedSpans = element.querySelectorAll('span[data-en]');
+                if (nestedSpans.length > 0) {
+                    nestedSpans.forEach(span => {
+                        const spanText = span.getAttribute(`data-${lang}`);
+                        if (spanText) {
+                            span.textContent = spanText;
+                        }
+                    });
+                } else {
+                    // Check if element has HTML content
+                    if (element.innerHTML !== element.textContent) {
+                        // Element has HTML, replace only the text content
+                        const textContent = element.textContent;
+                        element.innerHTML = element.innerHTML.replace(textContent, originalText);
+                    } else {
+                        // Pure text element
+                        element.textContent = originalText;
+                    }
+                }
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.skill-category, .experience-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
