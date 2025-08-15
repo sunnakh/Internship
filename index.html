@@ -578,10 +578,8 @@
         /* Experience */
         .experience-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         .experience-card {
@@ -589,34 +587,29 @@
             padding: 2rem;
             border-radius: var(--radius);
             border: 1px solid var(--border);
+            text-align: center;
             transition: var(--transition);
         }
 
         .experience-card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
 
-        .experience-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
         .experience-icon {
-            flex-shrink: 0;
+            margin-bottom: 1rem;
         }
 
         .company-logo {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             object-fit: contain;
-            border-radius: 8px;
+            border-radius: 50%;
             background: white;
-            padding: 8px;
+            padding: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
+            margin: 0 auto;
         }
 
         .company-logo:hover {
@@ -624,22 +617,15 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .experience-info {
-            flex: 1;
-        }
-
         .experience-card h3 {
             color: var(--text);
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             letter-spacing: -0.01em;
         }
 
         .company-info {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
             margin-bottom: 1rem;
         }
 
@@ -647,6 +633,8 @@
             color: var(--primary);
             font-weight: 600;
             font-size: 1rem;
+            display: block;
+            margin-bottom: 0.25rem;
         }
 
         .position-type {
@@ -655,18 +643,24 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 0.5rem;
         }
 
         .experience-details {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .duration {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         .experience-description {
             color: var(--text-light);
-            line-height: 1.7;
-            font-size: 1rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         .experience-achievements {
@@ -1091,40 +1085,32 @@
             </div>
             <div class="experience-grid">
                 <div class="experience-card fade-in">
-                    <div class="experience-header">
-                        <div class="experience-icon">
-                            <img src="codveda-internship.png" alt="Codveda Technologies" class="company-logo">
-                        </div>
-                        <div class="experience-info">
-                            <h3>Python Development Intern</h3>
-                            <div class="company-info">
-                                <span class="company-name">Codveda Technologies</span>
-                                <span class="position-type">Internship</span>
-                            </div>
-                            <div class="experience-details">
-                                <span class="duration">2024 - Present</span>
-                            </div>
-                        </div>
+                    <div class="experience-icon">
+                        <img src="codveda-internship.png" alt="Codveda Technologies" class="company-logo">
+                    </div>
+                    <h3>Python Development Intern</h3>
+                    <div class="company-info">
+                        <span class="company-name">Codveda Technologies</span>
+                        <span class="position-type">Internship</span>
+                    </div>
+                    <div class="experience-details">
+                        <span class="duration">2024 - Present</span>
                     </div>
                     <div class="experience-description">
                         <p>Contributed to developing and maintaining Python-based applications. Responsibilities included writing clean code, building backend components and APIs, testing/debugging, collaborating with teams, and following best software development practices.</p>
                     </div>
                 </div>
                 <div class="experience-card fade-in">
-                    <div class="experience-header">
-                        <div class="experience-icon">
-                            <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
-                        </div>
-                        <div class="experience-info">
-                            <h3>Market Analysis Dashboard</h3>
-                            <div class="company-info">
-                                <span class="company-name">MAAB Innovation</span>
-                                <span class="position-type">Data Analytics Project</span>
-                            </div>
-                            <div class="experience-details">
-                                <span class="duration">Sep 2024 - Dec 2024</span>
-                            </div>
-                        </div>
+                    <div class="experience-icon">
+                        <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
+                    </div>
+                    <h3>Market Analysis Dashboard</h3>
+                    <div class="company-info">
+                        <span class="company-name">MAAB Innovation</span>
+                        <span class="position-type">Data Analytics Project</span>
+                    </div>
+                    <div class="experience-details">
+                        <span class="duration">Sep 2024 - Dec 2024</span>
                     </div>
                     <div class="experience-description">
                         <ul class="experience-achievements">
@@ -1136,20 +1122,16 @@
                     </div>
                 </div>
                 <div class="experience-card fade-in">
-                    <div class="experience-header">
-                        <div class="experience-icon">
-                            <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
-                        </div>
-                        <div class="experience-info">
-                            <h3>CRM Data Transformation</h3>
-                            <div class="company-info">
-                                <span class="company-name">MAAB Innovation</span>
-                                <span class="position-type">Data Engineering Project</span>
-                            </div>
-                            <div class="experience-details">
-                                <span class="duration">Feb 2025 - Apr 2025</span>
-                            </div>
-                        </div>
+                    <div class="experience-icon">
+                        <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
+                    </div>
+                    <h3>CRM Data Transformation</h3>
+                    <div class="company-info">
+                        <span class="company-name">MAAB Innovation</span>
+                        <span class="position-type">Data Engineering Project</span>
+                    </div>
+                    <div class="experience-details">
+                        <span class="duration">Feb 2025 - Apr 2025</span>
                     </div>
                     <div class="experience-description">
                         <ul class="experience-achievements">
@@ -1161,20 +1143,16 @@
                     </div>
                 </div>
                 <div class="experience-card fade-in">
-                    <div class="experience-header">
-                        <div class="experience-icon">
-                            <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
-                        </div>
-                        <div class="experience-info">
-                            <h3>Banking System Data Modeling</h3>
-                            <div class="company-info">
-                                <span class="company-name">MAAB Innovation</span>
-                                <span class="position-type">Database Design Project</span>
-                            </div>
-                            <div class="experience-details">
-                                <span class="duration">Apr 2025 - May 2025</span>
-                            </div>
-                        </div>
+                    <div class="experience-icon">
+                        <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
+                    </div>
+                    <h3>Banking System Data Modeling</h3>
+                    <div class="company-info">
+                        <span class="company-name">MAAB Innovation</span>
+                        <span class="position-type">Database Design Project</span>
+                    </div>
+                    <div class="experience-details">
+                        <span class="duration">Apr 2025 - May 2025</span>
                     </div>
                     <div class="experience-description">
                         <ul class="experience-achievements">
@@ -1186,20 +1164,16 @@
                     </div>
                 </div>
                 <div class="experience-card fade-in">
-                    <div class="experience-header">
-                        <div class="experience-icon">
-                            <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
-                        </div>
-                        <div class="experience-info">
-                            <h3>Electronic Store Sales Analysis</h3>
-                            <div class="company-info">
-                                <span class="company-name">MAAB Innovation</span>
-                                <span class="position-type">Business Intelligence Project</span>
-                            </div>
-                            <div class="experience-details">
-                                <span class="duration">May 2025 - Jun 2025</span>
-                            </div>
-                        </div>
+                    <div class="experience-icon">
+                        <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
+                    </div>
+                    <h3>Electronic Store Sales Analysis</h3>
+                    <div class="company-info">
+                        <span class="company-name">MAAB Innovation</span>
+                        <span class="position-type">Business Intelligence Project</span>
+                    </div>
+                    <div class="experience-details">
+                        <span class="duration">May 2025 - Jun 2025</span>
                     </div>
                     <div class="experience-description">
                         <ul class="experience-achievements">
