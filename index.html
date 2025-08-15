@@ -1170,7 +1170,20 @@
                     if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                         element.placeholder = originalText;
                     } else {
-                        element.textContent = originalText;
+                        // Check if element has nested spans with translation data
+                        const nestedSpans = element.querySelectorAll('span[data-en]');
+                        if (nestedSpans.length > 0) {
+                            // If there are nested spans, only translate the spans
+                            nestedSpans.forEach(span => {
+                                const spanText = span.getAttribute(`data-${lang}`);
+                                if (spanText) {
+                                    span.textContent = spanText;
+                                }
+                            });
+                        } else {
+                            // If no nested spans, translate the element itself
+                            element.textContent = originalText;
+                        }
                     }
                 }
             });
