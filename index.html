@@ -542,7 +542,7 @@
         window.addEventListener('load', function() {
             const loadingScreen = document.getElementById('loadingScreen');
             
-            // Show loading screen for 3 seconds
+            // Show loading screen for 1 second
             setTimeout(function() {
                 loadingScreen.classList.add('fade-out');
                 
@@ -550,7 +550,7 @@
                 setTimeout(function() {
                     loadingScreen.style.display = 'none';
                 }, 500);
-            }, 3000);
+            }, 1000);
         });
 
         // Theme Toggle
