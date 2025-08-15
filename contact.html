@@ -85,7 +85,7 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--primary);
             text-decoration: none;
@@ -177,6 +177,92 @@
             height: 3px;
             background: var(--primary);
             border-radius: 2px;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+            margin-right: 1rem;
+        }
+
+        .language-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            min-width: 80px;
+            justify-content: center;
+        }
+
+        .language-toggle:hover {
+            background: rgba(0, 122, 255, 0.1);
+            border-color: var(--primary);
+        }
+
+        .current-lang {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 1000;
+            margin-top: 0.5rem;
+        }
+
+        .language-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .language-option:last-child {
+            border-bottom: none;
+        }
+
+        .language-option:hover {
+            background: rgba(0, 122, 255, 0.1);
+            color: var(--primary);
+        }
+
+        .flag {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+        }
+
+        .lang-name {
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         .theme-toggle {
@@ -484,8 +570,6 @@
             box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
         }
 
-
-
         /* Dark mode specific adjustments */
         .dark .skill-card,
         .dark .certification-card,
@@ -514,41 +598,17 @@
         }
 
         /* Additional dark mode styles */
-        .dark .section-title {
-            color: var(--text);
-        }
-
-        .dark .section-subtitle {
-            color: var(--text-light);
-        }
-
+        .dark .section-title { color: var(--text); }
+        .dark .section-subtitle { color: var(--text-light); }
         .dark .skill-title,
         .dark .certification-title,
-        .dark .experience-title {
-            color: var(--text);
-        }
-
-        .dark .tag {
-            background: var(--surface);
-            color: var(--text);
-            border-color: var(--border);
-        }
-
+        .dark .experience-title { color: var(--text); }
+        .dark .tag { background: var(--surface); color: var(--text); border-color: var(--border); }
         .dark .form-group input,
-        .dark .form-group textarea {
-            background: var(--surface);
-            color: var(--text);
-            border-color: var(--border);
-        }
-
+        .dark .form-group textarea { background: var(--surface); color: var(--text); border-color: var(--border); }
         .dark .form-group input:focus,
-        .dark .form-group textarea:focus {
-            border-color: var(--primary);
-        }
-
-        .dark .form-group label {
-            color: var(--text);
-        }
+        .dark .form-group textarea:focus { border-color: var(--primary); }
+        .dark .form-group label { color: var(--text); }
 
         /* Footer */
         .footer {
@@ -558,336 +618,82 @@
             text-align: center;
         }
 
-        .footer-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+        .footer-content { display: flex; justify-content: center; align-items: center; }
+        .copyright { color: var(--text-light); font-size: 0.8rem; }
 
-        .copyright {
-            color: var(--text-light);
-            font-size: 0.8rem;
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slideInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200px 0; }
-            100% { background-position: calc(200px + 100%) 0; }
-        }
-
-        @keyframes dots {
-            0%, 20% { content: ''; }
-            40% { content: '.'; }
-            60% { content: '..'; }
-            80%, 100% { content: '...'; }
-        }
-
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.1); opacity: 0.5; }
-        }
+        @keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+        @keyframes shimmer { 0% { background-position: -200px 0; } 100% { background-position: calc(200px + 100%) 0; } }
+        @keyframes dots { 0%, 20% { content: ''; } 40% { content: '.'; } 60% { content: '..'; } 80%, 100% { content: '...'; } }
+        @keyframes iconPulse { 0%, 100% { transform: scale(1); opacity: 0.3; } 50% { transform: scale(1.1); opacity: 0.5; } }
 
         /* Apple-style animations */
-        .hero-text h1 {
-            animation: slideInLeft 1.2s ease-out;
-        }
-
-        .hero-text h2 {
-            animation: slideInLeft 1.2s ease-out 0.3s both;
-        }
-
-        .hero-text p {
-            animation: slideInLeft 1.2s ease-out 0.6s both;
-        }
-
-        .hero-text .btn {
-            animation: slideInLeft 1.2s ease-out 0.9s both;
-        }
-
-        .hero-image {
-            animation: slideInRight 1.2s ease-out 0.4s both;
-        }
-
-        /* Subtle icon animations */
-        .section-icon {
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        .skill-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .skill-card:hover .skill-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .certification-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .certification-card:hover .certification-icon {
-            transform: scale(1.1);
-        }
-
-        .experience-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .experience-card:hover .experience-icon {
-            transform: scale(1.1);
-        }
-
-        .contact-icon {
-            transition: transform 0.3s ease;
-        }
-
-        .contact-link:hover .contact-icon {
-            transform: scale(1.1);
-        }
-
-        /* Button hover effect */
-        .btn {
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
-        }
-
-        /* Card hover effects */
-        .skill-card,
-        .certification-card,
-        .experience-card {
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover,
-        .certification-card:hover,
-        .experience-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Loading animation for page load */
-        .fade-in {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes logoGlow {
-            0%, 100% { 
-                text-shadow: 0 0 5px rgba(0, 122, 255, 0.3);
-                transform: scale(1);
-            }
-            50% { 
-                text-shadow: 0 0 15px rgba(0, 122, 255, 0.6);
-                transform: scale(1.02);
-            }
-        }
-
-        /* Contact page specific animations */
-        .contact-content {
-            animation: slideInUp 1s ease-out 0.3s both;
-        }
-
-        .contact-info {
-            animation: slideInLeft 1.2s ease-out 0.5s both;
-        }
-
-        .contact-form {
-            animation: slideInRight 1.2s ease-out 0.7s both;
-        }
-
-        .contact-info h3,
-        .contact-form h3 {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-info h3::after,
-        .contact-form h3::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: var(--primary);
-            transition: left 0.5s ease;
-        }
-
-        .contact-info:hover h3::after,
-        .contact-form:hover h3::after {
-            left: 0;
-        }
-
-        .contact-links {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
+        .hero-text h1 { animation: slideInLeft 1.2s ease-out; }
+        .hero-text h2 { animation: slideInLeft 1.2s ease-out 0.3s both; }
+        .hero-text p { animation: slideInLeft 1.2s ease-out 0.6s both; }
+        .hero-text .btn { animation: slideInLeft 1.2s ease-out 0.9s both; }
+        .hero-image { animation: slideInRight 1.2s ease-out 0.4s both; }
+        .section-icon { animation: pulse 3s ease-in-out infinite; }
+        .skill-icon { transition: transform 0.3s ease; }
+        .skill-card:hover .skill-icon { transform: scale(1.1) rotate(5deg); }
+        .certification-icon { transition: transform 0.3s ease; }
+        .certification-card:hover .certification-icon { transform: scale(1.1); }
+        .experience-icon { transition: transform 0.3s ease; }
+        .experience-card:hover .experience-icon { transform: scale(1.1); }
+        .contact-icon { transition: transform 0.3s ease; }
+        .contact-link:hover .contact-icon { transform: scale(1.1); }
+        .btn { transition: all 0.3s ease; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3); }
+        .skill-card, .certification-card, .experience-card { transition: all 0.3s ease; }
+        .skill-card:hover, .certification-card:hover, .experience-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); }
+        html { scroll-behavior: smooth; }
+        .fade-in { animation: fadeInUp 0.8s ease-out forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes logoGlow { 0%, 100% { text-shadow: 0 0 5px rgba(0, 122, 255, 0.3); transform: scale(1); } 50% { text-shadow: 0 0 15px rgba(0, 122, 255, 0.6); transform: scale(1.02); } }
+        .contact-content { animation: slideInUp 1s ease-out 0.3s both; }
+        .contact-info { animation: slideInLeft 1.2s ease-out 0.5s both; }
+        .contact-form { animation: slideInRight 1.2s ease-out 0.7s both; }
+        .contact-info h3, .contact-form h3 { position: relative; overflow: hidden; }
+        .contact-info h3::after, .contact-form h3::after { content: ''; position: absolute; bottom: -2px; left: -100%; width: 100%; height: 2px; background: var(--primary); transition: left 0.5s ease; }
+        .contact-info:hover h3::after, .contact-form:hover h3::after { left: 0; }
+        .contact-links { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease-out forwards; }
         .contact-links:nth-child(1) { animation-delay: 0.8s; }
         .contact-links:nth-child(2) { animation-delay: 1.0s; }
         .contact-links:nth-child(3) { animation-delay: 1.2s; }
         .contact-links:nth-child(4) { animation-delay: 1.4s; }
         .contact-links:nth-child(5) { animation-delay: 1.6s; }
-
-        .social-buttons {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease-out forwards;
-            animation-delay: 1.8s;
-        }
-
-        .social-button {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .social-button:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .form-group {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
+        .social-buttons { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease-out forwards; animation-delay: 1.8s; }
+        .social-button { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .social-button:hover { transform: translateY(-3px) scale(1.05); box-shadow: var(--shadow-lg); }
+        .form-group { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.6s ease-out forwards; }
         .form-group:nth-child(1) { animation-delay: 1.0s; }
         .form-group:nth-child(2) { animation-delay: 1.2s; }
         .form-group:nth-child(3) { animation-delay: 1.4s; }
         .form-group:nth-child(4) { animation-delay: 1.6s; }
-
-        .form-group input,
-        .form-group textarea {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-
-        .section-title {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: -100%;
-            width: 100%;
-            height: 3px;
-            background: var(--primary);
-            animation: slideInRight 1.5s ease-out 0.5s forwards;
-        }
-
-        .btn {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        /* Enhanced hover effects */
-        .contact-info,
-        .contact-form {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .contact-info:hover,
-        .contact-form:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* Status message animations */
-        .status {
-            animation: slideInUp 0.5s ease-out;
-        }
+        .form-group input, .form-group textarea { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .form-group input:focus, .form-group textarea:focus { transform: translateY(-2px); box-shadow: var(--shadow); }
+        .section-title { position: relative; overflow: hidden; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: -100%; width: 100%; height: 3px; background: var(--primary); animation: slideInRight 1.5s ease-out 0.5s forwards; }
+        .btn { position: relative; overflow: hidden; }
+        .btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); transition: left 0.5s ease; }
+        .btn:hover::before { left: 100%; }
+        .contact-info, .contact-form { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .contact-info:hover, .contact-form:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .status { animation: slideInUp 0.5s ease-out; }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
+            .contact-content { grid-template-columns: 1fr; gap: 2rem; }
             .contact-links:nth-child(1) { animation-delay: 0.6s; }
             .contact-links:nth-child(2) { animation-delay: 0.8s; }
             .contact-links:nth-child(3) { animation-delay: 1.0s; }
             .contact-links:nth-child(4) { animation-delay: 1.2s; }
             .contact-links:nth-child(5) { animation-delay: 1.4s; }
-            
             .form-group:nth-child(1) { animation-delay: 0.8s; }
             .form-group:nth-child(2) { animation-delay: 1.0s; }
             .form-group:nth-child(3) { animation-delay: 1.2s; }
@@ -899,16 +705,36 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav container">
-            <a href="index.html" class="logo">Sunnat Axmadov</a>
+            <a href="index.html" class="logo" data-en="Sunnat Axmadov" data-uz="Sunnat Axmadov" data-ru="Суннат Ахмадов">Sunnat Axmadov</a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="experience.html">Experience</a></li>
-                <li><a href="certifications.html">Certifications</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="index.html" data-en="Home" data-uz="Bosh sahifa" data-ru="Главная">Home</a></li>
+                <li><a href="about.html" data-en="About" data-uz="Haqida" data-ru="Обо мне">About</a></li>
+                <li><a href="skills.html" data-en="Skills" data-uz="Ko'nikmalar" data-ru="Навыки">Skills</a></li>
+                <li><a href="education.html" data-en="Education" data-uz="Ta'lim" data-ru="Образование">Education</a></li>
+                <li><a href="experience.html" data-en="Experience" data-uz="Tajriba" data-ru="Опыт">Experience</a></li>
+                <li><a href="certifications.html" data-en="Certifications" data-uz="Sertifikatlar" data-ru="Сертификаты">Certifications</a></li>
+                <li><a href="contact.html" class="active" data-en="Contact" data-uz="Aloqa" data-ru="Контакты">Contact</a></li>
             </ul>
+            <div class="language-switcher">
+                <button class="language-toggle" id="languageToggle">
+                    <span class="current-lang">EN</span>
+                    <i class="fas fa-globe"></i>
+                </button>
+                <div class="language-dropdown" id="languageDropdown">
+                    <a href="#" class="language-option" data-lang="en">
+                        <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag">
+                        <span class="lang-name">English</span>
+                    </a>
+                    <a href="#" class="language-option" data-lang="uz">
+                        <img src="https://flagcdn.com/w20/uz.png" alt="Uzbek" class="flag">
+                        <span class="lang-name">O'zbekcha</span>
+                    </a>
+                    <a href="#" class="language-option" data-lang="ru">
+                        <img src="https://flagcdn.com/w20/ru.png" alt="Russian" class="flag">
+                        <span class="lang-name">Русский</span>
+                    </a>
+                </div>
+            </div>
             <button class="theme-toggle" id="themeToggle">
                 <i class="fas fa-moon"></i>
             </button>
@@ -922,19 +748,19 @@
                 <div class="section-icon">
                     <i class="fas fa-envelope"></i>
                 </div>
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Let's discuss opportunities and collaborations</p>
+                <h2 class="section-title" data-en="Get In Touch" data-uz="Bog'lanish" data-ru="Связаться">Get In Touch</h2>
+                <p class="section-subtitle" data-en="Let's discuss opportunities and collaborations" data-uz="Keling, imkoniyatlar va hamkorliklarni muhokama qilamiz" data-ru="Давайте обсудим возможности и сотрудничество">Let's discuss opportunities and collaborations</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info fade-in">
-                    <h3>Contact Information</h3>
+                    <h3 data-en="Contact Information" data-uz="Aloqa ma'lumotlari" data-ru="Контактная информация">Contact Information</h3>
                     <div class="contact-links">
                         <a href="mailto:sunnatakhmad@gmail.com" class="contact-link">
                             <div class="contact-icon">
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="contact-details">
-                                <span class="contact-label">Email</span>
+                                <span class="contact-label" data-en="Email" data-uz="Elektron pochta" data-ru="Электронная почта">Email</span>
                                 <span class="contact-value">sunnatakhmad@gmail.com</span>
                             </div>
                         </a>
@@ -943,7 +769,7 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="contact-details">
-                                <span class="contact-label">Phone</span>
+                                <span class="contact-label" data-en="Phone" data-uz="Telefon" data-ru="Телефон">Phone</span>
                                 <span class="contact-value">+998 33 717 44 99</span>
                             </div>
                         </a>
@@ -952,7 +778,7 @@
                                 <i class="fab fa-telegram"></i>
                             </div>
                             <div class="contact-details">
-                                <span class="contact-label">Telegram</span>
+                                <span class="contact-label" data-en="Telegram" data-uz="Telegram" data-ru="Телеграм">Telegram</span>
                                 <span class="contact-value">@sunnakh</span>
                             </div>
                         </a>
@@ -961,7 +787,7 @@
                                 <i class="fab fa-github"></i>
                             </div>
                             <div class="contact-details">
-                                <span class="contact-label">GitHub</span>
+                                <span class="contact-label" data-en="GitHub" data-uz="GitHub" data-ru="GitHub">GitHub</span>
                                 <span class="contact-value">sunnakh</span>
                             </div>
                         </a>
@@ -970,7 +796,7 @@
                                 <i class="fab fa-linkedin"></i>
                             </div>
                             <div class="contact-details">
-                                <span class="contact-label">LinkedIn</span>
+                                <span class="contact-label" data-en="LinkedIn" data-uz="LinkedIn" data-ru="LinkedIn">LinkedIn</span>
                                 <span class="contact-value">sunnakh</span>
                             </div>
                         </a>
@@ -984,21 +810,21 @@
                     </div>
                 </div>
                 <div class="contact-form fade-in">
-                    <h3>Send Message</h3>
+                    <h3 data-en="Send Message" data-uz="Xabar yuborish" data-ru="Отправить сообщение">Send Message</h3>
                     <form id="contactForm">
                         <div class="status" id="formStatus"></div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">
                                     <i class="fas fa-user"></i>
-                                    Name
+                                    <span data-en="Name" data-uz="Ism" data-ru="Имя">Name</span>
                                 </label>
                                 <input type="text" id="name" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">
                                     <i class="fas fa-envelope"></i>
-                                    Email
+                                    <span data-en="Email" data-uz="Elektron pochta" data-ru="Электронная почта">Email</span>
                                 </label>
                                 <input type="email" id="email" required>
                             </div>
@@ -1006,13 +832,13 @@
                         <div class="form-group">
                             <label for="message">
                                 <i class="fas fa-comment"></i>
-                                Message
+                                <span data-en="Message" data-uz="Xabar" data-ru="Сообщение">Message</span>
                             </label>
                             <textarea id="message" rows="6" required></textarea>
                         </div>
                         <button type="submit" class="btn" style="width: 100%;">
                             <i class="fas fa-paper-plane"></i>
-                            Send Message
+                            <span data-en="Send Message" data-uz="Xabar yuborish" data-ru="Отправить сообщение">Send Message</span>
                         </button>
                     </form>
                 </div>
@@ -1032,9 +858,62 @@
     </footer>
 
     <script>
-        const EMAILJS_SERVICE_ID = 'service_segmk0f';
-        const EMAILJS_TEMPLATE_ID = 'template_iqww91i';
-        const EMAILJS_PUBLIC_KEY = 'ifMdbXRDSmNuhwjN2';
+        // Language Switcher
+        const languageToggle = document.getElementById('languageToggle');
+        const languageDropdown = document.getElementById('languageDropdown');
+        const currentLang = document.querySelector('.current-lang');
+        const languageOptions = document.querySelectorAll('.language-option');
+
+        // Check for saved language preference or default to English
+        const savedLanguage = localStorage.getItem('language') || 'en';
+        document.documentElement.lang = savedLanguage;
+        currentLang.textContent = savedLanguage.toUpperCase();
+
+        // Toggle dropdown
+        languageToggle && languageToggle.addEventListener('click', function() {
+            languageDropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!languageToggle.contains(event.target) && !languageDropdown.contains(event.target)) {
+                languageDropdown.classList.remove('show');
+            }
+        });
+
+        // Handle language selection
+        languageOptions.forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lang = this.getAttribute('data-lang');
+                currentLang.textContent = lang.toUpperCase();
+                document.documentElement.lang = lang;
+                localStorage.setItem('language', lang);
+                translateContent(lang);
+                languageDropdown.classList.remove('show');
+            });
+        });
+
+        // Translate content function
+        function translateContent(lang) {
+            const elements = document.querySelectorAll(`[data-${lang}]`);
+            elements.forEach(element => {
+                const originalText = element.getAttribute(`data-${lang}`);
+                const nestedSpans = element.querySelectorAll('span[data-en]');
+                if (nestedSpans.length > 0) {
+                    nestedSpans.forEach(span => {
+                        const spanText = span.getAttribute(`data-${lang}`);
+                        if (spanText) span.textContent = spanText;
+                    });
+                } else {
+                    if (originalText && originalText.includes('<strong>')) {
+                        element.innerHTML = originalText;
+                    } else if (originalText) {
+                        element.textContent = originalText;
+                    }
+                }
+            });
+        }
 
         // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
@@ -1050,17 +929,16 @@
 
         // Add click event listener
         themeToggle.addEventListener('click', function() {
-            console.log('Theme toggle clicked'); // Debug log
+            console.log('Theme toggle clicked');
             body.classList.toggle('dark');
-            
             if (body.classList.contains('dark')) {
                 icon.className = 'fas fa-sun';
                 localStorage.setItem('theme', 'dark');
-                console.log('Switched to dark mode'); // Debug log
+                console.log('Switched to dark mode');
             } else {
                 icon.className = 'fas fa-moon';
                 localStorage.setItem('theme', 'light');
-                console.log('Switched to light mode'); // Debug log
+                console.log('Switched to light mode');
             }
         });
 
@@ -1069,24 +947,29 @@
         console.log('Saved theme:', localStorage.getItem('theme'));
 
         // Contact Form
+        const EMAILJS_SERVICE_ID = 'service_segmk0f';
+        const EMAILJS_TEMPLATE_ID = 'template_iqww91i';
+        const EMAILJS_PUBLIC_KEY = 'ifMdbXRDSmNuhwjN2';
+
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
-            
-            // Show loading state
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
-            
-            // Try EmailJS first, fallback to mailto
+
+            const lang = localStorage.getItem('language') || 'en';
+            const successText = {
+                en: "Thank you for your message! I'll get back to you soon.",
+                uz: "Xabaringiz uchun rahmat! Tez orada siz bilan bog'lanaman.",
+                ru: "Спасибо за ваше сообщение! Я скоро свяжусь с вами."
+            }[lang];
+
             try {
-                // Initialize EmailJS (you'll need to set up EmailJS account)
                 emailjs.init(EMAILJS_PUBLIC_KEY);
-                
                 emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
                     to_email: "sunnatakhmad@gmail.com",
                     from_name: name,
@@ -1097,11 +980,10 @@
                     function(response) {
                         const status = document.getElementById('formStatus');
                         status.className = 'status success';
-                        status.textContent = "Thank you for your message! I'll get back to you soon.";
+                        status.textContent = successText;
                         document.getElementById('contactForm').reset();
                     },
                     function(error) {
-                        // Fallback to mailto if EmailJS fails
                         const subject = `Portfolio Contact from ${name}`;
                         const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
                         const mailtoLink = `mailto:sunnatakhmad@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -1109,44 +991,29 @@
                     }
                 );
             } catch (error) {
-                // Fallback to mailto if EmailJS is not available
                 const subject = `Portfolio Contact from ${name}`;
                 const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
                 const mailtoLink = `mailto:sunnatakhmad@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                 window.open(mailtoLink);
             }
-            
-            // Reset button
+
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
         });
 
         // Simple scroll animations
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
 
-        // Observe fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.fade-in').forEach(el => { observer.observe(el); });
 
-        // Add staggered animation to grid items
         function addStaggeredAnimation() {
             const gridItems = document.querySelectorAll('.skill-card, .certification-card, .experience-card');
-            gridItems.forEach((item, index) => {
-                item.style.animationDelay = `${index * 0.1}s`;
-            });
+            gridItems.forEach((item, index) => { item.style.animationDelay = `${index * 0.1}s`; });
         }
 
-        // Initialize animations when page loads
-        window.addEventListener('load', () => {
-            addStaggeredAnimation();
-        });
+        window.addEventListener('load', () => { addStaggeredAnimation(); });
     </script>
 </body>
 </html>
