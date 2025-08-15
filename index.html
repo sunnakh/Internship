@@ -406,6 +406,13 @@
             margin-bottom: 0.5rem;
         }
 
+        .project-company {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            opacity: 0.9;
+        }
+
         .project-date {
             font-size: 0.9rem;
             opacity: 0.9;
@@ -660,6 +667,33 @@
             color: var(--text-light);
             line-height: 1.7;
             font-size: 1rem;
+        }
+
+        .experience-achievements {
+            list-style: none;
+            padding: 0;
+        }
+
+        .experience-achievements li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        .experience-achievements li:last-child {
+            border-bottom: none;
+        }
+
+        .experience-achievements li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 0.7rem;
+            top: 0.8rem;
         }
 
         /* Certifications */
@@ -1219,6 +1253,34 @@
                     </div>
                     <div class="experience-description">
                         <p>Contributed to developing and maintaining Python-based applications. Responsibilities included writing clean code, building backend components and APIs, testing/debugging, collaborating with teams, and following best software development practices.</p>
+                    </div>
+                </div>
+                <div class="experience-card fade-in">
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
+                        </div>
+                        <div class="experience-info">
+                            <h3>Data Analytics & Engineering Intern</h3>
+                            <div class="company-info">
+                                <span class="company-name">MAAB Innovation</span>
+                                <span class="position-type">Internship</span>
+                            </div>
+                            <div class="experience-details">
+                                <span class="duration">Sep 2024 - Jun 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        <ul class="experience-achievements">
+                            <li>Designed and implemented complete data pipelines for market analysis, CRM transformation, and sales analytics</li>
+                            <li>Developed web scraping solutions using Python and BeautifulSoup for job market data collection</li>
+                            <li>Built interactive Power BI dashboards for data visualization and business intelligence</li>
+                            <li>Designed relational database schemas with 30+ tables for banking operations</li>
+                            <li>Automated ETL processes using SSIS and SQL Server for data transformation</li>
+                            <li>Applied data cleansing, normalization, and validation techniques across multiple projects</li>
+                            <li>Developed optimized SQL queries and Java networking solutions for large datasets</li>
+                        </ul>
                     </div>
                 </div>
             </div>
