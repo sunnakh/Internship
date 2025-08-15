@@ -451,6 +451,18 @@
             padding: 2rem;
             border-radius: var(--radius);
             border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .education-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .education-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
         }
 
         .education-icon {
@@ -476,16 +488,50 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
+        .education-info {
+            flex: 1;
+        }
+
         .education-card h3 {
-            color: var(--primary);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            color: var(--text);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
             letter-spacing: -0.01em;
         }
 
-        .education-card p {
+        .degree-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .degree-type {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .degree-field {
+            color: var(--text);
+            font-weight: 500;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .education-details {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .gpa, .duration {
             color: var(--text-light);
-            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         /* Contact */
@@ -902,22 +948,40 @@
             </div>
             <div class="education-grid">
                 <div class="education-card fade-in">
-                    <div class="education-icon">
-                        <img src="inha-university.png" alt="INHA University" class="university-logo">
+                    <div class="education-header">
+                        <div class="education-icon">
+                            <img src="inha-university.png" alt="INHA University in Tashkent" class="university-logo">
+                        </div>
+                        <div class="education-info">
+                            <h3>INHA University in Tashkent</h3>
+                            <div class="degree-info">
+                                <span class="degree-type">Bachelor</span>
+                                <span class="degree-field">School of Computer Science and Information Engineering</span>
+                            </div>
+                            <div class="education-details">
+                                <span class="gpa">GPA: 3.75/4.5</span>
+                                <span class="duration">2023 - Present</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3>INHA University</h3>
-                    <p><strong>Bachelor of Computer Science</strong></p>
-                    <p>GPA: 3.75/4.5</p>
-                    <p>2023 - Present</p>
                 </div>
                 <div class="education-card fade-in">
-                    <div class="education-icon">
-                        <i class="fas fa-certificate"></i>
+                    <div class="education-header">
+                        <div class="education-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="education-info">
+                            <h3>MAAB Academy</h3>
+                            <div class="degree-info">
+                                <span class="degree-type">Certificate</span>
+                                <span class="degree-field">Data Analytics & Engineering</span>
+                            </div>
+                            <div class="education-details">
+                                <span class="gpa">Grade: 98/100</span>
+                                <span class="duration">2024 - 2025</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3>MAAB Academy</h3>
-                    <p><strong>Data Analytics & Engineering</strong></p>
-                    <p>Grade: 98/100</p>
-                    <p>2024 - 2025</p>
                 </div>
             </div>
         </div>
