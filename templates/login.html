@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Sign in - CRM{% endblock %}
+{% block content %}
+<div class="card">
+  <h2>Welcome back</h2>
+  <p class="muted">Sign in to continue to your dashboard.</p>
+  <form method="POST" action="{{ url_for('auth.login') }}">
+    {{ form.hidden_tag() }}
+
+    <div class="field">
+      <label for="email">Email</label>
+      {{ form.email(class_='input', id='email', placeholder='you@company.com') }}
+      {% for error in form.email.errors %}<small class="muted">{{ error }}</small>{% endfor %}
+    </div>
+
+    <div class="field">
+      <label for="password">Password</label>
+      {{ form.password(class_='input', id='password', placeholder='••••••••') }}
+      {% for error in form.password.errors %}<small class="muted">{{ error }}</small>{% endfor %}
+    </div>
+
+    <div class="row" style="margin-bottom: 12px;">
+      <label style="display:flex; align-items:center; gap:8px;">
+        {{ form.remember() }} <span class="muted">Remember me</span>
+      </label>
+      <a class="muted" href="{{ url_for('auth.signup') }}">Create account</a>
+    </div>
+
+    {{ form.submit(class_='btn', value='Sign in') }}
+  </form>
+</div>
+{% endblock %}
