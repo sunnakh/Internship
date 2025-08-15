@@ -6,6 +6,7 @@
     <title>Sunnat Axmadov - Data Scientist & Engineer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         :root {
             --primary: #007AFF;
@@ -973,9 +974,56 @@
         // Contact Form
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Add your form submission logic here
-            alert('Thank you for your message! I\'ll get back to you soon.');
-            this.reset();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Try EmailJS first, fallback to mailto
+            try {
+                // Initialize EmailJS (you'll need to set up EmailJS account)
+                emailjs.init("YOUR_EMAILJS_USER_ID"); // Replace with your EmailJS user ID
+                
+                emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+                    to_email: "sunnatakhmad@gmail.com",
+                    from_name: name,
+                    from_email: email,
+                    message: message,
+                    subject: `Portfolio Contact from ${name}`
+                }).then(
+                    function(response) {
+                        alert('Thank you for your message! I\'ll get back to you soon.');
+                        document.getElementById('contactForm').reset();
+                    },
+                    function(error) {
+                        // Fallback to mailto if EmailJS fails
+                        const subject = `Portfolio Contact from ${name}`;
+                        const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+                        const mailtoLink = `mailto:sunnatakhmad@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                        window.open(mailtoLink);
+                        alert('Thank you for your message! Your email client will open to send the message.');
+                        document.getElementById('contactForm').reset();
+                    }
+                );
+            } catch (error) {
+                // Fallback to mailto if EmailJS is not configured
+                const subject = `Portfolio Contact from ${name}`;
+                const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+                const mailtoLink = `mailto:sunnatakhmad@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                window.open(mailtoLink);
+                alert('Thank you for your message! Your email client will open to send the message.');
+                document.getElementById('contactForm').reset();
+            }
+            
+            // Reset button state
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
         });
 
         // Active Navigation
