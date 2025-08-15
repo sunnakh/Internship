@@ -190,24 +190,31 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            padding: 1.5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--primary);
             text-decoration: none;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
             position: relative;
             animation: logoGlow 3s ease-in-out infinite;
             transition: all 0.3s ease;
-            margin-right: 4rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            background: rgba(0, 122, 255, 0.05);
+            border: 1px solid rgba(0, 122, 255, 0.1);
         }
 
         .logo:hover {
-            transform: scale(1.05);
-            text-shadow: 0 0 20px rgba(0, 122, 255, 0.5);
+            transform: translateY(-2px);
+            background: rgba(0, 122, 255, 0.1);
+            border-color: rgba(0, 122, 255, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.15);
         }
 
         .logo::before {
@@ -217,21 +224,22 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, var(--primary), transparent, var(--primary));
-            border-radius: 4px;
+            background: linear-gradient(135deg, var(--primary), transparent, var(--primary));
+            border-radius: var(--radius);
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: -1;
         }
 
         .logo:hover::before {
-            opacity: 0.3;
+            opacity: 0.2;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -239,57 +247,67 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius);
             transition: var(--transition);
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius);
+            letter-spacing: -0.01em;
             position: relative;
+            background: transparent;
+            border: 1px solid transparent;
         }
 
         .nav-links a:hover {
             color: var(--primary);
-            background: rgba(0, 122, 255, 0.1);
+            background: rgba(0, 122, 255, 0.08);
+            border-color: rgba(0, 122, 255, 0.2);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.1);
         }
 
         .nav-links a.active {
             color: var(--primary);
             background: rgba(0, 122, 255, 0.1);
+            border-color: rgba(0, 122, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.15);
         }
 
         .nav-links a.active::after {
             content: '';
             position: absolute;
-            bottom: -2px;
+            bottom: -3px;
             left: 50%;
             transform: translateX(-50%);
-            width: 20px;
+            width: 25px;
             height: 2px;
             background: var(--primary);
             border-radius: 1px;
         }
 
         .theme-toggle {
-            background: none;
-            border: none;
+            background: rgba(0, 122, 255, 0.05);
+            border: 1px solid rgba(0, 122, 255, 0.1);
             color: var(--text);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 50%;
+            padding: 0.75rem;
+            border-radius: var(--radius);
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            min-width: 40px;
-            min-height: 40px;
+            min-width: 45px;
+            min-height: 45px;
         }
 
         .theme-toggle:hover {
             background: rgba(0, 122, 255, 0.1);
-            transform: scale(1.1);
+            border-color: rgba(0, 122, 255, 0.2);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.1);
         }
 
         .theme-toggle:active {
-            transform: scale(0.95);
+            transform: translateY(0);
         }
 
         /* Hero Section - Redesigned */
