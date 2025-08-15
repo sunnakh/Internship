@@ -344,6 +344,171 @@
             animation: slideInRight 1.2s ease-out 0.4s both;
         }
 
+        /* Introduction Section */
+        .intro-section {
+            padding: 4rem 0;
+            background: var(--background);
+        }
+
+        .intro-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .intro-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            text-align: center;
+        }
+
+        .intro-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .intro-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--surface);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .highlight-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-top: 0.25rem;
+        }
+
+        .highlight-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .highlight-content p {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .intro-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Overview Section */
+        .overview-section {
+            padding: 4rem 0;
+            background: var(--surface);
+        }
+
+        .overview-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .overview-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .overview-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .overview-card {
+            background: var(--background);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .overview-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .overview-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .overview-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero-content {
@@ -368,6 +533,27 @@
             .nav-links a {
                 font-size: 0.85rem;
                 padding: 0.4rem 0.8rem;
+            }
+
+            .intro-text h2 {
+                font-size: 2rem;
+            }
+
+            .intro-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .overview-header h2 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -415,6 +601,104 @@
                     <div class="profile-card">
                         <img src="image.png" alt="Sunnat Axmadov" class="profile-image">
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro-section">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h2>Hello, I'm Sunnat Axmadov</h2>
+                    <p class="intro-description">
+                        A dedicated and detail-oriented data professional currently pursuing my Bachelor's degree in Computer Science and Information Engineering at INHA University in Tashkent. With a strong academic foundation and hands-on experience in data analytics, I'm passionate about transforming raw data into actionable insights that drive business decisions.
+                    </p>
+                    
+                    <div class="intro-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div class="highlight-content">
+                                <h3>Academic Excellence</h3>
+                                <p>Maintaining a 3.75/4.5 GPA while actively participating in data science projects and competitions.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-item">
+                            <i class="fas fa-code"></i>
+                            <div class="highlight-content">
+                                <h3>Technical Expertise</h3>
+                                <p>Proficient in Python, SQL, Java, and C++, with specialized knowledge in machine learning frameworks and data engineering tools.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-item">
+                            <i class="fas fa-chart-line"></i>
+                            <div class="highlight-content">
+                                <h3>Real-World Experience</h3>
+                                <p>Completed multiple data analytics projects at MAAB Innovation, including market analysis dashboards and CRM data transformation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="intro-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">9+</span>
+                            <span class="stat-label">Certifications</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">2+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Overview Section -->
+    <section class="overview-section">
+        <div class="container">
+            <div class="overview-header">
+                <h2>What I Do</h2>
+                <p>Comprehensive data solutions from analysis to deployment</p>
+            </div>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Data Engineering</h3>
+                    <p>Design and implement robust ETL pipelines using SSIS, Azure Data Factory, and SQL Server. Build scalable data warehouses and ensure data quality through comprehensive validation processes.</p>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Data Analytics</h3>
+                    <p>Create interactive dashboards with Power BI, perform statistical analysis using Python libraries, and deliver actionable insights through comprehensive data visualization.</p>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Machine Learning</h3>
+                    <p>Develop predictive models using scikit-learn and TensorFlow, implement deep learning solutions, and deploy AI applications for real-world business problems.</p>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Software Development</h3>
+                    <p>Build robust applications using Python, Java, and C++, implement OOP principles, and create efficient algorithms for data processing and analysis.</p>
                 </div>
             </div>
         </div>
