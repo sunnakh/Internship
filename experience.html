@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience - Sunnat Axmadov</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        :root {
+            --primary: #007AFF;
+            --primary-dark: #0056CC;
+            --secondary: #8E8E93;
+            --accent: #34C759;
+            --background: #FFFFFF;
+            --surface: #F2F2F7;
+            --text: #1D1D1F;
+            --text-light: #86868B;
+            --border: #E5E5EA;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --font-primary: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'SF Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+
+        .dark {
+            --background: #000000;
+            --surface: #1C1C1E;
+            --text: #FFFFFF;
+            --text-light: #8E8E93;
+            --border: #38383A;
+            --shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+            --shadow-lg: 0 8px 24px rgba(255, 255, 255, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-primary);
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.5;
+            transition: var(--transition);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-feature-settings: "kern" 1;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* Header */
+        .header {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000; transition: var(--transition);
+        }
+        .dark .header { background: rgba(0, 0, 0, 0.8); }
+
+        .nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+
+        .logo {
+            font-size: 1.2rem; /* match index/about/skills */
+            font-weight: 600; color: var(--primary); text-decoration: none;
+            letter-spacing: -0.01em; position: relative;
+            animation: logoGlow 3s ease-in-out infinite; transition: all 0.3s ease;
+        }
+        .logo:hover { transform: scale(1.05); text-shadow: 0 0 20px rgba(0, 122, 255, 0.5); }
+        .logo::before {
+            content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), transparent, var(--primary));
+            border-radius: 4px; opacity: 0; transition: opacity 0.3s ease; z-index: -1;
+        }
+        .logo:hover::before { opacity: 0.3; }
+
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: var(--text); text-decoration: none; font-weight: 500; font-size: 0.95rem;
+            transition: var(--transition); padding: 0.5rem 1rem; border-radius: var(--radius);
+            letter-spacing: -0.01em; position: relative; border: 1px solid transparent;
+        }
+        .nav-links a:hover {
+            color: var(--primary); background: rgba(0, 122, 255, 0.1); border-color: var(--primary);
+            transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+        }
+        .nav-links a::before { content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; border: 1px solid var(--primary); border-radius: 10px; opacity: 0; transition: var(--transition); }
+        .nav-links a:hover::before { opacity: 0.3; }
+        .nav-links a.active { color: var(--primary); border-color: var(--primary); }
+        .nav-links a.active::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); width: 30px; height: 3px; background: var(--primary); border-radius: 2px; }
+
+        /* Language Switcher */
+        .language-switcher { position: relative; margin-right: 1rem; }
+        .language-toggle { background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem; border-radius: 8px; transition: var(--transition); color: var(--text); }
+        .language-toggle:hover { background: rgba(0, 122, 255, 0.1); transform: scale(1.05); }
+        .current-lang { font-weight: 500; }
+        .language-dropdown { position: absolute; top: 100%; right: 0; background: var(--background); border-radius: var(--radius); box-shadow: var(--shadow-lg); min-width: 150px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: var(--transition); z-index: 1001; border: 1px solid var(--border); }
+        .language-dropdown.show { opacity: 1; visibility: visible; transform: translateY(0); }
+        .language-option { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; text-decoration: none; color: var(--text); transition: var(--transition); border-radius: var(--radius); margin: 0.25rem; }
+        .language-option:hover { background: rgba(0, 122, 255, 0.1); }
+        .flag { width: 20px; height: 15px; border-radius: 2px; }
+        .lang-name { font-weight: 500; }
+
+        .theme-toggle { background: none; border: none; color: var(--text); font-size: 1.2rem; cursor: pointer; padding: 0.5rem; border-radius: 50%; transition: var(--transition); display: flex; align-items: center; justify-content: center; min-width: 40px; min-height: 40px; }
+        .theme-toggle:hover { background: rgba(0, 122, 255, 0.1); transform: scale(1.1); }
+        .theme-toggle:active { transform: scale(0.95); }
+
+        /* Sections */
+        .section { padding: 6rem 0; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem; opacity: 0.9; }
+        .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text); position: relative; display: inline-block; padding: 0 2rem; letter-spacing: -0.02em; line-height: 1.2; }
+        .section-subtitle { font-size: 1.1rem; color: var(--text-light); max-width: 600px; margin: 0 auto; position: relative; padding: 1rem 0; }
+
+        /* Experience */
+        .experience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .experience-card { background: var(--surface); padding: 2rem; border-radius: var(--radius); border: 1px solid var(--border); text-align: center; transition: var(--transition); }
+        .experience-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .experience-icon { margin-bottom: 1.5rem; }
+        .company-logo { width: 60px; height: 60px; object-fit: contain; border-radius: 8px; background: white; padding: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); transition: var(--transition); }
+        .experience-card:hover .company-logo { transform: scale(1.1); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); }
+        .experience-card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text); }
+        .company-info { margin-bottom: 1rem; }
+        .company-name { font-weight: 600; color: var(--primary); display: block; margin-bottom: 0.25rem; }
+        .position-type { font-size: 0.9rem; color: var(--text-light); font-style: italic; }
+        .experience-details { margin-bottom: 1.5rem; }
+        .duration { font-size: 0.9rem; color: var(--text-light); font-weight: 500; }
+        .experience-description { text-align: left; }
+        .experience-description p { color: var(--text-light); line-height: 1.6; margin-bottom: 1rem; }
+        .experience-achievements { list-style: none; padding: 0; }
+        .experience-achievements li { color: var(--text-light); line-height: 1.6; margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative; }
+        .experience-achievements li::before { content: '•'; color: var(--primary); font-weight: bold; position: absolute; left: 0; }
+
+        /* Smooth scroll behavior */
+        html { scroll-behavior: smooth; }
+        .fade-in { animation: fadeInUp 0.8s ease-out forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes logoGlow { 0%, 100% { text-shadow: 0 0 5px rgba(0, 122, 255, 0.3); transform: scale(1); } 50% { text-shadow: 0 0 15px rgba(0, 122, 255, 0.6); transform: scale(1.02); } }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">Sunnat Axmadov</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="experience.html" class="active">Experience</a></li>
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="language-switcher">
+                <button class="language-toggle" id="languageToggle">
+                    <i class="fas fa-globe"></i>
+                    <span class="current-lang">EN</span>
+                </button>
+                <div class="language-dropdown" id="languageDropdown">
+                    <a href="#" class="language-option" data-lang="en">
+                        <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag">
+                        <span class="lang-name">English</span>
+                    </a>
+                    <a href="#" class="language-option" data-lang="uz">
+                        <img src="https://flagcdn.com/w20/uz.png" alt="Uzbek" class="flag">
+                        <span class="lang-name">O'zbekcha</span>
+                    </a>
+                    <a href="#" class="language-option" data-lang="ru">
+                        <img src="https://flagcdn.com/w20/ru.png" alt="Russian" class="flag">
+                        <span class="lang-name">Русский</span>
+                    </a>
+                </div>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h2 class="section-title" data-en="Experience with Projects" data-uz="Loyihalar bilan tajriba" data-ru="Опыт и проекты">Experience with Projects</h2>
+                <p class="section-subtitle" data-en="My professional journey and project achievements" data-uz="Mening professional yo'lim va loyiha yutuqlarim" data-ru="Мой профессиональный путь и достижения в проектах">My professional journey and project achievements</p>
+            </div>
+            <div class="experience-grid">
+                <div class="experience-card fade-in">
+                    <div class="experience-icon">
+                        <img src="codveda-internship.png" alt="Codveda Technologies" class="company-logo">
+                    </div>
+                    <h3 data-en="Python Development Intern" data-uz="Python dasturlash bo'yicha amaliyotchi" data-ru="Стажер по разработке на Python">Python Development Intern</h3>
+                    <div class="company-info">
+                        <span class="company-name">Codveda Technologies</span>
+                        <span class="position-type" data-en="Internship" data-uz="Amaliyot" data-ru="Стажировка">Internship</span>
+                    </div>
+                    <div class="experience-details">
+                        <span class="duration" data-en="April 2025 - Present" data-uz="Aprel 2025 - Hozirgi" data-ru="Апрель 2025 - Настоящее время">April 2025 - Present</span>
+                    </div>
+                    <div class="experience-description">
+                        <p>Contributed to developing and maintaining Python-based applications. Responsibilities included writing clean code, building backend components and APIs, testing/debugging, collaborating with teams, and following best software development practices.</p>
+                    </div>
+                </div>
+                <div class="experience-card fade-in">
+                    <div class="experience-icon">
+                        <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
+                    </div>
+                    <h3 data-en="Market Analysis Dashboard" data-uz="Bozor tahlili paneli" data-ru="Панель анализа рынка">Market Analysis Dashboard</h3>
+                    <div class="company-info">
+                        <span class="company-name">MAAB Innovation</span>
+                        <span class="position-type" data-en="Data Analytics Project" data-uz="Ma'lumotlar tahlili loyihasi" data-ru="Проект по анализу данных">Data Analytics Project</span>
+                    </div>
+                    <div class="experience-details">
+                        <span class="duration" data-en="Sep 2024 - Dec 2024" data-uz="Sent 2024 - Dek 2024" data-ru="Сен 2024 - Дек 2024">Sep 2024 - Dec 2024</span>
+                    </div>
+                    <div class="experience-description">
+                        <ul class="experience-achievements">
+                            <li>Designed and implemented complete data pipeline to analyze job market dynamics</li>
+                            <li>Employed Python and BeautifulSoup to scrape job postings from multiple sources</li>
+                            <li>Used SSIS to automate ETL into MS SQL Server</li>
+                            <li>Built interactive Power BI dashboards to visualize trends in job demand, skills, locations, and salaries</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="experience-card fade-in">
+                    <div class="experience-icon">
+                        <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
+                    </div>
+                    <h3 data-en="CRM Data Transformation" data-uz="CRM ma'lumotlarini transformatsiya qilish" data-ru="Преобразование данных CRM">CRM Data Transformation</h3>
+                    <div class="company-info">
+                        <span class="company-name">MAAB Innovation</span>
+                        <span class="position-type" data-en="Data Engineering Project" data-uz="Ma'lumotlar muhandisligi loyihasi" data-ru="Проект по инженерии данных">Data Engineering Project</span>
+                    </div>
+                    <div class="experience-details">
+                        <span class="duration" data-en="Feb 2025 - Apr 2025" data-uz="Fev 2025 - Apr 2025" data-ru="Фев 2025 - Апр 2025">Feb 2025 - Apr 2025</span>
+                    </div>
+                    <div class="experience-description">
+                        <ul class="experience-achievements">
+                            <li>Automated migration and transformation of large CRM datasets using SQL and Python</li>
+                            <li>Performed data cleansing, normalization, and validation</li>
+                            <li>Streamlined ETL to improve accuracy and reduce manual work</li>
+                            <li>Enhanced data quality and processing efficiency</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="experience-card fade-in">
+                    <div class="experience-icon">
+                        <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
+                    </div>
+                    <h3 data-en="Banking System Data Modeling" data-uz="Bank tizimi uchun ma'lumotlar modellashtirish" data-ru="Моделирование данных банковской системы">Banking System Data Modeling</h3>
+                    <div class="company-info">
+                        <span class="company-name">MAAB Innovation</span>
+                        <span class="position-type" data-en="Database Design Project" data-uz="Ma'lumotlar bazasi loyihalash loyihasi" data-ru="Проект по проектированию баз данных">Database Design Project</span>
+                    </div>
+                    <div class="experience-details">
+                        <span class="duration" data-en="Apr 2025 - May 2025" data-uz="Apr 2025 - May 2025" data-ru="Апр 2025 - Май 2025">Apr 2025 - May 2025</span>
+                    </div>
+                    <div class="experience-description">
+                        <ul class="experience-achievements">
+                            <li>Designed relational database schema with 30+ tables for core banking operations</li>
+                            <li>Applied normalization and primary/foreign key relationships</li>
+                            <li>Developed optimized SQL queries for large financial datasets</li>
+                            <li>Applied Java Networking for One-to-Many server-client communication</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="experience-card fade-in">
+                    <div class="experience-icon">
+                        <img src="maab-academy.png" alt="MAAB Innovation" class="company-logo">
+                    </div>
+                    <h3 data-en="Electronic Store Sales Analysis" data-uz="Elektronika do'koni savdo tahlili" data-ru="Анализ продаж магазина электроники">Electronic Store Sales Analysis</h3>
+                    <div class="company-info">
+                        <span class="company-name">MAAB Innovation</span>
+                        <span class="position-type" data-en="Business Intelligence Project" data-uz="Biznes intellekt loyihasi" data-ru="Проект бизнес-аналитики">Business Intelligence Project</span>
+                    </div>
+                    <div class="experience-details">
+                        <span class="duration" data-en="May 2025 - Jun 2025" data-uz="May 2025 - Iyun 2025" data-ru="Май 2025 - Июн 2025">May 2025 - Jun 2025</span>
+                    </div>
+                    <div class="experience-description">
+                        <ul class="experience-achievements">
+                            <li>Conducted comprehensive sales analysis for electronics retail (phones, tablets, laptops)</li>
+                            <li>Cleaned and transformed transactional data using SQL and Python</li>
+                            <li>Built Power BI dashboards for performance monitoring, revenue trends, and inventory tracking</li>
+                            <li>Identified top-selling products and seasonal patterns for marketing optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="experience-actions fade-in" style="text-align: center; margin-top: 3rem;">
+                <a href="contact.html" class="btn" style="background: var(--primary); color: white; padding: 1rem 2rem; border-radius: var(--radius); text-decoration: none; font-weight: 600; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-envelope"></i>
+                    <span data-en="Get In Touch" data-uz="Bog'lanish" data-ru="Связаться">Get In Touch</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content" style="display:flex;justify-content:center;align-items:center;">
+                <div class="copyright">
+                    © 2025 Sunnat Axmadov. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switcher
+        const languageToggle = document.getElementById('languageToggle');
+        const languageDropdown = document.getElementById('languageDropdown');
+        const currentLang = document.querySelector('.current-lang');
+        const languageOptions = document.querySelectorAll('.language-option');
+
+        const savedLanguage = localStorage.getItem('language') || 'en';
+        document.documentElement.lang = savedLanguage;
+        currentLang.textContent = savedLanguage.toUpperCase();
+
+        languageToggle.addEventListener('click', function() {
+            languageDropdown.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!languageToggle.contains(event.target) && !languageDropdown.contains(event.target)) {
+                languageDropdown.classList.remove('show');
+            }
+        });
+
+        languageOptions.forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lang = this.getAttribute('data-lang');
+                currentLang.textContent = lang.toUpperCase();
+                document.documentElement.lang = lang;
+                localStorage.setItem('language', lang);
+                translateContent(lang);
+                languageDropdown.classList.remove('show');
+            });
+        });
+
+        function translateContent(lang) {
+            const elements = document.querySelectorAll(`[data-${lang}]`);
+            elements.forEach(element => {
+                const translated = element.getAttribute(`data-${lang}`);
+                const nestedSpans = element.querySelectorAll('span[data-en]');
+                if (nestedSpans.length > 0) {
+                    nestedSpans.forEach(span => {
+                        const spanText = span.getAttribute(`data-${lang}`);
+                        if (spanText) span.textContent = spanText;
+                    });
+                } else {
+                    if (translated && translated.includes('<strong>')) {
+                        element.innerHTML = translated;
+                    } else if (translated) {
+                        element.textContent = translated;
+                    }
+                }
+            });
+        }
+
+        translateContent(savedLanguage);
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') { body.classList.add('dark'); icon.className = 'fas fa-sun'; }
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark');
+            if (body.classList.contains('dark')) { icon.className = 'fas fa-sun'; localStorage.setItem('theme', 'dark'); }
+            else { icon.className = 'fas fa-moon'; localStorage.setItem('theme', 'light'); }
+        });
+
+        // Simple scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        function addStaggeredAnimation() {
+            const gridItems = document.querySelectorAll('.experience-card');
+            gridItems.forEach((item, index) => { item.style.animationDelay = `${index * 0.1}s`; });
+        }
+        window.addEventListener('load', addStaggeredAnimation);
+    </script>
+</body>
+</html>
