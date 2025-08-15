@@ -104,6 +104,43 @@
             background: var(--surface);
         }
 
+        /* Additional dark mode styles */
+        .dark .section-title {
+            color: var(--text);
+        }
+
+        .dark .section-subtitle {
+            color: var(--text-light);
+        }
+
+        .dark .skill-title,
+        .dark .certification-title,
+        .dark .experience-title {
+            color: var(--text);
+        }
+
+        .dark .tag {
+            background: var(--surface);
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .dark .form-group input,
+        .dark .form-group textarea {
+            background: var(--surface);
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .dark .form-group input:focus,
+        .dark .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .dark .form-group label {
+            color: var(--text);
+        }
+
         .nav {
             display: flex;
             justify-content: space-between;
@@ -150,10 +187,20 @@
             padding: 0.5rem;
             border-radius: 50%;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            min-height: 40px;
         }
 
         .theme-toggle:hover {
-            background: rgba(37, 99, 235, 0.1);
+            background: rgba(0, 122, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
         }
 
         /* Hero Section */
@@ -1673,16 +1720,25 @@
             icon.className = 'fas fa-sun';
         }
 
-        themeToggle.addEventListener('click', () => {
+        // Add click event listener
+        themeToggle.addEventListener('click', function() {
+            console.log('Theme toggle clicked'); // Debug log
             body.classList.toggle('dark');
+            
             if (body.classList.contains('dark')) {
                 icon.className = 'fas fa-sun';
                 localStorage.setItem('theme', 'dark');
+                console.log('Switched to dark mode'); // Debug log
             } else {
                 icon.className = 'fas fa-moon';
                 localStorage.setItem('theme', 'light');
+                console.log('Switched to light mode'); // Debug log
             }
         });
+
+        // Debug: Log current theme on page load
+        console.log('Current theme:', body.classList.contains('dark') ? 'dark' : 'light');
+        console.log('Saved theme:', localStorage.getItem('theme'));
 
         // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
