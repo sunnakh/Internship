@@ -567,6 +567,159 @@
                 transform: scale(1.02);
             }
         }
+
+        /* Skills page specific animations */
+        .skills-grid {
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .skill-card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .skill-card:nth-child(1) { animation-delay: 0.5s; }
+        .skill-card:nth-child(2) { animation-delay: 0.7s; }
+        .skill-card:nth-child(3) { animation-delay: 0.9s; }
+        .skill-card:nth-child(4) { animation-delay: 1.1s; }
+
+        .skill-icon {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .skill-card:hover .skill-icon {
+            animation: pulse 1s ease-in-out;
+        }
+
+        .skill-title {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            transition: left 0.5s ease;
+        }
+
+        .skill-card:hover .skill-title::after {
+            left: 0;
+        }
+
+        .skill-tags {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .skill-card:nth-child(1) .skill-tags { animation-delay: 0.6s; }
+        .skill-card:nth-child(2) .skill-tags { animation-delay: 0.8s; }
+        .skill-card:nth-child(3) .skill-tags { animation-delay: 1.0s; }
+        .skill-card:nth-child(4) .skill-tags { animation-delay: 1.2s; }
+
+        .tag {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tag:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            animation: slideInRight 1.5s ease-out 0.5s forwards;
+        }
+
+        .skills-actions {
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .skills-actions .btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skills-actions .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skills-actions .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Enhanced hover effects */
+        .skill-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Staggered tag animations */
+        .skill-tags .tag {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.4s ease-out forwards;
+        }
+
+        .skill-card:nth-child(1) .tag:nth-child(1) { animation-delay: 0.7s; }
+        .skill-card:nth-child(1) .tag:nth-child(2) { animation-delay: 0.8s; }
+        .skill-card:nth-child(1) .tag:nth-child(3) { animation-delay: 0.9s; }
+        .skill-card:nth-child(1) .tag:nth-child(4) { animation-delay: 1.0s; }
+        .skill-card:nth-child(1) .tag:nth-child(5) { animation-delay: 1.1s; }
+
+        .skill-card:nth-child(2) .tag:nth-child(1) { animation-delay: 0.9s; }
+        .skill-card:nth-child(2) .tag:nth-child(2) { animation-delay: 1.0s; }
+        .skill-card:nth-child(2) .tag:nth-child(3) { animation-delay: 1.1s; }
+        .skill-card:nth-child(2) .tag:nth-child(4) { animation-delay: 1.2s; }
+        .skill-card:nth-child(2) .tag:nth-child(5) { animation-delay: 1.3s; }
+
+        .skill-card:nth-child(3) .tag:nth-child(1) { animation-delay: 1.1s; }
+        .skill-card:nth-child(3) .tag:nth-child(2) { animation-delay: 1.2s; }
+        .skill-card:nth-child(3) .tag:nth-child(3) { animation-delay: 1.3s; }
+        .skill-card:nth-child(3) .tag:nth-child(4) { animation-delay: 1.4s; }
+        .skill-card:nth-child(3) .tag:nth-child(5) { animation-delay: 1.5s; }
+
+        .skill-card:nth-child(4) .tag:nth-child(1) { animation-delay: 1.3s; }
+        .skill-card:nth-child(4) .tag:nth-child(2) { animation-delay: 1.4s; }
+        .skill-card:nth-child(4) .tag:nth-child(3) { animation-delay: 1.5s; }
+        .skill-card:nth-child(4) .tag:nth-child(4) { animation-delay: 1.6s; }
+        .skill-card:nth-child(4) .tag:nth-child(5) { animation-delay: 1.7s; }
+
+        /* Responsive animations */
+        @media (max-width: 768px) {
+            .skill-card:nth-child(1) { animation-delay: 0.4s; }
+            .skill-card:nth-child(2) { animation-delay: 0.6s; }
+            .skill-card:nth-child(3) { animation-delay: 0.8s; }
+            .skill-card:nth-child(4) { animation-delay: 1.0s; }
+        }
     </style>
 </head>
 <body>
