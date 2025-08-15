@@ -677,11 +677,14 @@
                         }
                     });
                 } else {
-                    // Check if element has HTML content
+                    // Check if element has HTML content (like <strong> tags)
                     if (element.innerHTML !== element.textContent) {
-                        // Element has HTML, replace only the text content
-                        const textContent = element.textContent;
-                        element.innerHTML = element.innerHTML.replace(textContent, originalText);
+                        // Create a temporary element to parse the translated text with HTML
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = originalText;
+                        
+                        // Replace the element's content with the translated version
+                        element.innerHTML = tempDiv.innerHTML;
                     } else {
                         // Pure text element
                         element.textContent = originalText;
