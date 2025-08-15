@@ -179,6 +179,44 @@
             border-radius: 2px;
         }
 
+        /* Mobile Navigation */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            flex-direction: column;
+            gap: 4px;
+            transition: var(--transition);
+            z-index: 1001;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .mobile-menu-toggle:hover span {
+            background: var(--primary);
+        }
+
         /* Language Switcher */
         .language-switcher {
             position: relative;
@@ -834,11 +872,31 @@
             }
 
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--background);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: left 0.3s ease;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 1rem 2rem;
             }
 
             .mobile-menu-toggle {
-                display: block;
+                display: flex;
             }
 
             .language-switcher {
@@ -997,7 +1055,7 @@
     <header class="header">
         <nav class="nav container">
             <a href="index.html" class="logo" data-en="Sunnat Axmadov" data-uz="Sunnat Axmadov" data-ru="Суннат Ахмадов">Sunnat Axmadov</a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" data-en="Home" data-uz="Bosh sahifa" data-ru="Главная">Home</a></li>
                 <li><a href="about.html" data-en="About" data-uz="Haqida" data-ru="Обо мне">About</a></li>
                 <li><a href="skills.html" class="active" data-en="Skills" data-uz="Ko'nikmalar" data-ru="Навыки">Skills</a></li>
@@ -1006,6 +1064,11 @@
                 <li><a href="certifications.html" data-en="Certifications" data-uz="Sertifikatlar" data-ru="Сертификаты">Certifications</a></li>
                 <li><a href="contact.html" data-en="Contact" data-uz="Aloqa" data-ru="Контакты">Contact</a></li>
             </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="language-switcher">
                 <button class="language-toggle" id="languageToggle">
                     <span class="current-lang">EN</span>
@@ -1243,6 +1306,31 @@
         // Initialize animations when page loads
         window.addEventListener('load', () => {
             addStaggeredAnimation();
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenuToggle.contains(event.target) && !navLinks.contains(event.target)) {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
         });
     </script>
 </body>
