@@ -276,6 +276,11 @@
             padding: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
+            transition-property: transform, box-shadow, filter;
+        }
+
+        .dark .company-logo {
+            filter: brightness(0.9) contrast(0.95);
         }
 
         .experience-card:hover .company-logo {
