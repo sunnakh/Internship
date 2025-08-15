@@ -186,28 +186,33 @@
         }
         .language-toggle {
             background: none;
-            border: none;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.5rem;
-            border-radius: 8px;
+            font-size: 0.9rem;
             transition: var(--transition);
-            color: var(--text);
+            min-width: 80px;
+            justify-content: center;
         }
         .language-toggle:hover {
             background: rgba(0, 122, 255, 0.1);
-            transform: scale(1.05);
+            border-color: var(--primary);
         }
         .current-lang {
-            font-weight: 500;
+            font-weight: 600;
+            color: var(--primary);
         }
         .language-dropdown {
             position: absolute;
             top: 100%;
             right: 0;
             background: var(--background);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
             box-shadow: var(--shadow-lg);
             min-width: 150px;
@@ -216,7 +221,7 @@
             transform: translateY(-10px);
             transition: var(--transition);
             z-index: 1001;
-            border: 1px solid var(--border);
+            margin-top: 0.5rem;
         }
         .language-dropdown.show {
             opacity: 1;
@@ -228,14 +233,17 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.75rem 1rem;
-            text-decoration: none;
             color: var(--text);
             transition: var(--transition);
-            border-radius: var(--radius);
-            margin: 0.25rem;
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+        }
+        .language-option:last-child {
+            border-bottom: none;
         }
         .language-option:hover {
             background: rgba(0, 122, 255, 0.1);
+            color: var(--primary);
         }
         .flag {
             width: 20px;
@@ -243,6 +251,7 @@
             border-radius: 2px;
         }
         .lang-name {
+            font-size: 0.9rem;
             font-weight: 500;
         }
 
@@ -789,8 +798,8 @@
                         </ul>
             <div class="language-switcher">
                 <button class="language-toggle" id="languageToggle">
-                    <i class="fas fa-globe"></i>
                     <span class="current-lang">EN</span>
+                    <i class="fas fa-globe"></i>
                 </button>
                 <div class="language-dropdown" id="languageDropdown">
                     <a href="#" class="language-option" data-lang="en">
@@ -939,7 +948,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="copyright">
+                <div class="copyright" data-en="© 2025 Sunnat Axmadov. All rights reserved." data-uz="© 2025 Sunnat Axmadov. Barcha huquqlar himoyalangan." data-ru="© 2025 Суннат Ахмадов. Все права защищены.">
                     © 2025 Sunnat Axmadov. All rights reserved.
                 </div>
             </div>
