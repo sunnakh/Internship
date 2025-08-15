@@ -401,3 +401,850 @@
         .theme-toggle:active {
             transform: scale(0.95);
         }
+
+        /* Hero Section - Redesigned */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--background) 0%, var(--surface) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 122, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(52, 199, 89, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 149, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+            animation: slideInLeft 1s ease-out;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .hero-badge i {
+            font-size: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInLeft 1s ease-out 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            animation: slideInLeft 1s ease-out 0.4s both;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+            animation: slideInLeft 1s ease-out 0.6s both;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: slideInLeft 1s ease-out 0.8s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slideInRight 1s ease-out 0.4s both;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        .profile-card {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid var(--border);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s ease;
+        }
+
+        .dark .profile-image {
+            filter: brightness(0.85) contrast(0.95);
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            animation: float 6s ease-in-out infinite;
+            backdrop-filter: blur(10px);
+        }
+
+        .floating-card:nth-child(1) {
+            top: 10%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+
+        .floating-card:nth-child(2) {
+            top: 60%;
+            right: -10%;
+            animation-delay: 2s;
+        }
+
+        .floating-card:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .floating-card i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .floating-card h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .floating-card p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 4rem 0;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--background);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 122, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            padding: 4rem 0;
+            background: var(--background);
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .quick-link-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quick-link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .quick-link-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .quick-link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .quick-link-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .quick-link-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .quick-link-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .quick-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .quick-link-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(2deg); }
+            66% { transform: translateY(-10px) rotate(-2deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .profile-container {
+                width: 350px;
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .profile-container {
+                width: 300px;
+                height: 300px;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .floating-card {
+                display: none;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quick-links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .profile-container {
+                width: 250px;
+                height: 250px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-circle">
+                <i class="fas fa-brain loading-icon"></i>
+            </div>
+            <div class="loading-text" data-en="Loading" data-uz="Yuklanmoqda" data-ru="Загрузка">Loading</div>
+            <div class="loading-progress">
+                <div class="loading-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo" data-en="Sunnat Axmadov" data-uz="Sunnat Axmadov" data-ru="Суннат Ахмадов">Sunnat Axmadov</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active" data-en="Home" data-uz="Bosh sahifa" data-ru="Главная">Home</a></li>
+                <li><a href="about.html" data-en="About" data-uz="Haqida" data-ru="Обо мне">About</a></li>
+                <li><a href="skills.html" data-en="Skills" data-uz="Ko'nikmalar" data-ru="Навыки">Skills</a></li>
+                <li><a href="education.html" data-en="Education" data-uz="Ta'lim" data-ru="Образование">Education</a></li>
+                <li><a href="experience.html" data-en="Experience" data-uz="Tajriba" data-ru="Опыт">Experience</a></li>
+                <li><a href="certifications.html" data-en="Certifications" data-uz="Sertifikatlar" data-ru="Сертификаты">Certifications</a></li>
+                <li><a href="contact.html" data-en="Contact" data-uz="Aloqa" data-ru="Контакты">Contact</a></li>
+            </ul>
+            <div class="language-switcher">
+                <button class="language-toggle" id="languageToggle">
+                    <i class="fas fa-globe"></i>
+                    <span class="current-lang">EN</span>
+                </button>
+                <div class="language-dropdown" id="languageDropdown">
+                    <a href="#" data-lang="en" class="language-option active">
+                        <span class="flag">🇺🇸</span>
+                        <span class="lang-name">English</span>
+                    </a>
+                    <a href="#" data-lang="uz" class="language-option">
+                        <span class="flag">🇺🇿</span>
+                        <span class="lang-name">O'zbekcha</span>
+                    </a>
+                    <a href="#" data-lang="ru" class="language-option">
+                        <span class="flag">🇷🇺</span>
+                        <span class="lang-name">Русский</span>
+                    </a>
+                </div>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <a href="contact.html" class="hero-badge" data-en="Available for Opportunities" data-uz="Imkoniyatlar uchun mavjud" data-ru="Доступен для возможностей">
+                        <i class="fas fa-rocket"></i>
+                        <span data-en="Available for Opportunities" data-uz="Imkoniyatlar uchun mavjud" data-ru="Доступен для возможностей">Available for Opportunities</span>
+                    </a>
+                    <h1 class="hero-title" data-en="AI & Big Data Enthusiast" data-uz="AI va Katta Ma'lumotlar Entuziasti" data-ru="Энтузиаст ИИ и Больших Данных">AI & Big Data Enthusiast</h1>
+                    <h2 class="hero-subtitle" data-en="Transforming Data into Insights" data-uz="Ma'lumotlarni Tushunchalarga Aylantirish" data-ru="Преобразование данных в инсайты">Transforming Data into Insights</h2>
+                    <p class="hero-description" data-en="Passionate about leveraging cutting-edge technology to solve complex data challenges. Specializing in machine learning, data engineering, and business intelligence with a proven track record of delivering impactful solutions." data-uz="Murakkab ma'lumotlar muammolarini hal qilish uchun zamonaviy texnologiyalardan foydalanishga ishtiyoqli. Mashina o'qitish, ma'lumotlar muhandisligi va biznes intellektida ixtisoslashgan, ta'sirli yechimlarni taqdim etishda tasdiqlangan natijalarga ega." data-ru="Страстно увлечен использованием передовых технологий для решения сложных задач обработки данных. Специализируюсь на машинном обучении, инженерии данных и бизнес-аналитике с подтвержденным опытом предоставления эффективных решений.">Passionate about leveraging cutting-edge technology to solve complex data challenges. Specializing in machine learning, data engineering, and business intelligence with a proven track record of delivering impactful solutions.</p>
+                    <div class="hero-actions">
+                        <a href="experience.html" class="btn" data-en="View My Work" data-uz="Ishlarimni Ko'rish" data-ru="Посмотреть мои работы">
+                            <i class="fas fa-arrow-right"></i>
+                            <span data-en="View My Work" data-uz="Ishlarimni Ko'rish" data-ru="Посмотреть мои работы">View My Work</span>
+                        </a>
+                        <a href="contact.html" class="btn btn-secondary" data-en="Get In Touch" data-uz="Bog'lanish" data-ru="Связаться">
+                            <i class="fas fa-envelope"></i>
+                            <span data-en="Get In Touch" data-uz="Bog'lanish" data-ru="Связаться">Get In Touch</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="profile-container">
+                        <div class="profile-card">
+                            <img src="image.png" alt="Sunnat Axmadov" class="profile-image">
+                        </div>
+                        <div class="floating-elements">
+                            <div class="floating-card">
+                                <i class="fas fa-brain"></i>
+                                <h4 data-en="AI & ML" data-uz="AI va ML" data-ru="ИИ и МО">AI & ML</h4>
+                                <p data-en="Expert" data-uz="Mutaxassis" data-ru="Эксперт">Expert</p>
+                            </div>
+                            <div class="floating-card">
+                                <i class="fas fa-database"></i>
+                                <h4 data-en="Data Engineering" data-uz="Ma'lumotlar Muhandisligi" data-ru="Инженерия данных">Data Engineering</h4>
+                                <p data-en="Specialist" data-uz="Mutaxassis" data-ru="Специалист">Specialist</p>
+                            </div>
+                            <div class="floating-card">
+                                <i class="fas fa-chart-line"></i>
+                                <h4 data-en="Analytics" data-uz="Analitika" data-ru="Аналитика">Analytics</h4>
+                                <p data-en="Proficient" data-uz="Malakali" data-ru="Опытный">Proficient</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="stat-number">4.0</div>
+                    <div class="stat-label" data-en="GPA" data-uz="GPA" data-ru="Средний балл">GPA</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="stat-number">9+</div>
+                    <div class="stat-label" data-en="Certifications" data-uz="Sertifikatlar" data-ru="Сертификаты">Certifications</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label" data-en="Projects" data-uz="Loyihalar" data-ru="Проекты">Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-number">1.5+</div>
+                    <div class="stat-label" data-en="Years Experience" data-uz="Yillik Tajriba" data-ru="Лет опыта">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="quick-links">
+        <div class="container">
+            <div class="quick-links-grid">
+                <div class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3 class="quick-link-title" data-en="About Me" data-uz="Men Haqida" data-ru="Обо мне">About Me</h3>
+                    <p class="quick-link-description" data-en="Learn more about my background, education, and passion for data science and AI." data-uz="Mening ta'lim, tajriba va ma'lumotlar faniga bo'lgan ishtiyoqim haqida batafsil ma'lumot oling." data-ru="Узнайте больше о моем образовании, опыте и страсти к науке о данных и ИИ.">Learn more about my background, education, and passion for data science and AI.</p>
+                    <a href="about.html" class="quick-link-btn" data-en="Learn More" data-uz="Batafsil" data-ru="Узнать больше">
+                        <i class="fas fa-arrow-right"></i>
+                        <span data-en="Learn More" data-uz="Batafsil" data-ru="Узнать больше">Learn More</span>
+                    </a>
+                </div>
+                <div class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="quick-link-title" data-en="Technical Skills" data-uz="Texnik Ko'nikmalar" data-ru="Технические навыки">Technical Skills</h3>
+                    <p class="quick-link-description" data-en="Explore my expertise in programming, data engineering, and machine learning." data-uz="Dasturlash, ma'lumotlar muhandisligi va mashina o'qitish bo'yicha mening malakalarimni o'rganing." data-ru="Изучите мои навыки в программировании, инженерии данных и машинном обучении.">Explore my expertise in programming, data engineering, and machine learning.</p>
+                    <a href="skills.html" class="quick-link-btn" data-en="View Skills" data-uz="Ko'nikmalarni Ko'rish" data-ru="Посмотреть навыки">
+                        <i class="fas fa-arrow-right"></i>
+                        <span data-en="View Skills" data-uz="Ko'nikmalarni Ko'rish" data-ru="Посмотреть навыки">View Skills</span>
+                    </a>
+                </div>
+                <div class="quick-link-card">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="quick-link-title" data-en="Experience & Projects" data-uz="Tajriba va Loyihalar" data-ru="Опыт и проекты">Experience & Projects</h3>
+                    <p class="quick-link-description" data-en="Discover my professional experience and project portfolio." data-uz="Mening kasbiy tajriba va loyihalar portfoliomni kashf eting." data-ru="Откройте мой профессиональный опыт и портфолио проектов.">Discover my professional experience and project portfolio.</p>
+                    <a href="experience.html" class="quick-link-btn" data-en="View Work" data-uz="Ishlarni Ko'rish" data-ru="Посмотреть работы">
+                        <i class="fas fa-arrow-right"></i>
+                        <span data-en="View Work" data-uz="Ishlarni Ko'rish" data-ru="Посмотреть работы">View Work</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright" data-en="© 2025 Sunnat Axmadov. All rights reserved." data-uz="© 2025 Sunnat Axmadov. Barcha huquqlar himoyalangan." data-ru="© 2025 Суннат Ахмадов. Все права защищены.">
+                    © 2025 Sunnat Axmadov. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loading Animation
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            
+            // Show loading screen for 0.5 seconds
+            setTimeout(function() {
+                loadingScreen.classList.add('fade-out');
+                
+                // Remove loading screen after fade out animation
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 500);
+        });
+
+        // Language Switcher
+        const languageToggle = document.getElementById('languageToggle');
+        const languageDropdown = document.getElementById('languageDropdown');
+        const currentLang = document.querySelector('.current-lang');
+        const languageOptions = document.querySelectorAll('.language-option');
+
+        // Toggle language dropdown
+        languageToggle.addEventListener('click', function() {
+            languageDropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!languageToggle.contains(event.target) && !languageDropdown.contains(event.target)) {
+                languageDropdown.classList.remove('show');
+            }
+        });
+
+        // Language selection
+        languageOptions.forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                const selectedLang = this.getAttribute('data-lang');
+                
+                // Update current language display
+                currentLang.textContent = selectedLang.toUpperCase();
+                
+                // Update active state
+                languageOptions.forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update document language
+                document.documentElement.lang = selectedLang;
+                
+                // Translate content
+                translateContent(selectedLang);
+                
+                // Close dropdown
+                languageDropdown.classList.remove('show');
+                
+                // Save language preference
+                localStorage.setItem('language', selectedLang);
+            });
+        });
+
+        // Translate content function
+        function translateContent(lang) {
+            const elements = document.querySelectorAll('[data-en]');
+            elements.forEach(element => {
+                const originalText = element.getAttribute(`data-${lang}`);
+                if (originalText) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = originalText;
+                    } else {
+                        element.textContent = originalText;
+                    }
+                }
+            });
+        }
+
+        // Load saved language preference
+        const savedLanguage = localStorage.getItem('language') || 'en';
+        if (savedLanguage !== 'en') {
+            currentLang.textContent = savedLanguage.toUpperCase();
+            document.documentElement.lang = savedLanguage;
+            translateContent(savedLanguage);
+            languageOptions.forEach(opt => {
+                if (opt.getAttribute('data-lang') === savedLanguage) {
+                    opt.classList.add('active');
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+        }
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference or default to light mode
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark');
+            icon.className = 'fas fa-sun';
+        }
+
+        // Add click event listener
+        themeToggle.addEventListener('click', function() {
+            console.log('Theme toggle clicked'); // Debug log
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('dark')) {
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+                console.log('Switched to dark mode'); // Debug log
+            } else {
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+                console.log('Switched to light mode'); // Debug log
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.stat-card, .quick-link-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
