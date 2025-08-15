@@ -568,6 +568,100 @@
             font-weight: 500;
         }
 
+        /* Experience */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .experience-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .experience-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-icon {
+            flex-shrink: 0;
+        }
+
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: white;
+            padding: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .company-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-info {
+            flex: 1;
+        }
+
+        .experience-card h3 {
+            color: var(--text);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .company-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .company-name {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .position-type {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .experience-details {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .experience-description {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
         /* Certifications */
         .certifications-grid {
             display: grid;
@@ -832,6 +926,7 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -1085,6 +1180,41 @@
                                 <span class="duration">2024 - 2025</span>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h2 class="section-title">Experience</h2>
+                <p class="section-subtitle">My professional journey and work experience</p>
+            </div>
+            <div class="experience-grid">
+                <div class="experience-card fade-in">
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <img src="codveda-internship.png" alt="Codveda Technologies" class="company-logo">
+                        </div>
+                        <div class="experience-info">
+                            <h3>Python Development Intern</h3>
+                            <div class="company-info">
+                                <span class="company-name">Codveda Technologies</span>
+                                <span class="position-type">Internship</span>
+                            </div>
+                            <div class="experience-details">
+                                <span class="duration">2024 - Present</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        <p>Contributed to developing and maintaining Python-based applications. Responsibilities included writing clean code, building backend components and APIs, testing/debugging, collaborating with teams, and following best software development practices.</p>
                     </div>
                 </div>
             </div>
