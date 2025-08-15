@@ -290,9 +290,49 @@
             transform: scale(0.95);
         }
 
+        /* Buttons (match contact.html) */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            letter-spacing: -0.01em;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+        }
+
         /* Sections */
         .section {
             padding: 6rem 0;
+        }
+
+        /* Match contact.html section background */
+        #certifications {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--background) 0%, var(--surface) 100%);
+        }
+
+        #certifications::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(0, 122, 255, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(52, 199, 89, 0.08) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .section-header {
@@ -915,7 +955,7 @@
                 </div>
             </div>
             <div class="certifications-actions fade-in" style="text-align: center; margin-top: 3rem;">
-                <a href="contact.html" class="btn" style="background: var(--primary); color: white; padding: 1rem 2rem; border-radius: var(--radius); text-decoration: none; font-weight: 600; transition: var(--transition); display: inline-flex; align-items: center; gap: 0.5rem;">
+                <a href="contact.html" class="btn">
                     <i class="fas fa-envelope"></i>
                     <span data-en="Get In Touch" data-uz="Bog'lanish" data-ru="Связаться">Get In Touch</span>
                 </a>
