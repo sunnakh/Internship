@@ -613,11 +613,8 @@
         .about-text:nth-child(7) { animation-delay: 2.0s; }
 
         .about-text strong {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmer 3s ease-in-out infinite;
+            color: var(--text);
+            font-weight: 700;
         }
 
         .section-title {
@@ -632,7 +629,7 @@
             left: -100%;
             width: 100%;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: var(--primary);
             animation: slideInRight 1.5s ease-out 0.5s forwards;
         }
 
