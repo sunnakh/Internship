@@ -459,20 +459,21 @@
             box-shadow: var(--shadow-lg);
         }
 
-        .education-link {
+        .logo-link {
             text-decoration: none;
             color: inherit;
             display: block;
             transition: var(--transition);
         }
 
-        .education-link:hover {
+        .logo-link:hover {
             text-decoration: none;
             color: inherit;
         }
 
-        .education-link:hover .education-card h3 {
-            color: var(--primary);
+        .logo-link:hover .university-logo {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
         }
 
         .education-header {
@@ -964,44 +965,44 @@
             </div>
             <div class="education-grid">
                 <div class="education-card fade-in">
-                    <a href="https://inha.uz/" target="_blank" class="education-link">
-                        <div class="education-header">
-                            <div class="education-icon">
+                    <div class="education-header">
+                        <div class="education-icon">
+                            <a href="https://inha.uz/" target="_blank" class="logo-link">
                                 <img src="inha-university.png" alt="INHA University in Tashkent" class="university-logo">
+                            </a>
+                        </div>
+                        <div class="education-info">
+                            <h3>INHA University in Tashkent</h3>
+                            <div class="degree-info">
+                                <span class="degree-type">Bachelor</span>
+                                <span class="degree-field">School of Computer Science and Information Engineering</span>
                             </div>
-                            <div class="education-info">
-                                <h3>INHA University in Tashkent</h3>
-                                <div class="degree-info">
-                                    <span class="degree-type">Bachelor</span>
-                                    <span class="degree-field">School of Computer Science and Information Engineering</span>
-                                </div>
-                                <div class="education-details">
-                                    <span class="gpa">GPA: 3.75/4.5</span>
-                                    <span class="duration">2023 - Present</span>
-                                </div>
+                            <div class="education-details">
+                                <span class="gpa">GPA: 3.75/4.5</span>
+                                <span class="duration">2023 - Present</span>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
                 <div class="education-card fade-in">
-                    <a href="https://academy.maab.uz/en/" target="_blank" class="education-link">
-                        <div class="education-header">
-                            <div class="education-icon">
+                    <div class="education-header">
+                        <div class="education-icon">
+                            <a href="https://academy.maab.uz/en/" target="_blank" class="logo-link">
                                 <img src="maab-academy.png" alt="MAAB Academy" class="university-logo">
+                            </a>
+                        </div>
+                        <div class="education-info">
+                            <h3>MAAB Academy</h3>
+                            <div class="degree-info">
+                                <span class="degree-type">Certificate</span>
+                                <span class="degree-field">Data Analytics & Engineering</span>
                             </div>
-                            <div class="education-info">
-                                <h3>MAAB Academy</h3>
-                                <div class="degree-info">
-                                    <span class="degree-type">Certificate</span>
-                                    <span class="degree-field">Data Analytics & Engineering</span>
-                                </div>
-                                <div class="education-details">
-                                    <span class="gpa">Grade: 98/100</span>
-                                    <span class="duration">2024 - 2025</span>
-                                </div>
+                            <div class="education-details">
+                                <span class="gpa">Grade: 98/100</span>
+                                <span class="duration">2024 - 2025</span>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
