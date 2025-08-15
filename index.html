@@ -8,136 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
-        /* Loading Screen */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.8s ease-out;
-        }
 
-        .loading-screen.fade-out {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loading-content {
-            text-align: center;
-            color: white;
-        }
-
-        .loading-logo {
-            font-size: 8rem;
-            margin-bottom: 2rem;
-            animation: bigPulse 1.5s ease-in-out infinite;
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-        }
-
-        .loading-title {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #fff, #f0f0f0, #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: bigShimmer 2s ease-in-out infinite;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-        }
-
-        .loading-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease-out 0.5s both;
-        }
-
-        .ai-animation-container {
-            position: relative;
-            width: 400px;
-            height: 200px;
-            margin-bottom: 2rem;
-        }
-
-        .ai-particle {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            animation: particleFloat 3s ease-in-out infinite;
-        }
-
-        .ai-particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-        .ai-particle:nth-child(2) { top: 60%; left: 80%; animation-delay: 0.5s; }
-        .ai-particle:nth-child(3) { top: 80%; left: 20%; animation-delay: 1s; }
-        .ai-particle:nth-child(4) { top: 30%; left: 70%; animation-delay: 1.5s; }
-        .ai-particle:nth-child(5) { top: 70%; left: 40%; animation-delay: 2s; }
-
-        .ai-core {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 4rem;
-            animation: coreGlow 2s ease-in-out infinite;
-            text-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
-        }
-
-        .loading-text {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            font-weight: 500;
-            animation: textPulse 1s ease-in-out infinite;
-        }
-
-        @keyframes bigPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-
-        @keyframes bigShimmer {
-            0%, 100% { opacity: 1; filter: brightness(1); }
-            50% { opacity: 0.8; filter: brightness(1.3); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes particleFloat {
-            0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
-            50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
-        }
-
-        @keyframes coreGlow {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); filter: brightness(1); }
-            50% { transform: translate(-50%, -50%) scale(1.1); filter: brightness(1.5); }
-        }
-
-        @keyframes textPulse {
-            0%, 100% { opacity: 0.9; }
-            50% { opacity: 1; }
-        }
-
-        /* Hide main content during loading */
-        .main-content {
-            opacity: 0;
-            transition: opacity 0.5s ease-in;
-        }
-
-        .main-content.loaded {
-            opacity: 1;
-        }
 
         :root {
             --primary: #007AFF;
@@ -1310,32 +1181,7 @@
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-content">
-            <div class="loading-logo">
-                <i class="fas fa-brain"></i>
-            </div>
-            <h1 class="loading-title">AI & ML Portfolio</h1>
-            <p class="loading-subtitle">Sunnat Axmadov - Data Scientist & Engineer</p>
-            
-            <div class="ai-animation-container">
-                <div class="ai-particle"></div>
-                <div class="ai-particle"></div>
-                <div class="ai-particle"></div>
-                <div class="ai-particle"></div>
-                <div class="ai-particle"></div>
-                <div class="ai-core">
-                    <i class="fas fa-robot"></i>
-                </div>
-            </div>
-            
-            <div class="loading-text">AI Systems Initializing...</div>
-        </div>
-    </div>
 
-    <!-- Main Content -->
-    <div class="main-content" id="mainContent">
         <!-- Header -->
     <header class="header">
         <nav class="nav container">
@@ -1863,50 +1709,8 @@
             </div>
         </div>
     </footer>
-    </div> <!-- End of main-content -->
 
     <script>
-        // Loading Animation
-        window.addEventListener('load', function() {
-            const loadingScreen = document.getElementById('loadingScreen');
-            const mainContent = document.getElementById('mainContent');
-            const loadingTextElement = document.querySelector('.loading-text');
-            
-            // AI loading texts
-            const loadingTexts = [
-                "AI Systems Initializing...",
-                "Neural Networks Loading...",
-                "Machine Learning Models Ready...",
-                "Data Analytics Engine Online...",
-                "Portfolio Launching..."
-            ];
-
-            let currentTextIndex = 0;
-
-            // Update text every 1 second
-            const textInterval = setInterval(() => {
-                if (loadingTextElement && currentTextIndex < loadingTexts.length) {
-                    loadingTextElement.textContent = loadingTexts[currentTextIndex];
-                    currentTextIndex++;
-                }
-            }, 1000);
-            
-            // Complete loading after 5 seconds
-            setTimeout(() => {
-                clearInterval(textInterval);
-                
-                // Fade out loading screen
-                loadingScreen.classList.add('fade-out');
-                
-                // Show main content
-                mainContent.classList.add('loaded');
-                
-                // Remove loading screen after animation
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 800);
-            }, 5000);
-        });
         // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
