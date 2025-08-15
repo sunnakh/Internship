@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Sunnat Axmadov</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        :root {
+            --primary: #007AFF;
+            --primary-dark: #0056CC;
+            --secondary: #8E8E93;
+            --accent: #34C759;
+            --background: #FFFFFF;
+            --surface: #F2F2F7;
+            --text: #1D1D1F;
+            --text-light: #86868B;
+            --border: #E5E5EA;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --font-primary: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'SF Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+
+        .dark {
+            --background: #000000;
+            --surface: #1C1C1E;
+            --text: #FFFFFF;
+            --text-light: #8E8E93;
+            --border: #38383A;
+            --shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+            --shadow-lg: 0 8px 24px rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.5;
+            transition: var(--transition);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-feature-settings: "kern" 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .dark .header {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+            position: relative;
+            animation: logoGlow 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(0, 122, 255, 0.5);
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), transparent, var(--primary));
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .logo:hover::before {
+            opacity: 0.3;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            letter-spacing: -0.01em;
+            position: relative;
+            border: 1px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(0, 122, 255, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::before {
+            opacity: 0.3;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            min-height: 40px;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(0, 122, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+            position: relative;
+            display: inline-block;
+            padding: 0 2rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            padding: 1rem 0;
+        }
+
+        /* Contact */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--background);
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: var(--text);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .contact-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 122, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-value {
+            display: block;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .contact-form {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .contact-info,
+        .contact-form {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info::after,
+        .contact-form::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: left 0.5s ease;
+        }
+
+        .contact-info:hover::after,
+        .contact-form:hover::after {
+            left: 100%;
+        }
+
+        .contact-info:hover,
+        .contact-form:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        #contact {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--background) 0%, var(--surface) 100%);
+        }
+
+        #contact::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(0, 122, 255, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(52, 199, 89, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .social-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .social-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem;
+            border-radius: 10px;
+            background: var(--background);
+            border: 1px solid var(--border);
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-button:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .status {
+            display: none;
+            margin-bottom: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+        .status.success { display: block; background: rgba(52, 199, 89, 0.15); color: #2e8b57; border: 1px solid rgba(52,199,89,0.3); }
+        .status.error { display: block; background: rgba(255, 59, 48, 0.15); color: #b00020; border: 1px solid rgba(255,59,48,0.3); }
+
+        @media (max-width: 768px) {
+            .form-row { grid-template-columns: 1fr; }
+        }
+
+        .contact-form h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-group label i {
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--background);
+            color: var(--text);
+            font-family: var(--font-primary);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            letter-spacing: -0.01em;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+        }
+
+
+
+        /* Dark mode specific adjustments */
+        .dark .skill-card,
+        .dark .certification-card,
+        .dark .experience-card,
+        .dark .education-card {
+            background: var(--surface);
+            border-color: var(--border);
+        }
+
+        .dark .btn:hover {
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
+        }
+
+        .dark .skill-card:hover,
+        .dark .certification-card:hover,
+        .dark .experience-card:hover {
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .dark .profile-card {
+            border-color: var(--border);
+        }
+
+        .dark .university-logo {
+            background: var(--surface);
+        }
+
+        /* Additional dark mode styles */
+        .dark .section-title {
+            color: var(--text);
+        }
+
+        .dark .section-subtitle {
+            color: var(--text-light);
+        }
+
+        .dark .skill-title,
+        .dark .certification-title,
+        .dark .experience-title {
+            color: var(--text);
+        }
+
+        .dark .tag {
+            background: var(--surface);
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .dark .form-group input,
+        .dark .form-group textarea {
+            background: var(--surface);
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .dark .form-group input:focus,
+        .dark .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .dark .form-group label {
+            color: var(--text);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: calc(200px + 100%) 0; }
+        }
+
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        /* Apple-style animations */
+        .hero-text h1 {
+            animation: slideInLeft 1.2s ease-out;
+        }
+
+        .hero-text h2 {
+            animation: slideInLeft 1.2s ease-out 0.3s both;
+        }
+
+        .hero-text p {
+            animation: slideInLeft 1.2s ease-out 0.6s both;
+        }
+
+        .hero-text .btn {
+            animation: slideInLeft 1.2s ease-out 0.9s both;
+        }
+
+        .hero-image {
+            animation: slideInRight 1.2s ease-out 0.4s both;
+        }
+
+        /* Subtle icon animations */
+        .section-icon {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .skill-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .certification-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .certification-card:hover .certification-icon {
+            transform: scale(1.1);
+        }
+
+        .experience-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover .experience-icon {
+            transform: scale(1.1);
+        }
+
+        .contact-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .contact-link:hover .contact-icon {
+            transform: scale(1.1);
+        }
+
+        /* Button hover effect */
+        .btn {
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+        }
+
+        /* Card hover effects */
+        .skill-card,
+        .certification-card,
+        .experience-card {
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover,
+        .certification-card:hover,
+        .experience-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation for page load */
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { 
+                text-shadow: 0 0 5px rgba(0, 122, 255, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 0 0 15px rgba(0, 122, 255, 0.6);
+                transform: scale(1.02);
+            }
+        }
+
+        /* Contact page specific animations */
+        .contact-content {
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .contact-info {
+            animation: slideInLeft 1.2s ease-out 0.5s both;
+        }
+
+        .contact-form {
+            animation: slideInRight 1.2s ease-out 0.7s both;
+        }
+
+        .contact-info h3,
+        .contact-form h3 {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info h3::after,
+        .contact-form h3::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            transition: left 0.5s ease;
+        }
+
+        .contact-info:hover h3::after,
+        .contact-form:hover h3::after {
+            left: 0;
+        }
+
+        .contact-links {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .contact-links:nth-child(1) { animation-delay: 0.8s; }
+        .contact-links:nth-child(2) { animation-delay: 1.0s; }
+        .contact-links:nth-child(3) { animation-delay: 1.2s; }
+        .contact-links:nth-child(4) { animation-delay: 1.4s; }
+        .contact-links:nth-child(5) { animation-delay: 1.6s; }
+
+        .social-buttons {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+            animation-delay: 1.8s;
+        }
+
+        .social-button {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .social-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-group {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 1.0s; }
+        .form-group:nth-child(2) { animation-delay: 1.2s; }
+        .form-group:nth-child(3) { animation-delay: 1.4s; }
+        .form-group:nth-child(4) { animation-delay: 1.6s; }
+
+        .form-group input,
+        .form-group textarea {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            animation: slideInRight 1.5s ease-out 0.5s forwards;
+        }
+
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Enhanced hover effects */
+        .contact-info,
+        .contact-form {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-info:hover,
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Status message animations */
+        .status {
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .contact-links:nth-child(1) { animation-delay: 0.6s; }
+            .contact-links:nth-child(2) { animation-delay: 0.8s; }
+            .contact-links:nth-child(3) { animation-delay: 1.0s; }
+            .contact-links:nth-child(4) { animation-delay: 1.2s; }
+            .contact-links:nth-child(5) { animation-delay: 1.4s; }
+            
+            .form-group:nth-child(1) { animation-delay: 0.8s; }
+            .form-group:nth-child(2) { animation-delay: 1.0s; }
+            .form-group:nth-child(3) { animation-delay: 1.2s; }
+            .form-group:nth-child(4) { animation-delay: 1.4s; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">Sunnat Axmadov</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's discuss opportunities and collaborations</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <h3>Contact Information</h3>
+                    <div class="contact-links">
+                        <a href="mailto:sunnatakhmad@gmail.com" class="contact-link">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">sunnatakhmad@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="tel:+998337174499" class="contact-link">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">Phone</span>
+                                <span class="contact-value">+998 33 717 44 99</span>
+                            </div>
+                        </a>
+                        <a href="https://t.me/sunnakh" target="_blank" class="contact-link">
+                            <div class="contact-icon">
+                                <i class="fab fa-telegram"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">Telegram</span>
+                                <span class="contact-value">@sunnakh</span>
+                            </div>
+                        </a>
+                        <a href="https://github.com/sunnakh" target="_blank" class="contact-link">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">GitHub</span>
+                                <span class="contact-value">sunnakh</span>
+                            </div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/sunnakh/" target="_blank" class="contact-link">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="contact-details">
+                                <span class="contact-label">LinkedIn</span>
+                                <span class="contact-value">sunnakh</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="social-buttons">
+                        <a href="mailto:sunnatakhmad@gmail.com" class="social-button" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://t.me/sunnakh" target="_blank" class="social-button" title="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="https://github.com/sunnakh" target="_blank" class="social-button" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/sunnakh/" target="_blank" class="social-button" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form fade-in">
+                    <h3>Send Message</h3>
+                    <form id="contactForm">
+                        <div class="status" id="formStatus"></div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">
+                                    <i class="fas fa-user"></i>
+                                    Name
+                                </label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">
+                                    <i class="fas fa-envelope"></i>
+                                    Email
+                                </label>
+                                <input type="email" id="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">
+                                <i class="fas fa-comment"></i>
+                                Message
+                            </label>
+                            <textarea id="message" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    © 2025 Sunnat Axmadov. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const EMAILJS_SERVICE_ID = 'service_segmk0f';
+        const EMAILJS_TEMPLATE_ID = 'template_iqww91i';
+        const EMAILJS_PUBLIC_KEY = 'ifMdbXRDSmNuhwjN2';
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference or default to light mode
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark');
+            icon.className = 'fas fa-sun';
+        }
+
+        // Add click event listener
+        themeToggle.addEventListener('click', function() {
+            console.log('Theme toggle clicked'); // Debug log
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('dark')) {
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+                console.log('Switched to dark mode'); // Debug log
+            } else {
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+                console.log('Switched to light mode'); // Debug log
+            }
+        });
+
+        // Debug: Log current theme on page load
+        console.log('Current theme:', body.classList.contains('dark') ? 'dark' : 'light');
+        console.log('Saved theme:', localStorage.getItem('theme'));
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Try EmailJS first, fallback to mailto
+            try {
+                // Initialize EmailJS (you'll need to set up EmailJS account)
+                emailjs.init(EMAILJS_PUBLIC_KEY);
+                
+                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                    to_email: "sunnatakhmad@gmail.com",
+                    from_name: name,
+                    from_email: email,
+                    message: message,
+                    subject: `Portfolio Contact from ${name}`
+                }).then(
+                    function(response) {
+                        const status = document.getElementById('formStatus');
+                        status.className = 'status success';
+                        status.textContent = "Thank you for your message! I'll get back to you soon.";
+                        document.getElementById('contactForm').reset();
+                    },
+                    function(error) {
+                        // Fallback to mailto if EmailJS fails
+                        const subject = `Portfolio Contact from ${name}`;
+                        const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+                        const mailtoLink = `mailto:sunnatakhmad@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                        window.open(mailtoLink);
+                    }
+                );
+            } catch (error) {
+                // Fallback to mailto if EmailJS is not available
+                const subject = `Portfolio Contact from ${name}`;
+                const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+                const mailtoLink = `mailto:sunnatakhmad@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                window.open(mailtoLink);
+            }
+            
+            // Reset button
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        });
+
+        // Simple scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add staggered animation to grid items
+        function addStaggeredAnimation() {
+            const gridItems = document.querySelectorAll('.skill-card, .certification-card, .experience-card');
+            gridItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+            });
+        }
+
+        // Initialize animations when page loads
+        window.addEventListener('load', () => {
+            addStaggeredAnimation();
+        });
+    </script>
+</body>
+</html>
