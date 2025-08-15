@@ -313,6 +313,95 @@
             transform: scale(0.95);
         }
 
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+            margin-right: 1rem;
+        }
+
+        .language-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .language-toggle:hover {
+            background: rgba(0, 122, 255, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .current-lang {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 1001;
+            margin-top: 0.5rem;
+        }
+
+        .language-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .language-option:last-child {
+            border-bottom: none;
+        }
+
+        .language-option:hover {
+            background: rgba(0, 122, 255, 0.1);
+            color: var(--primary);
+        }
+
+        .language-option.active {
+            background: rgba(0, 122, 255, 0.15);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .flag {
+            font-size: 1.2rem;
+        }
+
+        .lang-name {
+            font-size: 0.9rem;
+        }
+
         /* Hero Section - Redesigned */
         .hero {
             min-height: 100vh;
@@ -816,7 +905,7 @@
             <div class="loading-circle">
                 <i class="fas fa-brain loading-icon"></i>
             </div>
-            <div class="loading-text">Loading</div>
+            <div class="loading-text" data-en="Loading" data-uz="Yuklanmoqda" data-ru="Загрузка">Loading</div>
             <div class="loading-progress">
                 <div class="loading-bar"></div>
             </div>
@@ -826,16 +915,36 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav container">
-            <a href="index.html" class="logo">Sunnat Axmadov</a>
+            <a href="index.html" class="logo" data-en="Sunnat Axmadov" data-uz="Sunnat Axmadov" data-ru="Суннат Ахмадов">Sunnat Axmadov</a>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="experience.html">Experience</a></li>
-                <li><a href="certifications.html">Certifications</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html" class="active" data-en="Home" data-uz="Bosh sahifa" data-ru="Главная">Home</a></li>
+                <li><a href="about.html" data-en="About" data-uz="Haqida" data-ru="Обо мне">About</a></li>
+                <li><a href="skills.html" data-en="Skills" data-uz="Ko'nikmalar" data-ru="Навыки">Skills</a></li>
+                <li><a href="education.html" data-en="Education" data-uz="Ta'lim" data-ru="Образование">Education</a></li>
+                <li><a href="experience.html" data-en="Experience" data-uz="Tajriba" data-ru="Опыт">Experience</a></li>
+                <li><a href="certifications.html" data-en="Certifications" data-uz="Sertifikatlar" data-ru="Сертификаты">Certifications</a></li>
+                <li><a href="contact.html" data-en="Contact" data-uz="Aloqa" data-ru="Контакты">Contact</a></li>
             </ul>
+            <div class="language-switcher">
+                <button class="language-toggle" id="languageToggle">
+                    <i class="fas fa-globe"></i>
+                    <span class="current-lang">EN</span>
+                </button>
+                <div class="language-dropdown" id="languageDropdown">
+                    <a href="#" data-lang="en" class="language-option active">
+                        <span class="flag">🇺🇸</span>
+                        <span class="lang-name">English</span>
+                    </a>
+                    <a href="#" data-lang="uz" class="language-option">
+                        <span class="flag">🇺🇿</span>
+                        <span class="lang-name">O'zbekcha</span>
+                    </a>
+                    <a href="#" data-lang="ru" class="language-option">
+                        <span class="flag">🇷🇺</span>
+                        <span class="lang-name">Русский</span>
+                    </a>
+                </div>
+            </div>
             <button class="theme-toggle" id="themeToggle">
                 <i class="fas fa-moon"></i>
             </button>
@@ -847,25 +956,25 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <a href="contact.html" class="hero-badge">
+                    <a href="contact.html" class="hero-badge" data-en="Available for Opportunities" data-uz="Imkoniyatlar uchun mavjud" data-ru="Доступен для возможностей">
                         <i class="fas fa-rocket"></i>
-                        Available for Opportunities
+                        <span data-en="Available for Opportunities" data-uz="Imkoniyatlar uchun mavjud" data-ru="Доступен для возможностей">Available for Opportunities</span>
                     </a>
-                    <h1 class="hero-title">AI & Big Data Enthusiast</h1>
-                    <h2 class="hero-subtitle">Transforming Data into Insights</h2>
-                    <p class="hero-description">
+                    <h1 class="hero-title" data-en="AI & Big Data Enthusiast" data-uz="AI va Katta Ma'lumotlar Entuziasti" data-ru="Энтузиаст ИИ и Больших Данных">AI & Big Data Enthusiast</h1>
+                    <h2 class="hero-subtitle" data-en="Transforming Data into Insights" data-uz="Ma'lumotlarni Tushunchalarga Aylantirish" data-ru="Преобразование данных в инсайты">Transforming Data into Insights</h2>
+                    <p class="hero-description" data-en="Passionate about leveraging cutting-edge technology to solve complex data challenges. Specializing in machine learning, data engineering, and business intelligence with a proven track record of delivering impactful solutions." data-uz="Murakkab ma'lumotlar muammolarini hal qilish uchun zamonaviy texnologiyalardan foydalanishga ishtiyoqli. Mashina o'qitish, ma'lumotlar muhandisligi va biznes intellektida ixtisoslashgan, ta'sirli yechimlarni taqdim etishda tasdiqlangan natijalarga ega." data-ru="Страстно увлечен использованием передовых технологий для решения сложных задач обработки данных. Специализируюсь на машинном обучении, инженерии данных и бизнес-аналитике с подтвержденным опытом предоставления эффективных решений.">
                         Passionate about leveraging cutting-edge technology to solve complex data challenges. 
                         Specializing in machine learning, data engineering, and business intelligence with a 
                         proven track record of delivering impactful solutions.
                     </p>
                     <div class="hero-actions">
-                        <a href="experience.html" class="btn">
+                        <a href="experience.html" class="btn" data-en="View My Work" data-uz="Ishlarimni Ko'rish" data-ru="Посмотреть мои работы">
                             <i class="fas fa-arrow-right"></i>
-                            View My Work
+                            <span data-en="View My Work" data-uz="Ishlarimni Ko'rish" data-ru="Посмотреть мои работы">View My Work</span>
                         </a>
-                        <a href="contact.html" class="btn btn-secondary">
+                        <a href="contact.html" class="btn btn-secondary" data-en="Get In Touch" data-uz="Bog'lanish" data-ru="Связаться">
                             <i class="fas fa-envelope"></i>
-                            Get In Touch
+                            <span data-en="Get In Touch" data-uz="Bog'lanish" data-ru="Связаться">Get In Touch</span>
                         </a>
                     </div>
                 </div>
@@ -877,18 +986,18 @@
                         <div class="floating-elements">
                             <div class="floating-card">
                                 <i class="fas fa-brain"></i>
-                                <h4>AI & ML</h4>
-                                <p>Expert</p>
+                                <h4 data-en="AI & ML" data-uz="AI va ML" data-ru="ИИ и МО">AI & ML</h4>
+                                <p data-en="Expert" data-uz="Mutaxassis" data-ru="Эксперт">Expert</p>
                             </div>
                             <div class="floating-card">
                                 <i class="fas fa-database"></i>
-                                <h4>Data Engineering</h4>
-                                <p>Specialist</p>
+                                <h4 data-en="Data Engineering" data-uz="Ma'lumotlar Muhandisligi" data-ru="Инженерия данных">Data Engineering</h4>
+                                <p data-en="Specialist" data-uz="Mutaxassis" data-ru="Специалист">Specialist</p>
                             </div>
                             <div class="floating-card">
                                 <i class="fas fa-chart-line"></i>
-                                <h4>Analytics</h4>
-                                <p>Proficient</p>
+                                <h4 data-en="Analytics" data-uz="Analitika" data-ru="Аналитика">Analytics</h4>
+                                <p data-en="Proficient" data-uz="Malakali" data-ru="Опытный">Proficient</p>
                             </div>
                         </div>
                     </div>
@@ -906,28 +1015,28 @@
                         <i class="fas fa-graduation-cap"></i>
                     </div>
                     <div class="stat-number">4.0</div>
-                    <div class="stat-label">GPA</div>
+                    <div class="stat-label" data-en="GPA" data-uz="GPA" data-ru="Средний балл">GPA</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">
                         <i class="fas fa-award"></i>
                     </div>
                     <div class="stat-number">9+</div>
-                    <div class="stat-label">Certifications</div>
+                    <div class="stat-label" data-en="Certifications" data-uz="Sertifikatlar" data-ru="Сертификаты">Certifications</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">
                         <i class="fas fa-project-diagram"></i>
                     </div>
                     <div class="stat-number">5+</div>
-                    <div class="stat-label">Projects</div>
+                    <div class="stat-label" data-en="Projects" data-uz="Loyihalar" data-ru="Проекты">Projects</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">
                         <i class="fas fa-clock"></i>
                     </div>
                     <div class="stat-number">1.5+</div>
-                    <div class="stat-label">Years Experience</div>
+                    <div class="stat-label" data-en="Years Experience" data-uz="Yillik Tajriba" data-ru="Лет опыта">Years Experience</div>
                 </div>
             </div>
         </div>
@@ -941,39 +1050,39 @@
                     <div class="quick-link-icon">
                         <i class="fas fa-user-graduate"></i>
                     </div>
-                    <h3 class="quick-link-title">About Me</h3>
-                    <p class="quick-link-description">
+                    <h3 class="quick-link-title" data-en="About Me" data-uz="Men Haqida" data-ru="Обо мне">About Me</h3>
+                    <p class="quick-link-description" data-en="Learn more about my background, education, and passion for data science and AI." data-uz="Mening ta'lim, tajriba va ma'lumotlar faniga bo'lgan ishtiyoqim haqida batafsil ma'lumot oling." data-ru="Узнайте больше о моем образовании, опыте и страсти к науке о данных и ИИ.">
                         Learn more about my background, education, and passion for data science and AI.
                     </p>
-                    <a href="about.html" class="quick-link-btn">
+                    <a href="about.html" class="quick-link-btn" data-en="Learn More" data-uz="Batafsil" data-ru="Узнать больше">
                         <i class="fas fa-arrow-right"></i>
-                        Learn More
+                        <span data-en="Learn More" data-uz="Batafsil" data-ru="Узнать больше">Learn More</span>
                     </a>
                 </div>
                 <div class="quick-link-card">
                     <div class="quick-link-icon">
                         <i class="fas fa-tools"></i>
                     </div>
-                    <h3 class="quick-link-title">Technical Skills</h3>
-                    <p class="quick-link-description">
+                    <h3 class="quick-link-title" data-en="Technical Skills" data-uz="Texnik Ko'nikmalar" data-ru="Технические навыки">Technical Skills</h3>
+                    <p class="quick-link-description" data-en="Explore my expertise in programming, data engineering, and machine learning." data-uz="Dasturlash, ma'lumotlar muhandisligi va mashina o'qitish bo'yicha mening malakalarimni o'rganing." data-ru="Изучите мои навыки в программировании, инженерии данных и машинном обучении.">
                         Explore my expertise in programming, data engineering, and machine learning.
                     </p>
-                    <a href="skills.html" class="quick-link-btn">
+                    <a href="skills.html" class="quick-link-btn" data-en="View Skills" data-uz="Ko'nikmalarni Ko'rish" data-ru="Посмотреть навыки">
                         <i class="fas fa-arrow-right"></i>
-                        View Skills
+                        <span data-en="View Skills" data-uz="Ko'nikmalarni Ko'rish" data-ru="Посмотреть навыки">View Skills</span>
                     </a>
                 </div>
                 <div class="quick-link-card">
                     <div class="quick-link-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
-                    <h3 class="quick-link-title">Experience & Projects</h3>
-                    <p class="quick-link-description">
+                    <h3 class="quick-link-title" data-en="Experience & Projects" data-uz="Tajriba va Loyihalar" data-ru="Опыт и проекты">Experience & Projects</h3>
+                    <p class="quick-link-description" data-en="Discover my professional experience and project portfolio." data-uz="Mening kasbiy tajriba va loyihalar portfoliomni kashf eting." data-ru="Откройте мой профессиональный опыт и портфолио проектов.">
                         Discover my professional experience and project portfolio.
                     </p>
-                    <a href="experience.html" class="quick-link-btn">
+                    <a href="experience.html" class="quick-link-btn" data-en="View Work" data-uz="Ishlarni Ko'rish" data-ru="Посмотреть работы">
                         <i class="fas fa-arrow-right"></i>
-                        View Work
+                        <span data-en="View Work" data-uz="Ishlarni Ko'rish" data-ru="Посмотреть работы">View Work</span>
                     </a>
                 </div>
             </div>
@@ -984,7 +1093,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="copyright">
+                <div class="copyright" data-en="© 2025 Sunnat Axmadov. All rights reserved." data-uz="© 2025 Sunnat Axmadov. Barcha huquqlar himoyalangan." data-ru="© 2025 Суннат Ахмадов. Все права защищены.">
                     © 2025 Sunnat Axmadov. All rights reserved.
                 </div>
             </div>
@@ -1006,6 +1115,81 @@
                 }, 500);
             }, 500);
         });
+
+        // Language Switcher
+        const languageToggle = document.getElementById('languageToggle');
+        const languageDropdown = document.getElementById('languageDropdown');
+        const currentLang = document.querySelector('.current-lang');
+        const languageOptions = document.querySelectorAll('.language-option');
+
+        // Toggle language dropdown
+        languageToggle.addEventListener('click', function() {
+            languageDropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!languageToggle.contains(event.target) && !languageDropdown.contains(event.target)) {
+                languageDropdown.classList.remove('show');
+            }
+        });
+
+        // Language selection
+        languageOptions.forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                const selectedLang = this.getAttribute('data-lang');
+                
+                // Update current language display
+                currentLang.textContent = selectedLang.toUpperCase();
+                
+                // Update active state
+                languageOptions.forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update document language
+                document.documentElement.lang = selectedLang;
+                
+                // Translate content
+                translateContent(selectedLang);
+                
+                // Close dropdown
+                languageDropdown.classList.remove('show');
+                
+                // Save language preference
+                localStorage.setItem('language', selectedLang);
+            });
+        });
+
+        // Translate content function
+        function translateContent(lang) {
+            const elements = document.querySelectorAll('[data-en]');
+            elements.forEach(element => {
+                const originalText = element.getAttribute(`data-${lang}`);
+                if (originalText) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = originalText;
+                    } else {
+                        element.textContent = originalText;
+                    }
+                }
+            });
+        }
+
+        // Load saved language preference
+        const savedLanguage = localStorage.getItem('language') || 'en';
+        if (savedLanguage !== 'en') {
+            currentLang.textContent = savedLanguage.toUpperCase();
+            document.documentElement.lang = savedLanguage;
+            translateContent(savedLanguage);
+            languageOptions.forEach(opt => {
+                if (opt.getAttribute('data-lang') === savedLanguage) {
+                    opt.classList.add('active');
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+        }
 
         // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
