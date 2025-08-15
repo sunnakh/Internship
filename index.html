@@ -460,6 +460,22 @@
             opacity: 0.9;
         }
 
+        .university-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: white;
+            padding: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .university-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
         .education-card h3 {
             color: var(--primary);
             font-size: 1.3rem;
@@ -887,7 +903,7 @@
             <div class="education-grid">
                 <div class="education-card fade-in">
                     <div class="education-icon">
-                        <i class="fas fa-university"></i>
+                        <img src="inha-university.png" alt="INHA University" class="university-logo">
                     </div>
                     <h3>INHA University</h3>
                     <p><strong>Bachelor of Computer Science</strong></p>
