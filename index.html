@@ -21,7 +21,7 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.5s ease-out;
+            transition: opacity 0.8s ease-out;
         }
 
         .loading-screen.fade-out {
@@ -35,115 +35,98 @@
         }
 
         .loading-logo {
-            font-size: 4rem;
+            font-size: 8rem;
             margin-bottom: 2rem;
-            animation: pulse 2s ease-in-out infinite;
+            animation: bigPulse 1.5s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
         }
 
         .loading-title {
-            font-size: 2.5rem;
+            font-size: 4rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, #fff, #f0f0f0);
+            background: linear-gradient(45deg, #fff, #f0f0f0, #fff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: shimmer 2s ease-in-out infinite;
+            animation: bigShimmer 2s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
         .loading-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin-bottom: 3rem;
             opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.5s both;
         }
 
-        .loading-animation {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
+        .ai-animation-container {
+            position: relative;
+            width: 400px;
+            height: 200px;
             margin-bottom: 2rem;
         }
 
-        .ai-element {
-            width: 60px;
-            height: 60px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
+        .ai-particle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            animation: rotate 3s linear infinite;
+            animation: particleFloat 3s ease-in-out infinite;
         }
 
-        .ai-element:nth-child(1) {
-            animation-delay: 0s;
-            border-color: rgba(255, 255, 255, 0.8);
-        }
+        .ai-particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .ai-particle:nth-child(2) { top: 60%; left: 80%; animation-delay: 0.5s; }
+        .ai-particle:nth-child(3) { top: 80%; left: 20%; animation-delay: 1s; }
+        .ai-particle:nth-child(4) { top: 30%; left: 70%; animation-delay: 1.5s; }
+        .ai-particle:nth-child(5) { top: 70%; left: 40%; animation-delay: 2s; }
 
-        .ai-element:nth-child(2) {
-            animation-delay: 0.5s;
-            border-color: rgba(255, 255, 255, 0.6);
-        }
-
-        .ai-element:nth-child(3) {
-            animation-delay: 1s;
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-
-        .loading-progress {
-            width: 300px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-        }
-
-        .loading-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #fff, #f0f0f0);
-            border-radius: 2px;
-            width: 0%;
-            animation: loadingProgress 3s ease-in-out forwards;
+        .ai-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            animation: coreGlow 2s ease-in-out infinite;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
         }
 
         .loading-text {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            animation: loadingText 3s ease-in-out infinite;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 500;
+            animation: textPulse 1s ease-in-out infinite;
         }
 
-        @keyframes pulse {
+        @keyframes bigPulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.2); }
         }
 
-        @keyframes shimmer {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+        @keyframes bigShimmer {
+            0%, 100% { opacity: 1; filter: brightness(1); }
+            50% { opacity: 0.8; filter: brightness(1.3); }
         }
 
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes loadingProgress {
-            0% { width: 0%; }
-            100% { width: 100%; }
+        @keyframes particleFloat {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+            50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
         }
 
-        @keyframes loadingText {
-            0%, 33% { content: "Initializing AI Systems..."; }
-            34%, 66% { content: "Loading Machine Learning Models..."; }
-            67%, 100% { content: "Preparing Data Analytics..."; }
+        @keyframes coreGlow {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); filter: brightness(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); filter: brightness(1.5); }
         }
 
-        .loading-text::after {
-            content: "Initializing AI Systems...";
-            animation: loadingText 3s ease-in-out infinite;
+        @keyframes textPulse {
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 1; }
         }
 
         /* Hide main content during loading */
@@ -1336,22 +1319,18 @@
             <h1 class="loading-title">AI & ML Portfolio</h1>
             <p class="loading-subtitle">Sunnat Axmadov - Data Scientist & Engineer</p>
             
-            <div class="loading-animation">
-                <div class="ai-element">
+            <div class="ai-animation-container">
+                <div class="ai-particle"></div>
+                <div class="ai-particle"></div>
+                <div class="ai-particle"></div>
+                <div class="ai-particle"></div>
+                <div class="ai-particle"></div>
+                <div class="ai-core">
                     <i class="fas fa-robot"></i>
-                </div>
-                <div class="ai-element">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <div class="ai-element">
-                    <i class="fas fa-chart-line"></i>
                 </div>
             </div>
             
-            <div class="loading-progress">
-                <div class="loading-bar"></div>
-            </div>
-            <div class="loading-text"></div>
+            <div class="loading-text">AI Systems Initializing...</div>
         </div>
     </div>
 
@@ -1891,9 +1870,31 @@
         window.addEventListener('load', function() {
             const loadingScreen = document.getElementById('loadingScreen');
             const mainContent = document.getElementById('mainContent');
+            const loadingTextElement = document.querySelector('.loading-text');
             
-            // Simulate loading time (3 seconds)
+            // AI loading texts
+            const loadingTexts = [
+                "AI Systems Initializing...",
+                "Neural Networks Loading...",
+                "Machine Learning Models Ready...",
+                "Data Analytics Engine Online...",
+                "Portfolio Launching..."
+            ];
+
+            let currentTextIndex = 0;
+
+            // Update text every 1 second
+            const textInterval = setInterval(() => {
+                if (loadingTextElement && currentTextIndex < loadingTexts.length) {
+                    loadingTextElement.textContent = loadingTexts[currentTextIndex];
+                    currentTextIndex++;
+                }
+            }, 1000);
+            
+            // Complete loading after 5 seconds
             setTimeout(() => {
+                clearInterval(textInterval);
+                
                 // Fade out loading screen
                 loadingScreen.classList.add('fade-out');
                 
@@ -1903,32 +1904,9 @@
                 // Remove loading screen after animation
                 setTimeout(() => {
                     loadingScreen.style.display = 'none';
-                }, 500);
-            }, 3000);
+                }, 800);
+            }, 5000);
         });
-
-        // Update loading text dynamically
-        const loadingTexts = [
-            "Initializing AI Systems...",
-            "Loading Machine Learning Models...",
-            "Preparing Data Analytics...",
-            "Setting up Neural Networks...",
-            "Configuring Data Pipelines...",
-            "Ready to Launch!"
-        ];
-
-        let currentTextIndex = 0;
-        const loadingTextElement = document.querySelector('.loading-text');
-
-        function updateLoadingText() {
-            if (loadingTextElement) {
-                loadingTextElement.textContent = loadingTexts[currentTextIndex];
-                currentTextIndex = (currentTextIndex + 1) % loadingTexts.length;
-            }
-        }
-
-        // Update text every 500ms
-        setInterval(updateLoadingText, 500);
         // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
