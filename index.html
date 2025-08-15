@@ -1000,153 +1000,105 @@
 
         /* Apple-style animations */
         .hero-text h1 {
-            animation: slideInLeft 1s ease-out;
+            animation: slideInLeft 1.2s ease-out;
         }
 
         .hero-text h2 {
-            animation: slideInLeft 1s ease-out 0.2s both;
+            animation: slideInLeft 1.2s ease-out 0.3s both;
         }
 
         .hero-text p {
-            animation: slideInLeft 1s ease-out 0.4s both;
+            animation: slideInLeft 1.2s ease-out 0.6s both;
         }
 
         .hero-text .btn {
-            animation: slideInLeft 1s ease-out 0.6s both;
+            animation: slideInLeft 1.2s ease-out 0.9s both;
         }
 
         .hero-image {
-            animation: slideInRight 1s ease-out 0.3s both;
+            animation: slideInRight 1.2s ease-out 0.4s both;
         }
 
+        /* Subtle icon animations */
         .section-icon {
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .skill-icon {
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        .skill-card:nth-child(2) .skill-icon {
-            animation-delay: 0.2s;
-        }
-
-        .skill-card:nth-child(3) .skill-icon {
-            animation-delay: 0.4s;
-        }
-
-        .skill-card:nth-child(4) .skill-icon {
-            animation-delay: 0.6s;
-        }
-
-        .certification-icon {
             animation: pulse 3s ease-in-out infinite;
         }
 
-        .certification-card:nth-child(2) .certification-icon {
-            animation-delay: 0.5s;
+        .skill-icon {
+            transition: transform 0.3s ease;
         }
 
-        .certification-card:nth-child(3) .certification-icon {
-            animation-delay: 1s;
-        }
-
-        .certification-card:nth-child(4) .certification-icon {
-            animation-delay: 1.5s;
-        }
-
-        .certification-card:nth-child(5) .certification-icon {
-            animation-delay: 2s;
-        }
-
-        .experience-icon {
-            animation: pulse 2.5s ease-in-out infinite;
-        }
-
-        .contact-icon {
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        .contact-link:nth-child(2) .contact-icon {
-            animation-delay: 0.3s;
-        }
-
-        .contact-link:nth-child(3) .contact-icon {
-            animation-delay: 0.6s;
-        }
-
-        .contact-link:nth-child(4) .contact-icon {
-            animation-delay: 0.9s;
-        }
-
-        .contact-link:nth-child(5) .contact-icon {
-            animation-delay: 1.2s;
-        }
-
-        /* Hover animations */
         .skill-card:hover .skill-icon {
-            animation: rotate 1s ease-in-out;
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .certification-icon {
+            transition: transform 0.3s ease;
         }
 
         .certification-card:hover .certification-icon {
-            animation: bounce 0.6s ease-in-out;
+            transform: scale(1.1);
+        }
+
+        .experience-icon {
+            transition: transform 0.3s ease;
         }
 
         .experience-card:hover .experience-icon {
-            animation: pulse 1s ease-in-out;
+            transform: scale(1.1);
+        }
+
+        .contact-icon {
+            transition: transform 0.3s ease;
         }
 
         .contact-link:hover .contact-icon {
-            animation: rotate 0.8s ease-in-out;
+            transform: scale(1.1);
         }
 
-        /* Shimmer effect for buttons */
+        /* Button hover effect */
         .btn {
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
         }
 
-        .btn:hover::before {
-            left: 100%;
+        /* Card hover effects */
+        .skill-card,
+        .certification-card,
+        .experience-card {
+            transition: all 0.3s ease;
         }
 
-        /* Parallax effect for hero section */
-        .hero {
-            position: relative;
-            overflow: hidden;
+        .skill-card:hover,
+        .certification-card:hover,
+        .experience-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(0,122,255,0.1), rgba(52,199,89,0.1));
-            animation: shimmer 3s ease-in-out infinite;
-            z-index: -1;
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* Loading animation */
-        .loading-dots {
-            display: inline-block;
+        /* Loading animation for page load */
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
         }
 
-        .loading-dots::after {
-            content: '';
-            animation: dots 1.5s steps(5, end) infinite;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -1816,81 +1768,31 @@
             });
         });
 
-        // Enhanced scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // Simple scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    
-                    // Add staggered animation for grid items
-                    if (entry.target.classList.contains('skill-card') || 
-                        entry.target.classList.contains('certification-card') ||
-                        entry.target.classList.contains('experience-card')) {
-                        const delay = Array.from(entry.target.parentNode.children).indexOf(entry.target) * 0.1;
-                        entry.target.style.animationDelay = `${delay}s`;
-                    }
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        // Observe all fade-in elements
+        // Observe fade-in elements
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
         });
 
-        // Mouse move parallax effect
-        document.addEventListener('mousemove', (e) => {
-            const cards = document.querySelectorAll('.skill-card, .certification-card, .experience-card');
-            cards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+        // Add staggered animation to grid items
+        function addStaggeredAnimation() {
+            const gridItems = document.querySelectorAll('.skill-card, .certification-card, .experience-card');
+            gridItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
             });
-        });
-
-        // Reset transform on mouse leave
-        document.addEventListener('mouseleave', () => {
-            const cards = document.querySelectorAll('.skill-card, .certification-card, .experience-card');
-            cards.forEach(card => {
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
-            });
-        });
-
-        // Typing effect for hero title
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
         }
 
-        // Initialize typing effect when page loads
+        // Initialize animations when page loads
         window.addEventListener('load', () => {
-            const heroTitle = document.querySelector('.hero-text h1');
-            if (heroTitle) {
-                const originalText = heroTitle.textContent;
-                typeWriter(heroTitle, originalText, 80);
-            }
+            addStaggeredAnimation();
         });
     </script>
 </body>
