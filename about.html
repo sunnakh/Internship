@@ -403,16 +403,11 @@
 
         /* Card-like surfaces to match contact.html */
         .about-text-content {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
+            background: transparent;
+            padding: 0;
+            border: none;
         }
 
-        .about-text-content::after,
         .about-profile-card::after {
             content: '';
             position: absolute;
@@ -424,12 +419,10 @@
             transition: left 0.5s ease;
         }
 
-        .about-text-content:hover::after,
         .about-profile-card:hover::after {
             left: 100%;
         }
 
-        .about-text-content:hover,
         .about-profile-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
