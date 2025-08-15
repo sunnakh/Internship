@@ -32,6 +32,8 @@
             --text: #FFFFFF;
             --text-light: #8E8E93;
             --border: #38383A;
+            --shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+            --shadow-lg: 0 8px 24px rgba(255, 255, 255, 0.15);
         }
 
         * {
@@ -73,6 +75,33 @@
 
         .dark .header {
             background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Dark mode specific adjustments */
+        .dark .skill-card,
+        .dark .certification-card,
+        .dark .experience-card,
+        .dark .education-card {
+            background: var(--surface);
+            border-color: var(--border);
+        }
+
+        .dark .btn:hover {
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
+        }
+
+        .dark .skill-card:hover,
+        .dark .certification-card:hover,
+        .dark .experience-card:hover {
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .dark .profile-card {
+            border-color: var(--border);
+        }
+
+        .dark .university-logo {
+            background: var(--surface);
         }
 
         .nav {
@@ -1634,12 +1663,21 @@
         const body = document.body;
         const icon = themeToggle.querySelector('i');
 
+        // Check for saved theme preference or default to light mode
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark');
+            icon.className = 'fas fa-sun';
+        }
+
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('dark');
             if (body.classList.contains('dark')) {
                 icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
             } else {
                 icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
             }
         });
 
