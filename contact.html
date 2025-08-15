@@ -864,10 +864,12 @@
         const currentLang = document.querySelector('.current-lang');
         const languageOptions = document.querySelectorAll('.language-option');
 
-        // Check for saved language preference or default to English
-        const savedLanguage = localStorage.getItem('language') || 'en';
-        document.documentElement.lang = savedLanguage;
-        currentLang.textContent = savedLanguage.toUpperCase();
+        		// Check for saved language preference or default to English
+		const savedLanguage = localStorage.getItem('language') || 'en';
+		document.documentElement.lang = savedLanguage;
+		currentLang.textContent = savedLanguage.toUpperCase();
+		// Apply translation on initial load
+		translateContent(savedLanguage);
 
         // Toggle dropdown
         languageToggle && languageToggle.addEventListener('click', function() {
