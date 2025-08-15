@@ -235,7 +235,62 @@
             font-weight: 600;
         }
 
+        /* About Content Layout */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            align-items: start;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
+        .about-image {
+            text-align: center;
+        }
+
+        .about-profile-card {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 4px solid var(--border);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            margin: 0 auto;
+        }
+
+        .about-profile-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-text-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .about-profile-card {
+                width: 200px;
+                height: 200px;
+            }
+        }
 
         /* Dark mode specific adjustments */
         .dark .skill-card,
@@ -491,14 +546,21 @@
                 </p>
             </div>
             <div class="about-content fade-in">
-                <div class="about-text">
-                    I am Sunnat Axmadov, a dedicated and detail-oriented data professional currently studying at Inha University in Tashkent, majoring in Computer Science and Information Engineering. My academic journey has equipped me with strong foundations in <strong>Python programming</strong>, <strong>SQL</strong>, <strong>data analytics</strong>, <strong>machine learning</strong>, and <strong>cloud technologies</strong>, along with hands-on experience using <strong>Power BI</strong>, <strong>SSIS</strong>, and <strong>Azure Data Factory</strong>.
+                <div class="about-text-content">
+                    <div class="about-text">
+                        I am Sunnat Axmadov, a dedicated and detail-oriented data professional currently studying at Inha University in Tashkent, majoring in Computer Science and Information Engineering. My academic journey has equipped me with strong foundations in <strong>Python programming</strong>, <strong>SQL</strong>, <strong>data analytics</strong>, <strong>machine learning</strong>, and <strong>cloud technologies</strong>, along with hands-on experience using <strong>Power BI</strong>, <strong>SSIS</strong>, and <strong>Azure Data Factory</strong>.
+                    </div>
+                    <div class="about-text">
+                        Beyond my coursework, I have gained practical expertise through a variety of projects — from designing data pipelines and real-time analytics systems to building OOP-based software applications — applying both analytical thinking and robust software engineering principles.
+                    </div>
+                    <div class="about-text">
+                        With a long-term career goal of becoming an AI & ML Engineer, I am committed to continuous learning, exploring cutting-edge technologies, and delivering impactful, data-driven solutions.
+                    </div>
                 </div>
-                <div class="about-text">
-                    Beyond my coursework, I have gained practical expertise through a variety of projects — from designing data pipelines and real-time analytics systems to building OOP-based software applications — applying both analytical thinking and robust software engineering principles.
-                </div>
-                <div class="about-text">
-                    With a long-term career goal of becoming an AI & ML Engineer, I am committed to continuous learning, exploring cutting-edge technologies, and delivering impactful, data-driven solutions.
+                <div class="about-image">
+                    <div class="about-profile-card">
+                        <img src="image.png" alt="Sunnat Axmadov" class="about-profile-image">
+                    </div>
                 </div>
             </div>
         </div>
