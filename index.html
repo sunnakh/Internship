@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunnat Axmadov - AI & Big Data Enthusiast</title>
+    <title>Sunnat Axmadov - Data Scientist & Engineer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -159,11 +159,10 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             font-feature-settings: "kern" 1;
-            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -313,26 +312,13 @@
             transform: scale(0.95);
         }
 
-        /* Hero Section - Redesigned */
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            position: relative;
-            overflow: hidden;
+            padding-top: 80px;
             background: linear-gradient(135deg, var(--background) 0%, var(--surface) 100%);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 80%, rgba(0, 122, 255, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(52, 199, 89, 0.1) 0%, transparent 50%);
-            pointer-events: none;
         }
 
         .hero-content {
@@ -340,67 +326,41 @@
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
-            position: relative;
-            z-index: 2;
         }
 
         .hero-text {
             max-width: 600px;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
+        .hero-icon {
+            font-size: 3rem;
+            color: var(--primary);
             margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
-            animation: slideInLeft 1s ease-out;
+            animation: pulse 3s ease-in-out infinite;
         }
 
-        .hero-badge i {
-            font-size: 1rem;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .hero-title {
+        .hero-text h1 {
             font-size: 3.5rem;
             font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
             line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: slideInLeft 1s ease-out 0.2s both;
+            letter-spacing: -0.02em;
         }
 
-        .hero-subtitle {
+        .hero-text h2 {
             font-size: 1.5rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            font-weight: 400;
-            animation: slideInLeft 1s ease-out 0.4s both;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            letter-spacing: -0.01em;
         }
 
-        .hero-description {
+        .hero-text p {
             font-size: 1.1rem;
             color: var(--text-light);
-            margin-bottom: 3rem;
-            line-height: 1.7;
-            animation: slideInLeft 1s ease-out 0.6s both;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            animation: slideInLeft 1s ease-out 0.8s both;
+            margin-bottom: 2rem;
+            line-height: 1.6;
         }
 
         .btn {
@@ -408,60 +368,39 @@
             align-items: center;
             gap: 0.5rem;
             padding: 1rem 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: var(--primary);
             color: white;
             text-decoration: none;
-            border-radius: var(--radius);
+            border-radius: 20px;
             font-weight: 600;
             font-size: 1rem;
             transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
             border: none;
             cursor: pointer;
+            letter-spacing: -0.01em;
         }
 
         .btn:hover {
+            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
         }
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-            box-shadow: none;
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
-        }
-
-        .hero-visual {
-            position: relative;
+        .hero-image {
             display: flex;
             justify-content: center;
             align-items: center;
-            animation: slideInRight 1s ease-out 0.4s both;
-        }
-
-        .profile-container {
-            position: relative;
-            width: 400px;
-            height: 400px;
         }
 
         .profile-card {
-            width: 100%;
-            height: 100%;
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
+            background: var(--surface);
             border: 4px solid var(--border);
             overflow: hidden;
             box-shadow: var(--shadow-lg);
             transition: var(--transition);
-            position: relative;
-            z-index: 2;
         }
 
         .profile-card:hover {
@@ -473,100 +412,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-        }
-
-        .floating-card {
-            position: absolute;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1rem;
-            box-shadow: var(--shadow);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .floating-card:nth-child(1) {
-            top: 10%;
-            left: -10%;
-            animation-delay: 0s;
-        }
-
-        .floating-card:nth-child(2) {
-            top: 60%;
-            right: -10%;
-            animation-delay: 2s;
-        }
-
-        .floating-card:nth-child(3) {
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-
-        .floating-card i {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .floating-card h4 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .floating-card p {
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
-        /* Stats Section */
-        .stats-section {
-            padding: 4rem 0;
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
-            background: var(--background);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            font-weight: 500;
         }
 
         /* Footer */
@@ -588,7 +433,20 @@
             font-size: 0.8rem;
         }
 
-        /* Animations */
+        /* Dark mode specific adjustments */
+        .dark .profile-card {
+            border-color: var(--border);
+        }
+
+        .dark .btn:hover {
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
         @keyframes slideInLeft {
             from { opacity: 0; transform: translateX(-50px); }
             to { opacity: 1; transform: translateX(0); }
@@ -599,82 +457,53 @@
             to { opacity: 1; transform: translateX(0); }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(2deg); }
-            66% { transform: translateY(-10px) rotate(-2deg); }
+        /* Apple-style animations */
+        .hero-text h1 {
+            animation: slideInLeft 1.2s ease-out;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        .hero-text h2 {
+            animation: slideInLeft 1.2s ease-out 0.3s both;
         }
+
+        .hero-text p {
+            animation: slideInLeft 1.2s ease-out 0.6s both;
+        }
+
+        .hero-text .btn {
+            animation: slideInLeft 1.2s ease-out 0.9s both;
+        }
+
+        .hero-image {
+            animation: slideInRight 1.2s ease-out 0.4s both;
+        }
+
+
 
         /* Responsive Design */
-        @media (max-width: 1024px) {
+        @media (max-width: 768px) {
             .hero-content {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: 2rem;
                 text-align: center;
             }
 
-            .hero-title {
-                font-size: 3rem;
-            }
-
-            .profile-container {
-                width: 350px;
-                height: 350px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero-title {
+            .hero-text h1 {
                 font-size: 2.5rem;
             }
 
-            .hero-subtitle {
-                font-size: 1.25rem;
-            }
-
-            .profile-container {
-                width: 300px;
-                height: 300px;
-            }
-
-            .hero-actions {
-                justify-content: center;
-            }
-
-            .floating-card {
-                display: none;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .profile-container {
+            .profile-card {
                 width: 250px;
                 height: 250px;
             }
 
-            .stats-grid {
-                grid-template-columns: 1fr;
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.8rem;
             }
         }
     </style>
@@ -713,79 +542,28 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <div class="hero-badge">
-                        <i class="fas fa-rocket"></i>
-                        Available for Opportunities
+                    <div class="hero-icon">
+                        <i class="fas fa-brain"></i>
                     </div>
-                    <h1 class="hero-title">AI & Big Data Enthusiast</h1>
-                    <h2 class="hero-subtitle">Transforming Data into Insights</h2>
-                    <p class="hero-description">
+                    <h1>AI & Big Data Enthusiast</h1>
+                    <h2>Transforming Data into Insights</h2>
+                    <p>
                         Passionate about leveraging cutting-edge technology to solve complex data challenges. 
-                        Specializing in machine learning, data engineering, and business intelligence with a 
-                        proven track record of delivering impactful solutions.
+                        Specializing in machine learning, data engineering, and business intelligence.
                     </p>
-                    <div class="hero-actions">
-                        <a href="experience.html" class="btn">
-                            <i class="fas fa-arrow-right"></i>
-                            View My Work
-                        </a>
-                        <a href="contact.html" class="btn btn-secondary">
-                            <i class="fas fa-envelope"></i>
-                            Get In Touch
-                        </a>
+                    <a href="experience.html" class="btn">
+                        <i class="fas fa-arrow-right"></i>
+                        View My Work
+                    </a>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-card">
+                        <img src="image.png" alt="Sunnat Axmadov" class="profile-image">
                     </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="profile-container">
-                        <div class="profile-card">
-                            <img src="image.png" alt="Sunnat Axmadov" class="profile-image">
-                        </div>
-                        <div class="floating-elements">
-                            <div class="floating-card">
-                                <i class="fas fa-brain"></i>
-                                <h4>AI & ML</h4>
-                                <p>Expert</p>
-                            </div>
-                            <div class="floating-card">
-                                <i class="fas fa-database"></i>
-                                <h4>Data Engineering</h4>
-                                <p>Specialist</p>
-                            </div>
-                            <div class="floating-card">
-                                <i class="fas fa-chart-line"></i>
-                                <h4>Analytics</h4>
-                                <p>Proficient</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">4.0</div>
-                    <div class="stat-label">GPA</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">9+</div>
-                    <div class="stat-label">Certifications</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">5+</div>
-                    <div class="stat-label">Projects</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">1.5+</div>
-                    <div class="stat-label">Years Experience</div>
                 </div>
             </div>
         </div>
@@ -846,42 +624,9 @@
             }
         });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.stat-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
+        // Debug: Log current theme on page load
+        console.log('Current theme:', body.classList.contains('dark') ? 'dark' : 'light');
+        console.log('Saved theme:', localStorage.getItem('theme'));
     </script>
 </body>
 </html>
