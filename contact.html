@@ -323,6 +323,99 @@
             padding: 2rem;
             border-radius: var(--radius);
             border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .contact-info,
+        .contact-form {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info::after,
+        .contact-form::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: left 0.5s ease;
+        }
+
+        .contact-info:hover::after,
+        .contact-form:hover::after {
+            left: 100%;
+        }
+
+        .contact-info:hover,
+        .contact-form:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        #contact {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--background) 0%, var(--surface) 100%);
+        }
+
+        #contact::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(0, 122, 255, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(52, 199, 89, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .social-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .social-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem;
+            border-radius: 10px;
+            background: var(--background);
+            border: 1px solid var(--border);
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-button:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .status {
+            display: none;
+            margin-bottom: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+        .status.success { display: block; background: rgba(52, 199, 89, 0.15); color: #2e8b57; border: 1px solid rgba(52,199,89,0.3); }
+        .status.error { display: block; background: rgba(255, 59, 48, 0.15); color: #b00020; border: 1px solid rgba(255,59,48,0.3); }
+
+        @media (max-width: 768px) {
+            .form-row { grid-template-columns: 1fr; }
         }
 
         .contact-form h3 {
@@ -732,30 +825,40 @@
                             </div>
                         </a>
                     </div>
+
+                    <div class="social-buttons">
+                        <a href="mailto:sunnatakhmad@gmail.com" class="social-button" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://t.me/sunnakh" target="_blank" class="social-button" title="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="https://github.com/sunnakh" target="_blank" class="social-button" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/sunnakh/" target="_blank" class="social-button" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
                 </div>
                 <div class="contact-form fade-in">
                     <h3>Send Message</h3>
                     <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">
-                                <i class="fas fa-user"></i>
-                                Name
-                            </label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">
-                                <i class="fas fa-envelope"></i>
-                                Email
-                            </label>
-                            <input type="email" id="email" required>
+                        <div class="status" id="formStatus"></div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">
+                                    <i class="fas fa-user"></i>
+                                    Name
+                                </label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">
+                                    <i class="fas fa-envelope"></i>
+                                    Email
+                                </label>
+                                <input type="email" id="email" required>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="message">
                                 <i class="fas fa-comment"></i>
                                 Message
                             </label>
-                            <textarea id="message" rows="5" required></textarea>
+                            <textarea id="message" rows="6" required></textarea>
                         </div>
                         <button type="submit" class="btn" style="width: 100%;">
                             <i class="fas fa-paper-plane"></i>
@@ -838,7 +941,9 @@
                     subject: `Portfolio Contact from ${name}`
                 }).then(
                     function(response) {
-                        alert('Thank you for your message! I\'ll get back to you soon.');
+                        const status = document.getElementById('formStatus');
+                        status.className = 'status success';
+                        status.textContent = "Thank you for your message! I'll get back to you soon.";
                         document.getElementById('contactForm').reset();
                     },
                     function(error) {
