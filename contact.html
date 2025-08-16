@@ -966,8 +966,61 @@
                 <p class="section-subtitle" data-en="Let's discuss opportunities and collaborations" data-uz="Keling, imkoniyatlar va hamkorliklarni muhokama qilamiz" data-ru="Давайте обсудим возможности и сотрудничество">Let's discuss opportunities and collaborations</p>
             </div>
             <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form animate-slide-left">
+                    <h3>
+                        <i class="fas fa-paper-plane"></i>
+                        <span data-en="Send a Message" data-uz="Xabar yuborish" data-ru="Отправить сообщение">Send a Message</span>
+                    </h3>
+                    
+                    <form id="contactForm">
+                        <div class="status-message" id="formStatus"></div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="name">
+                                    <i class="fas fa-user"></i>
+                                    <span data-en="Full Name" data-uz="To'liq ism" data-ru="Полное имя">Full Name</span>
+                                </label>
+                                <input type="text" id="name" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="email">
+                                    <i class="fas fa-envelope"></i>
+                                    <span data-en="Email Address" data-uz="Elektron pochta" data-ru="Адрес электронной почты">Email Address</span>
+                                </label>
+                                <input type="email" id="email" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label" for="subject">
+                                <i class="fas fa-tag"></i>
+                                <span data-en="Subject" data-uz="Mavzu" data-ru="Тема">Subject</span>
+                            </label>
+                            <input type="text" id="subject" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label" for="message">
+                                <i class="fas fa-comment-dots"></i>
+                                <span data-en="Your Message" data-uz="Sizning xabaringiz" data-ru="Ваше сообщение">Your Message</span>
+                            </label>
+                            <textarea id="message" class="form-textarea" required></textarea>
+                        </div>
+                        
+                        <div style="margin-top: 2rem;">
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                <span data-en="Send Message" data-uz="Xabar yuborish" data-ru="Отправить сообщение">Send Message</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
                 <!-- Contact Information -->
-                <div class="contact-info animate-slide-left">
+                <div class="contact-info animate-slide-right">
                     <h3>
                         <i class="fas fa-address-book"></i>
                         <span data-en="Contact Information" data-uz="Aloqa ma'lumotlari" data-ru="Контактная информация">Contact Information</span>
@@ -1049,57 +1102,6 @@
                             </a>
                         </div>
                     </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="contact-form animate-slide-right">
-                    <h3>
-                        <i class="fas fa-paper-plane"></i>
-                        <span data-en="Send a Message" data-uz="Xabar yuborish" data-ru="Отправить сообщение">Send a Message</span>
-                    </h3>
-                    
-                    <form id="contactForm">
-                        <div class="status-message" id="formStatus"></div>
-                        
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label class="form-label" for="name">
-                                    <i class="fas fa-user"></i>
-                                    <span data-en="Full Name" data-uz="To'liq ism" data-ru="Полное имя">Full Name</span>
-                                </label>
-                                <input type="text" id="name" class="form-input" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label" for="email">
-                                    <i class="fas fa-envelope"></i>
-                                    <span data-en="Email Address" data-uz="Elektron pochta" data-ru="Адрес электронной почты">Email Address</span>
-                                </label>
-                                <input type="email" id="email" class="form-input" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group full-width">
-                            <label class="form-label" for="subject">
-                                <i class="fas fa-tag"></i>
-                                <span data-en="Subject" data-uz="Mavzu" data-ru="Тема">Subject</span>
-                            </label>
-                            <input type="text" id="subject" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group full-width">
-                            <label class="form-label" for="message">
-                                <i class="fas fa-comment-dots"></i>
-                                <span data-en="Your Message" data-uz="Sizning xabaringiz" data-ru="Ваше сообщение">Your Message</span>
-                            </label>
-                            <textarea id="message" class="form-textarea" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-paper-plane"></i>
-                            <span data-en="Send Message" data-uz="Xabar yuborish" data-ru="Отправить сообщение">Send Message</span>
-                        </button>
-                    </form>
                 </div>
             </div>
         </div>
