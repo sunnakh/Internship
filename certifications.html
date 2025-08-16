@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications - Sunnat Axmadov</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #007AFF;
+            --primary-dark: #0056CC;
+            --secondary: #8E8E93;
+            --accent: #34C759;
+            --background: #FFFFFF;
+            --surface: #F2F2F7;
+            --surface-elevated: #FFFFFF;
+            --text: #1D1D1F;
+            --text-light: #86868B;
+            --text-muted: #8E8E93;
+            --border: #E5E5EA;
+            --border-light: #F2F2F7;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --transition-slow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-primary: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'SF Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            --gradient-surface: linear-gradient(145deg, #ffffff 0%, #f2f2f7 100%);
+            --gradient-bg: linear-gradient(135deg, #f2f2f7 0%, #ffffff 50%, #f2f2f7 100%);
+        }
+
+        .dark {
+            --background: #000000;
+            --surface: #1C1C1E;
+            --surface-elevated: #2C2C2E;
+            --text: #FFFFFF;
+            --text-light: #8E8E93;
+            --text-muted: #8E8E93;
+            --border: #38383A;
+            --border-light: #48484A;
+            --shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+            --shadow-lg: 0 8px 24px rgba(255, 255, 255, 0.15);
+            --shadow-xl: 0 20px 25px -5px rgb(255 255 255 / 0.1), 0 8px 10px -6px rgb(255 255 255 / 0.1);
+            --gradient-surface: linear-gradient(145deg, #1c1c1e 0%, #2c2c2e 100%);
+            --gradient-bg: linear-gradient(135deg, #000000 0%, #1c1c1e 50%, #2c2c2e 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: var(--gradient-bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: var(--transition-slow);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-feature-settings: "kern" 1, "liga" 1;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Glass morphism utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dark .glass {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .dark .header {
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom-color: var(--border);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.025em;
+            position: relative;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: var(--transition);
+            padding: 0.625rem 1rem;
+            border-radius: var(--radius);
+            letter-spacing: -0.01em;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+            background: var(--surface);
+            transform: translateY(-1px);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            background: rgba(0, 122, 255, 0.1);
+            font-weight: 600;
+        }
+
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            flex-direction: column;
+            gap: 4px;
+            transition: var(--transition);
+            z-index: 1001;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .mobile-menu-toggle:hover span {
+            background: var(--primary);
+        }
+
+        /* Language switcher */
+        .language-switcher {
+            position: relative;
+            margin-right: 0.75rem;
+        }
+
+        .language-toggle {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .language-toggle:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
+        }
+
+        .current-lang {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--surface-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            min-width: 160px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 1000;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .language-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            border-bottom: 1px solid var(--border-light);
+            font-weight: 500;
+        }
+
+        .language-option:last-child {
+            border-bottom: none;
+        }
+
+        .language-option:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .flag {
+            width: 20px;
+            height: 15px;
+            border-radius: 3px;
+            object-fit: cover;
+        }
+
+        .theme-toggle {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Hero section */
+        .hero {
+            padding: 8rem 0 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(0, 122, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(52, 199, 89, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-xl);
+            margin-bottom: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            font-weight: 400;
+        }
+
+        /* Certifications section */
+        .certifications-section {
+            padding: 4rem 0;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .certification-card {
+            background: var(--gradient-surface);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .certification-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .certification-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
+        }
+
+        .certification-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            background: rgba(0, 122, 255, 0.1);
+            border-radius: var(--radius);
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .certification-card:hover .certification-icon {
+            transform: scale(1.1);
+            background: var(--primary);
+            color: white;
+        }
+
+        .certification-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .certification-platform {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        .certification-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-xl);
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certification-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .certification-link:hover::before {
+            transform: translateX(100%);
+        }
+
+        .certification-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+        }
+
+        /* Call to action */
+        .cta-section {
+            text-align: center;
+            padding: 3rem 0;
+            background: var(--gradient-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent) 0%, #FF9500 100%);
+        }
+
+        .cta-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .cta-subtitle {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-xl);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .btn:hover::before {
+            transform: translateX(100%);
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-slide-left {
+            animation: slideInLeft 0.8s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        .animate-slide-right {
+            animation: slideInRight 0.8s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        /* Staggered animations for cards */
+        .certification-card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .certification-card:nth-child(1) { animation-delay: 0.1s; }
+        .certification-card:nth-child(2) { animation-delay: 0.2s; }
+        .certification-card:nth-child(3) { animation-delay: 0.3s; }
+        .certification-card:nth-child(4) { animation-delay: 0.4s; }
+        .certification-card:nth-child(5) { animation-delay: 0.5s; }
+        .certification-card:nth-child(6) { animation-delay: 0.6s; }
+        .certification-card:nth-child(7) { animation-delay: 0.7s; }
+        .certification-card:nth-child(8) { animation-delay: 0.8s; }
+        .certification-card:nth-child(9) { animation-delay: 0.9s; }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .certifications-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--surface-elevated);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: left 0.3s ease;
+                z-index: 1000;
+                backdrop-filter: blur(20px);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.25rem;
+                padding: 1rem 2rem;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+                order: -1;
+            }
+
+            .hero {
+                padding: 6rem 0 3rem 0;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+
+            .certifications-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .certification-card {
+                padding: 2rem;
+            }
+
+            .certification-icon {
+                width: 56px;
+                height: 56px;
+                font-size: 1.25rem;
+            }
+
+            .language-switcher {
+                margin-right: 0.5rem;
+            }
+
+            .language-toggle {
+                padding: 0.375rem 0.625rem;
+                font-size: 0.8rem;
+            }
+
+            .theme-toggle {
+                width: 36px;
+                height: 36px;
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .certification-card {
+                padding: 1.5rem;
+            }
+
+            .certification-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 1.125rem;
+            }
+
+            .certification-title {
+                font-size: 1.125rem;
+            }
+
+            .certification-platform {
+                font-size: 0.8rem;
+            }
+
+            .certification-link {
+                padding: 0.625rem 1.25rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Large Screens */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1400px;
+            }
+            
+            .hero-title {
+                font-size: 4rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.375rem;
+            }
+            
+            .certifications-grid {
+                gap: 2.5rem;
+            }
+        }
+
+        /* Focus indicators for accessibility */
+        .nav-links a:focus,
+        .language-toggle:focus,
+        .theme-toggle:focus,
+        .certification-link:focus,
+        .btn:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo" data-en="Sunnat Axmadov" data-uz="Sunnat Axmadov" data-ru="Суннат Ахмадов">Sunnat Axmadov</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" data-en="Home" data-uz="Bosh sahifa" data-ru="Главная">Home</a></li>
+                <li><a href="about.html" data-en="About" data-uz="Haqida" data-ru="Обо мне">About</a></li>
+                <li><a href="skills.html" data-en="Skills" data-uz="Ko'nikmalar" data-ru="Навыки">Skills</a></li>
+                <li><a href="education.html" data-en="Education" data-uz="Ta'lim" data-ru="Образование">Education</a></li>
+                <li><a href="experience.html" data-en="Experience" data-uz="Tajriba" data-ru="Опыт">Experience</a></li>
+                <li><a href="certifications.html" class="active" data-en="Certifications" data-uz="Sertifikatlar" data-ru="Сертификаты">Certifications</a></li>
+                <li><a href="contact.html" data-en="Contact" data-uz="Aloqa" data-ru="Контакты">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="language-switcher">
+                <button class="language-toggle" id="languageToggle">
+                    <span class="current-lang">EN</span>
+                    <i class="fas fa-globe"></i>
+                </button>
+                <div class="language-dropdown" id="languageDropdown">
+                    <a href="#" class="language-option" data-lang="en">
+                        <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag">
+                        <span class="lang-name">English</span>
+                    </a>
+                    <a href="#" class="language-option" data-lang="uz">
+                        <img src="https://flagcdn.com/w20/uz.png" alt="Uzbek" class="flag">
+                        <span class="lang-name">O'zbekcha</span>
+                    </a>
+                    <a href="#" class="language-option" data-lang="ru">
+                        <img src="https://flagcdn.com/w20/ru.png" alt="Russian" class="flag">
+                        <span class="lang-name">Русский</span>
+                    </a>
+                </div>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content animate-fade-up">
+                <div class="hero-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h1 class="hero-title" data-en="Professional Certifications" data-uz="Professional sertifikatlar" data-ru="Профессиональные сертификаты">Professional Certifications</h1>
+                <p class="hero-subtitle" data-en="Showcasing my commitment to continuous learning and professional development through industry-recognized certifications and achievements." data-uz="Sanoat tomonidan tan olingan sertifikatlar va yutuqlar orqali doimiy o'rganish va professional rivojlanishga bo'lgan sadoqatimni namoyish etish." data-ru="Демонстрация моей приверженности непрерывному обучению и профессиональному развитию через признанные в отрасли сертификаты и достижения.">Showcasing my commitment to continuous learning and professional development through industry-recognized certifications and achievements.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications-section">
+        <div class="container">
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <div class="certification-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="Programming for Everybody" data-uz="Hammaga dasturlash" data-ru="Программирование для всех">Programming for Everybody</h3>
+                    <p class="certification-platform" data-en="University of Michigan" data-uz="Michigan universiteti" data-ru="Мичиганский университет">University of Michigan</p>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/759F64I17HUD" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+
+                <div class="certification-card">
+                    <div class="certification-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="Accelerate Your Job Search with AI" data-uz="AI yordamida ish qidiruvini tezlashtiring" data-ru="Ускорьте поиск работы с ИИ">Accelerate Your Job Search with AI</h3>
+                    <p class="certification-platform" data-en="Google" data-uz="Google" data-ru="Google">Google</p>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/RQTYDKD246Z6" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+
+                <div class="certification-card">
+                    <div class="certification-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="Google Business Intelligence Certificate" data-uz="Google biznes intellekti sertifikati" data-ru="Сертификат Google по бизнес-аналитике">Google Business Intelligence Certificate</h3>
+                    <p class="certification-platform" data-en="Google" data-uz="Google" data-ru="Google">Google</p>
+                    <a href="https://www.credly.com/badges/11a00f6d-deb3-4ae1-9cdc-6a5d38bba010/public_url" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+
+                <div class="certification-card">
+                    <div class="certification-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="Introduction to Data Engineering" data-uz="Ma'lumotlar muhandisligiga kirish" data-ru="Введение в инженерию данных">Introduction to Data Engineering</h3>
+                    <p class="certification-platform" data-en="IBM" data-uz="IBM" data-ru="IBM">IBM</p>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/XD2QAE732I76?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+
+                <div class="certification-card">
+                    <div class="certification-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="Data Analytics and Engineering" data-uz="Ma'lumotlar tahlili va muhandisligi" data-ru="Аналитика и инженерия данных">Data Analytics and Engineering</h3>
+                    <p class="certification-platform" data-en="MAAB Academy" data-uz="MAAB Akademiyasi" data-ru="Академия MAAB">MAAB Academy</p>
+                    <a href="https://academy.maab.uz/media/certificates/sunnat-axmadov_000048.pdf" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+
+                <div class="certification-card">
+                    <div class="certification-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="AI Python" data-uz="AI Python" data-ru="ИИ Python">AI Python</h3>
+                    <p class="certification-platform" data-en="DeepLearning.AI" data-uz="DeepLearning.AI" data-ru="DeepLearning.AI">DeepLearning.AI</p>
+                    <a href="https://learn.deeplearning.ai/accomplishments/74afd0f8-74b8-4256-913f-5fa078e42cf7?usp=sharing" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+
+                <div class="certification-card">
+                    <div class="certification-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="Python" data-uz="Python" data-ru="Python">Python</h3>
+                    <p class="certification-platform" data-en="Kaggle" data-uz="Kaggle" data-ru="Kaggle">Kaggle</p>
+                    <a href="https://www.kaggle.com/learn/certification/sunnatakhmadov/python" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+
+                <div class="certification-card">
+                    <div class="certification-icon">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="Certificate of Foundation Studies with C++" data-uz="C++ bilan asosiy o'qishlar sertifikati" data-ru="Сертификат базовых исследований с C++">Certificate of Foundation Studies with C++</h3>
+                    <p class="certification-platform" data-en="PDP Academy" data-uz="PDP Akademiyasi" data-ru="Академия PDP">PDP Academy</p>
+                    <a href="https://online.pdp.uz/checkCertificateQr/babeed10-ddfb-442c-ae31-ccd278058055" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+
+                <div class="certification-card">
+                    <div class="certification-icon">
+                        <i class="fas fa-gears"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="C++ Programming - From Beginner to Beyond" data-uz="C++ dasturlash - boshlang'ichdan yuqoriga" data-ru="Программирование на C++ - от новичка до продвинутого">C++ Programming - From Beginner to Beyond</h3>
+                    <p class="certification-platform" data-en="Udemy" data-uz="Udemy" data-ru="Udemy">Udemy</p>
+                    <a href="https://www.udemy.com/certificate/UC-bd20080b-cfa9-4db7-851e-25cab77d2674/" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="cta-section animate-fade-up">
+                <h2 class="cta-title" data-en="Ready to Collaborate?" data-uz="Hamkorlik qilishga tayyormisiz?" data-ru="Готовы к сотрудничеству?">Ready to Collaborate?</h2>
+                <p class="cta-subtitle" data-en="Let's discuss how my skills and certifications can contribute to your next project." data-uz="Mening ko'nikmalarim va sertifikatlarim keyingi loyihangizga qanday hissa qo'shishi mumkinligini muhokama qilaylik." data-ru="Давайте обсудим, как мои навыки и сертификаты могут способствовать вашему следующему проекту.">Let's discuss how my skills and certifications can contribute to your next project.</p>
+                <a href="contact.html" class="btn">
+                    <i class="fas fa-envelope"></i>
+                    <span data-en="Get In Touch" data-uz="Bog'lanish" data-ru="Связаться">Get In Touch</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                © 2025 Sunnat Axmadov. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switcher
+        const languageToggle = document.getElementById('languageToggle');
+        const languageDropdown = document.getElementById('languageDropdown');
+        const currentLang = document.querySelector('.current-lang');
+        const languageOptions = document.querySelectorAll('.language-option');
+
+        // Check for saved language preference or default to English
+        const savedLanguage = localStorage.getItem('language') || 'en';
+        document.documentElement.lang = savedLanguage;
+        currentLang.textContent = savedLanguage.toUpperCase();
+        // Apply translation on initial load
+        translateContent(savedLanguage);
+
+        // Toggle dropdown
+        languageToggle && languageToggle.addEventListener('click', function() {
+            languageDropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!languageToggle.contains(event.target) && !languageDropdown.contains(event.target)) {
+                languageDropdown.classList.remove('show');
+            }
+        });
+
+        // Handle language selection
+        languageOptions.forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lang = this.getAttribute('data-lang');
+                currentLang.textContent = lang.toUpperCase();
+                document.documentElement.lang = lang;
+                localStorage.setItem('language', lang);
+                translateContent(lang);
+                languageDropdown.classList.remove('show');
+            });
+        });
+
+        // Translate content function
+        function translateContent(lang) {
+            const elements = document.querySelectorAll(`[data-${lang}]`);
+            elements.forEach(element => {
+                const originalText = element.getAttribute(`data-${lang}`);
+                const nestedSpans = element.querySelectorAll('span[data-en]');
+                if (nestedSpans.length > 0) {
+                    nestedSpans.forEach(span => {
+                        const spanText = span.getAttribute(`data-${lang}`);
+                        if (spanText) span.textContent = spanText;
+                    });
+                } else {
+                    if (originalText && originalText.includes('<strong>')) {
+                        element.innerHTML = originalText;
+                    } else if (originalText) {
+                        element.textContent = originalText;
+                    }
+                }
+            });
+        }
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference or default to light mode
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark');
+            icon.className = 'fas fa-sun';
+        }
+
+        // Add click event listener
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark');
+            if (body.classList.contains('dark')) {
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenuToggle.contains(event.target) && !navLinks.contains(event.target)) {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) translateX(0)';
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        // Observe elements for animation
+        document.querySelectorAll('.animate-fade-up, .animate-slide-left, .animate-slide-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced scroll animations
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero::before');
+            if (parallax) {
+                const speed = scrolled * 0.5;
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
