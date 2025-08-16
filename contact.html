@@ -169,10 +169,16 @@
             transform: rotate(-45deg) translate(7px, -6px);
         }
 
+        /* Navigation controls group */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
         /* Language switcher */
         .language-switcher {
             position: relative;
-            margin-right: 0.75rem;
         }
 
         .language-toggle {
@@ -827,8 +833,8 @@
                 gap: 0.5rem;
             }
 
-            .language-switcher {
-                margin-right: 0.5rem;
+            .nav-controls {
+                gap: 0.375rem;
             }
 
             .language-toggle {
@@ -924,33 +930,35 @@
                 <li><a href="certifications.html" data-en="Certifications" data-uz="Sertifikatlar" data-ru="Сертификаты">Certifications</a></li>
                 <li><a href="contact.html" class="active" data-en="Contact" data-uz="Aloqa" data-ru="Контакты">Contact</a></li>
             </ul>
+            <div class="nav-controls">
+                <div class="language-switcher">
+                    <button class="language-toggle" id="languageToggle">
+                        <span class="current-lang">EN</span>
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <a href="#" class="language-option" data-lang="en">
+                            <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag">
+                            <span class="lang-name">English</span>
+                        </a>
+                        <a href="#" class="language-option" data-lang="uz">
+                            <img src="https://flagcdn.com/w20/uz.png" alt="Uzbek" class="flag">
+                            <span class="lang-name">O'zbekcha</span>
+                        </a>
+                        <a href="#" class="language-option" data-lang="ru">
+                            <img src="https://flagcdn.com/w20/ru.png" alt="Russian" class="flag">
+                            <span class="lang-name">Русский</span>
+                        </a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
             <button class="mobile-menu-toggle" id="mobileMenuToggle">
                 <span></span>
                 <span></span>
                 <span></span>
-            </button>
-            <div class="language-switcher">
-                <button class="language-toggle" id="languageToggle">
-                    <span class="current-lang">EN</span>
-                    <i class="fas fa-globe"></i>
-                </button>
-                <div class="language-dropdown" id="languageDropdown">
-                    <a href="#" class="language-option" data-lang="en">
-                        <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag">
-                        <span class="lang-name">English</span>
-                    </a>
-                    <a href="#" class="language-option" data-lang="uz">
-                        <img src="https://flagcdn.com/w20/uz.png" alt="Uzbek" class="flag">
-                        <span class="lang-name">O'zbekcha</span>
-                    </a>
-                    <a href="#" class="language-option" data-lang="ru">
-                        <img src="https://flagcdn.com/w20/ru.png" alt="Russian" class="flag">
-                        <span class="lang-name">Русский</span>
-                    </a>
-                </div>
-            </div>
-            <button class="theme-toggle" id="themeToggle">
-                <i class="fas fa-moon"></i>
             </button>
         </nav>
     </header>
