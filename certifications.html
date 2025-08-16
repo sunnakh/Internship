@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications - Sunnat Axmadov</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        :root {
+            --primary: #007AFF;
+            --primary-dark: #0056CC;
+            --secondary: #8E8E93;
+            --accent: #34C759;
+            --background: #FFFFFF;
+            --surface: #F2F2F7;
+            --text: #1D1D1F;
+            --text-light: #86868B;
+            --border: #E5E5EA;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --font-primary: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'SF Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+
+        .dark {
+            --background: #000000;
+            --surface: #1C1C1E;
+            --text: #FFFFFF;
+            --text-light: #8E8E93;
+            --border: #38383A;
+            --shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+            --shadow-lg: 0 8px 24px rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.5;
+            transition: var(--transition);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-feature-settings: "kern" 1;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Animated Background */
+        .animated-background {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 160px);
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .tech-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: techFloat 25s infinite linear;
+            transition: transform 0.3s ease;
+            opacity: 1;
+            bottom: -60px;
+            z-index: 5;
+        }
+
+        .tech-icon:hover {
+            transform: scale(1.2) !important;
+            opacity: 1;
+        }
+
+        /* AI Icons - Blue/Cyan theme */
+        .ai-icon {
+            background: rgba(0, 122, 255, 0.3);
+            color: #007AFF;
+            border: 2px solid rgba(0, 122, 255, 0.6);
+        }
+
+        .ai-icon:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 30s; }
+        .ai-icon:nth-child(2) { left: 25%; animation-delay: -8s; animation-duration: 35s; }
+        .ai-icon:nth-child(3) { left: 45%; animation-delay: -16s; animation-duration: 28s; }
+        .ai-icon:nth-child(4) { left: 85%; animation-delay: -24s; animation-duration: 32s; }
+
+        /* ML Icons - Green theme */
+        .ml-icon {
+            background: rgba(52, 199, 89, 0.3);
+            color: #34C759;
+            border: 2px solid rgba(52, 199, 89, 0.6);
+        }
+
+        .ml-icon:nth-child(5) { left: 15%; animation-delay: -4s; animation-duration: 33s; }
+        .ml-icon:nth-child(6) { left: 35%; animation-delay: -12s; animation-duration: 27s; }
+        .ml-icon:nth-child(7) { left: 55%; animation-delay: -20s; animation-duration: 38s; }
+        .ml-icon:nth-child(8) { left: 75%; animation-delay: -28s; animation-duration: 31s; }
+
+        /* Big Data Icons - Orange/Red theme */
+        .data-icon {
+            background: rgba(255, 149, 0, 0.3);
+            color: #FF9500;
+            border: 2px solid rgba(255, 149, 0, 0.6);
+        }
+
+        .data-icon:nth-child(9) { left: 10%; animation-delay: -2s; animation-duration: 29s; }
+        .data-icon:nth-child(10) { left: 30%; animation-delay: -10s; animation-duration: 36s; }
+        .data-icon:nth-child(11) { left: 50%; animation-delay: -18s; animation-duration: 34s; }
+        .data-icon:nth-child(12) { left: 70%; animation-delay: -26s; animation-duration: 26s; }
+        .data-icon:nth-child(13) { left: 90%; animation-delay: -34s; animation-duration: 39s; }
+
+        /* Additional Tech Icons - Purple theme */
+        .extra-icon {
+            background: rgba(138, 43, 226, 0.3);
+            color: #8A2BE2;
+            border: 2px solid rgba(138, 43, 226, 0.6);
+        }
+
+        .extra-icon:nth-child(14) { left: 20%; animation-delay: -6s; animation-duration: 37s; }
+        .extra-icon:nth-child(15) { left: 60%; animation-delay: -14s; animation-duration: 25s; }
+        .extra-icon:nth-child(16) { left: 80%; animation-delay: -22s; animation-duration: 40s; }
+
+        .gradient-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                rgba(0, 122, 255, 0.02) 0%,
+                rgba(52, 199, 89, 0.02) 25%,
+                rgba(255, 149, 0, 0.02) 50%,
+                rgba(138, 43, 226, 0.02) 75%,
+                rgba(0, 122, 255, 0.02) 100%
+            );
+            animation: gradientShift 20s ease-in-out infinite;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .dark .header {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+            position: relative;
+            animation: logoGlow 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(0, 122, 255, 0.5);
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), transparent, var(--primary));
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .logo:hover::before {
+            opacity: 0.3;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            letter-spacing: -0.01em;
+            position: relative;
+            border: 1px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(0, 122, 255, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::before {
+            opacity: 0.3;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            flex-direction: column;
+            gap: 4px;
+            transition: var(--transition);
+            z-index: 1001;
+            margin-right: 0.5rem;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .mobile-menu-toggle:hover span {
+            background: var(--primary);
+        }
+
+        /* Navigation controls group */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+        }
+
+        .language-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            min-width: 80px;
+            justify-content: center;
+        }
+
+        .language-toggle:hover {
+            background: rgba(0, 122, 255, 0.1);
+            border-color: var(--primary);
+        }
+
+        .current-lang {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 1000;
+            margin-top: 0.5rem;
+        }
+
+        .language-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .language-option:last-child {
+            border-bottom: none;
+        }
+
+        .language-option:hover {
+            background: rgba(0, 122, 255, 0.1);
+            color: var(--primary);
+        }
+
+        .flag {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+        }
+
+        .lang-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            min-height: 40px;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(0, 122, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
+        }
+
+        /* Buttons (match contact.html) */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            letter-spacing: -0.01em;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Match contact.html section background */
+        #certifications {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--background) 0%, var(--surface) 100%);
+        }
+
+        #certifications::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(0, 122, 255, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(52, 199, 89, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+            position: relative;
+            display: inline-block;
+            padding: 0 2rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            padding: 1rem 0;
+        }
+
+        /* Certifications */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .certification-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certification-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: left 0.5s ease;
+        }
+
+        .certification-card:hover::after { left: 100%; }
+
+        .certification-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 122, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .certification-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .certification-platform {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .certification-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .certification-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+        }
+
+        /* Dark mode specific adjustments */
+        .dark .skill-card,
+        .dark .certification-card,
+        .dark .experience-card,
+        .dark .education-card {
+            background: var(--surface);
+            border-color: var(--border);
+        }
+
+        .dark .btn:hover {
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
+        }
+
+        .dark .skill-card:hover,
+        .dark .certification-card:hover,
+        .dark .experience-card:hover {
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .dark .profile-card {
+            border-color: var(--border);
+        }
+
+        .dark .university-logo {
+            background: var(--surface);
+        }
+
+        /* Additional dark mode styles */
+        .dark .section-title {
+            color: var(--text);
+        }
+
+        .dark .section-subtitle {
+            color: var(--text-light);
+        }
+
+        .dark .skill-title,
+        .dark .certification-title,
+        .dark .experience-title {
+            color: var(--text);
+        }
+
+        .dark .tag {
+            background: var(--surface);
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .dark .form-group input,
+        .dark .form-group textarea {
+            background: var(--surface);
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .dark .form-group input:focus,
+        .dark .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .dark .form-group label {
+            color: var(--text);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: calc(200px + 100%) 0; }
+        }
+
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        /* Apple-style animations */
+        .hero-text h1 {
+            animation: slideInLeft 1.2s ease-out;
+        }
+
+        .hero-text h2 {
+            animation: slideInLeft 1.2s ease-out 0.3s both;
+        }
+
+        .hero-text p {
+            animation: slideInLeft 1.2s ease-out 0.6s both;
+        }
+
+        .hero-text .btn {
+            animation: slideInLeft 1.2s ease-out 0.9s both;
+        }
+
+        .hero-image {
+            animation: slideInRight 1.2s ease-out 0.4s both;
+        }
+
+        /* Subtle icon animations */
+        .section-icon {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .skill-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .certification-card:hover .certification-icon {
+            background: rgba(0, 122, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .experience-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover .experience-icon {
+            transform: scale(1.1);
+        }
+
+        .contact-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .contact-link:hover .contact-icon {
+            transform: scale(1.1);
+        }
+
+        /* Button hover effect */
+        .btn {
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+        }
+
+        /* Card hover effects */
+        .skill-card,
+        .certification-card,
+        .experience-card {
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover,
+        .certification-card:hover,
+        .experience-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation for page load */
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { 
+                text-shadow: 0 0 5px rgba(0, 122, 255, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 0 0 15px rgba(0, 122, 255, 0.6);
+                transform: scale(1.02);
+            }
+        }
+
+        /* Certifications page specific animations */
+        .certifications-grid {
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .certification-card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .certification-card:nth-child(1) { animation-delay: 0.5s; }
+        .certification-card:nth-child(2) { animation-delay: 0.7s; }
+        .certification-card:nth-child(3) { animation-delay: 0.9s; }
+        .certification-card:nth-child(4) { animation-delay: 1.1s; }
+        .certification-card:nth-child(5) { animation-delay: 1.3s; }
+        .certification-card:nth-child(6) { animation-delay: 1.5s; }
+        .certification-card:nth-child(7) { animation-delay: 1.7s; }
+        .certification-card:nth-child(8) { animation-delay: 1.9s; }
+        .certification-card:nth-child(9) { animation-delay: 2.1s; }
+
+
+
+        .certification-title {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certification-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            transition: left 0.5s ease;
+        }
+
+        .certification-card:hover .certification-title::after {
+            left: 0;
+        }
+
+        .certification-link {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .certification-link:hover {
+            transform: translateX(5px);
+        }
+
+        .section-title {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            animation: slideInRight 1.5s ease-out 0.5s forwards;
+        }
+
+        .certifications-actions {
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .certifications-actions .btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certifications-actions .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .certifications-actions .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Enhanced hover effects */
+        .certification-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        /* Tech Icon Animation Keyframes */
+        @keyframes techFloat {
+            0% {
+                transform: translateY(0px) translateX(0px) rotate(0deg);
+                opacity: 0;
+            }
+            5% {
+                opacity: 0.8;
+                transform: translateY(-50px) translateX(10px) rotate(18deg);
+            }
+            15% {
+                transform: translateY(-120px) translateX(20px) rotate(45deg);
+            }
+            30% {
+                transform: translateY(-240px) translateX(-15px) rotate(90deg);
+            }
+            45% {
+                transform: translateY(-360px) translateX(25px) rotate(135deg);
+            }
+            60% {
+                transform: translateY(-480px) translateX(-20px) rotate(180deg);
+            }
+            75% {
+                transform: translateY(-600px) translateX(30px) rotate(225deg);
+            }
+            90% {
+                transform: translateY(-720px) translateX(-10px) rotate(315deg);
+                opacity: 0.8;
+            }
+            95% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-800px) translateX(15px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background: linear-gradient(
+                    45deg,
+                    rgba(0, 122, 255, 0.02) 0%,
+                    rgba(52, 199, 89, 0.02) 25%,
+                    rgba(255, 149, 0, 0.02) 50%,
+                    rgba(138, 43, 226, 0.02) 75%,
+                    rgba(0, 122, 255, 0.02) 100%
+                );
+            }
+            25% {
+                background: linear-gradient(
+                    45deg,
+                    rgba(52, 199, 89, 0.02) 0%,
+                    rgba(255, 149, 0, 0.02) 25%,
+                    rgba(138, 43, 226, 0.02) 50%,
+                    rgba(0, 122, 255, 0.02) 75%,
+                    rgba(52, 199, 89, 0.02) 100%
+                );
+            }
+            50% {
+                background: linear-gradient(
+                    45deg,
+                    rgba(255, 149, 0, 0.02) 0%,
+                    rgba(138, 43, 226, 0.02) 25%,
+                    rgba(0, 122, 255, 0.02) 50%,
+                    rgba(52, 199, 89, 0.02) 75%,
+                    rgba(255, 149, 0, 0.02) 100%
+                );
+            }
+            75% {
+                background: linear-gradient(
+                    45deg,
+                    rgba(138, 43, 226, 0.02) 0%,
+                    rgba(0, 122, 255, 0.02) 25%,
+                    rgba(52, 199, 89, 0.02) 50%,
+                    rgba(255, 149, 0, 0.02) 75%,
+                    rgba(138, 43, 226, 0.02) 100%
+                );
+            }
+        }
+
+        @keyframes background-shift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Dark mode tech icon adjustments */
+        .dark .ai-icon {
+            background: rgba(0, 122, 255, 0.25);
+            color: #66B2FF;
+            border: 2px solid rgba(0, 122, 255, 0.5);
+            box-shadow: 0 0 15px rgba(0, 122, 255, 0.2);
+        }
+
+        .dark .ml-icon {
+            background: rgba(52, 199, 89, 0.25);
+            color: #66E599;
+            border: 2px solid rgba(52, 199, 89, 0.5);
+            box-shadow: 0 0 15px rgba(52, 199, 89, 0.2);
+        }
+
+        .dark .data-icon {
+            background: rgba(255, 149, 0, 0.25);
+            color: #FFB366;
+            border: 2px solid rgba(255, 149, 0, 0.5);
+            box-shadow: 0 0 15px rgba(255, 149, 0, 0.2);
+        }
+
+        .dark .extra-icon {
+            background: rgba(138, 43, 226, 0.25);
+            color: #B866E2;
+            border: 2px solid rgba(138, 43, 226, 0.5);
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
+        }
+
+        .dark .gradient-overlay {
+            background: linear-gradient(
+                45deg,
+                rgba(0, 122, 255, 0.05) 0%,
+                rgba(52, 199, 89, 0.05) 25%,
+                rgba(255, 149, 0, 0.05) 50%,
+                rgba(138, 43, 226, 0.05) 75%,
+                rgba(0, 122, 255, 0.05) 100%
+            );
+        }
+
+        /* Performance optimizations */
+        .animated-background * {
+            will-change: transform, opacity;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        /* Reduce animations on mobile for performance */
+        @media (max-width: 768px) {
+            .tech-icon:nth-child(n+9) {
+                display: none;
+            }
+            
+            .tech-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                animation-duration: 35s !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tech-icon:nth-child(n+6) {
+                display: none;
+            }
+            
+            .tech-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+                animation-duration: 40s !important;
+            }
+        }
+
+        /* Respect user's motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            .animated-background {
+                display: none;
+            }
+        }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 0.8rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--background);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: left 0.3s ease;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 1rem 2rem;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+                order: -1;
+            }
+
+            .nav-controls {
+                gap: 0.375rem;
+            }
+
+            .language-toggle {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.75rem;
+                min-width: 60px;
+            }
+
+            .theme-toggle {
+                font-size: 1rem;
+                padding: 0.3rem;
+                min-width: 32px;
+                min-height: 32px;
+            }
+
+            .section {
+                padding: 4rem 0 2rem 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                padding: 0 0.5rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.95rem;
+                padding: 0 0.5rem;
+            }
+
+            .certifications-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .certification-card {
+                padding: 1.2rem;
+            }
+
+            .certification-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .certification-title {
+                font-size: 1.1rem;
+            }
+
+            .certification-platform {
+                font-size: 0.85rem;
+            }
+
+            .certification-link {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .certification-card:nth-child(1) { animation-delay: 0.4s; }
+            .certification-card:nth-child(2) { animation-delay: 0.6s; }
+            .certification-card:nth-child(3) { animation-delay: 0.8s; }
+            .certification-card:nth-child(4) { animation-delay: 1.0s; }
+            .certification-card:nth-child(5) { animation-delay: 1.2s; }
+            .certification-card:nth-child(6) { animation-delay: 1.4s; }
+            .certification-card:nth-child(7) { animation-delay: 1.6s; }
+            .certification-card:nth-child(8) { animation-delay: 1.8s; }
+            .certification-card:nth-child(9) { animation-delay: 2.0s; }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.6rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .certifications-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .certification-card {
+                padding: 1rem;
+            }
+
+            .certification-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+
+            .certification-title {
+                font-size: 1rem;
+            }
+
+            .certification-platform {
+                font-size: 0.8rem;
+            }
+
+            .certification-link {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .language-toggle {
+                min-width: 55px;
+                font-size: 0.7rem;
+            }
+
+            .flag {
+                width: 16px;
+                height: 12px;
+            }
+
+            .lang-name {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .container {
+                padding: 0 0.5rem;
+            }
+
+            .logo {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .certification-card {
+                padding: 0.8rem;
+            }
+
+            .certification-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .certification-title {
+                font-size: 0.9rem;
+            }
+
+            .certification-platform {
+                font-size: 0.75rem;
+            }
+
+            .certification-link {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.6rem;
+            }
+        }
+
+        /* Large Tablets and Small Laptops */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Large Screens */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1400px;
+            }
+            
+            .section-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .certifications-grid {
+                gap: 2.5rem;
+            }
+        }
+    </style>
+</head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo" data-en="Sunnat Axmadov" data-uz="Sunnat Axmadov" data-ru="Суннат Ахмадов">Sunnat Axmadov</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" data-en="Home" data-uz="Bosh sahifa" data-ru="Главная">Home</a></li>
+                <li><a href="about.html" data-en="About" data-uz="Haqida" data-ru="Обо мне">About</a></li>
+                <li><a href="skills.html" data-en="Skills" data-uz="Ko'nikmalar" data-ru="Навыки">Skills</a></li>
+                <li><a href="education.html" data-en="Education" data-uz="Ta'lim" data-ru="Образование">Education</a></li>
+                <li><a href="experience.html" data-en="Experience" data-uz="Tajriba" data-ru="Опыт">Experience</a></li>
+                <li><a href="certifications.html" class="active" data-en="Certifications" data-uz="Sertifikatlar" data-ru="Сертификаты">Certifications</a></li>
+                <li><a href="contact.html" data-en="Contact" data-uz="Aloqa" data-ru="Контакты">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <div class="language-switcher">
+                    <button class="language-toggle" id="languageToggle">
+                        <span class="current-lang">EN</span>
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <a href="#" class="language-option" data-lang="en">
+                            <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag">
+                            <span class="lang-name">English</span>
+                        </a>
+                        <a href="#" class="language-option" data-lang="uz">
+                            <img src="https://flagcdn.com/w20/uz.png" alt="Uzbek" class="flag">
+                            <span class="lang-name">O'zbekcha</span>
+                        </a>
+                        <a href="#" class="language-option" data-lang="ru">
+                            <img src="https://flagcdn.com/w20/ru.png" alt="Russian" class="flag">
+                            <span class="lang-name">Русский</span>
+                        </a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <!-- Floating Tech Icons -->
+        <div class="floating-icons">
+            <!-- AI Icons -->
+            <div class="tech-icon ai-icon"><i class="fas fa-brain"></i></div>
+            <div class="tech-icon ai-icon"><i class="fas fa-robot"></i></div>
+            <div class="tech-icon ai-icon"><i class="fas fa-microchip"></i></div>
+            <div class="tech-icon ai-icon"><i class="fas fa-eye"></i></div>
+            
+            <!-- ML Icons -->
+            <div class="tech-icon ml-icon"><i class="fas fa-project-diagram"></i></div>
+            <div class="tech-icon ml-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="tech-icon ml-icon"><i class="fas fa-network-wired"></i></div>
+            <div class="tech-icon ml-icon"><i class="fas fa-sitemap"></i></div>
+            
+            <!-- Big Data Icons -->
+            <div class="tech-icon data-icon"><i class="fas fa-database"></i></div>
+            <div class="tech-icon data-icon"><i class="fas fa-server"></i></div>
+            <div class="tech-icon data-icon"><i class="fas fa-chart-pie"></i></div>
+            <div class="tech-icon data-icon"><i class="fas fa-cloud"></i></div>
+            <div class="tech-icon data-icon"><i class="fas fa-hdd"></i></div>
+            
+            <!-- Additional Tech Icons -->
+            <div class="tech-icon extra-icon"><i class="fas fa-code"></i></div>
+            <div class="tech-icon extra-icon"><i class="fas fa-cogs"></i></div>
+            <div class="tech-icon extra-icon"><i class="fas fa-laptop-code"></i></div>
+        </div>
+        
+        <!-- Background Gradient Overlay -->
+        <div class="gradient-overlay"></div>
+    </div>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h2 class="section-title" data-en="Certifications" data-uz="Sertifikatlar" data-ru="Сертификаты">Certifications</h2>
+                <p class="section-subtitle" data-en="Professional certifications and achievements" data-uz="Professional sertifikatlar va yutuqlar" data-ru="Профессиональные сертификаты и достижения">Professional certifications and achievements</p>
+            </div>
+            <div class="certifications-grid">
+                <div class="certification-card fade-in">
+                    <div class="certification-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="Programming for Everybody" data-uz="Hammaga dasturlash" data-ru="Программирование для всех">Programming for Everybody</h3>
+                    <p class="certification-platform" data-en="University of Michigan" data-uz="Michigan universiteti" data-ru="Мичиганский университет">University of Michigan</p>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/759F64I17HUD" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+                <div class="certification-card fade-in">
+                    <div class="certification-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="Accelerate Your Job Search with AI" data-uz="AI yordamida ish qidiruvini tezlashtiring" data-ru="Ускорьте поиск работы с ИИ">Accelerate Your Job Search with AI</h3>
+                    <p class="certification-platform" data-en="Google" data-uz="Google" data-ru="Google">Google</p>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/RQTYDKD246Z6" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+                <div class="certification-card fade-in">
+                    <div class="certification-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="Google Business Intelligence Certificate" data-uz="Google biznes intellekti sertifikati" data-ru="Сертификат Google по бизнес-аналитике">Google Business Intelligence Certificate</h3>
+                    <p class="certification-platform" data-en="Google" data-uz="Google" data-ru="Google">Google</p>
+                    <a href="https://www.credly.com/badges/11a00f6d-deb3-4ae1-9cdc-6a5d38bba010/public_url" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+                <div class="certification-card fade-in">
+                    <div class="certification-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="Introduction to Data Engineering" data-uz="Ma'lumotlar muhandisligiga kirish" data-ru="Введение в инженерию данных">Introduction to Data Engineering</h3>
+                    <p class="certification-platform" data-en="IBM" data-uz="IBM" data-ru="IBM">IBM</p>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/XD2QAE732I76?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+                <div class="certification-card fade-in">
+                    <div class="certification-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="Data Analytics and Engineering" data-uz="Ma'lumotlar tahlili va muhandisligi" data-ru="Аналитика и инженерия данных">Data Analytics and Engineering</h3>
+                    <p class="certification-platform" data-en="MAAB Academy" data-uz="MAAB Akademiyasi" data-ru="Академия MAAB">MAAB Academy</p>
+                    <a href="https://academy.maab.uz/media/certificates/sunnat-axmadov_000048.pdf" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+                <div class="certification-card fade-in">
+                    <div class="certification-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="AI Python" data-uz="AI Python" data-ru="ИИ Python">AI Python</h3>
+                    <p class="certification-platform" data-en="DeepLearning.AI" data-uz="DeepLearning.AI" data-ru="DeepLearning.AI">DeepLearning.AI</p>
+                    <a href="https://learn.deeplearning.ai/accomplishments/74afd0f8-74b8-4256-913f-5fa078e42cf7?usp=sharing" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+                <div class="certification-card fade-in">
+                    <div class="certification-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="Python" data-uz="Python" data-ru="Python">Python</h3>
+                    <p class="certification-platform" data-en="Kaggle" data-uz="Kaggle" data-ru="Kaggle">Kaggle</p>
+                    <a href="https://www.kaggle.com/learn/certification/sunnatakhmadov/python" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+                <div class="certification-card fade-in">
+                    <div class="certification-icon">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="Certificate of Foundation Studies with C++" data-uz="C++ bilan asosiy o'qishlar sertifikati" data-ru="Сертификат базовых исследований с C++">Certificate of Foundation Studies with C++</h3>
+                    <p class="certification-platform" data-en="PDP Academy" data-uz="PDP Akademiyasi" data-ru="Академия PDP">PDP Academy</p>
+                    <a href="https://online.pdp.uz/checkCertificateQr/babeed10-ddfb-442c-ae31-ccd278058055" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+                <div class="certification-card fade-in">
+                    <div class="certification-icon">
+                        <i class="fas fa-gears"></i>
+                    </div>
+                    <h3 class="certification-title" data-en="C++ Programming - From Beginner to Beyond" data-uz="C++ dasturlash - boshlang'ichdan yuqoriga" data-ru="Программирование на C++ - от новичка до продвинутого">C++ Programming - From Beginner to Beyond</h3>
+                    <p class="certification-platform" data-en="Udemy" data-uz="Udemy" data-ru="Udemy">Udemy</p>
+                    <a href="https://www.udemy.com/certificate/UC-bd20080b-cfa9-4db7-851e-25cab77d2674/" target="_blank" class="certification-link">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                    </a>
+                </div>
+            </div>
+            <div class="certifications-actions fade-in" style="text-align: center; margin-top: 3rem;">
+                <a href="contact.html" class="btn">
+                    <i class="fas fa-envelope"></i>
+                    <span data-en="Get In Touch" data-uz="Bog'lanish" data-ru="Связаться">Get In Touch</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    © 2025 Sunnat Axmadov. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switcher
+        const languageToggle = document.getElementById('languageToggle');
+        const languageDropdown = document.getElementById('languageDropdown');
+        const currentLang = document.querySelector('.current-lang');
+        const languageOptions = document.querySelectorAll('.language-option');
+
+        // Check for saved language preference or default to English
+        const savedLanguage = localStorage.getItem('language') || 'en';
+        document.documentElement.lang = savedLanguage;
+        currentLang.textContent = savedLanguage.toUpperCase();
+
+        // Toggle dropdown
+        languageToggle.addEventListener('click', function() {
+            languageDropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!languageToggle.contains(event.target) && !languageDropdown.contains(event.target)) {
+                languageDropdown.classList.remove('show');
+            }
+        });
+
+        // Handle language selection
+        languageOptions.forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lang = this.getAttribute('data-lang');
+                
+                // Update current language display
+                currentLang.textContent = lang.toUpperCase();
+                
+                // Update HTML lang attribute
+                document.documentElement.lang = lang;
+                
+                // Save to localStorage
+                localStorage.setItem('language', lang);
+                
+                // Translate content
+                translateContent(lang);
+                
+                // Close dropdown
+                languageDropdown.classList.remove('show');
+            });
+        });
+
+        // Translate content function
+        function translateContent(lang) {
+            const elements = document.querySelectorAll(`[data-${lang}]`);
+            elements.forEach(element => {
+                const originalText = element.getAttribute(`data-${lang}`);
+                
+                // Check if element has nested spans with data attributes (for specific cases like buttons with icons)
+                const nestedSpans = element.querySelectorAll('span[data-en]');
+                if (nestedSpans.length > 0) {
+                    nestedSpans.forEach(span => {
+                        const spanText = span.getAttribute(`data-${lang}`);
+                        if (spanText) {
+                            span.textContent = spanText;
+                        }
+                    });
+                } else {
+                    // Check if the translated text contains HTML (like <strong> tags)
+                    if (originalText.includes('<strong>')) {
+                        // Set innerHTML to preserve HTML formatting
+                        element.innerHTML = originalText;
+                    } else {
+                        // Set text content for plain text
+                        element.textContent = originalText;
+                    }
+                }
+            });
+        }
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference or default to light mode
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark');
+            icon.className = 'fas fa-sun';
+        }
+
+        // Add click event listener
+        themeToggle.addEventListener('click', function() {
+            console.log('Theme toggle clicked'); // Debug log
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('dark')) {
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+                console.log('Switched to dark mode'); // Debug log
+            } else {
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+                console.log('Switched to light mode'); // Debug log
+            }
+        });
+
+        // Debug: Log current theme on page load
+        console.log('Current theme:', body.classList.contains('dark') ? 'dark' : 'light');
+        console.log('Saved theme:', localStorage.getItem('theme'));
+
+        // Simple scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add staggered animation to grid items
+        function addStaggeredAnimation() {
+            const gridItems = document.querySelectorAll('.skill-card, .certification-card, .experience-card');
+            gridItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+            });
+        }
+
+        // Initialize animations when page loads
+        window.addEventListener('load', () => {
+            addStaggeredAnimation();
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenuToggle.contains(event.target) && !navLinks.contains(event.target)) {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

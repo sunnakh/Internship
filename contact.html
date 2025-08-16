@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Sunnat Axmadov</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        :root {
+            --primary: #007AFF;
+            --primary-dark: #0056CC;
+            --secondary: #8E8E93;
+            --accent: #34C759;
+            --background: #FFFFFF;
+            --surface: #F2F2F7;
+            --text: #1D1D1F;
+            --text-light: #86868B;
+            --border: #E5E5EA;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            --font-primary: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'SF Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+
+        .dark {
+            --background: #000000;
+            --surface: #1C1C1E;
+            --text: #FFFFFF;
+            --text-light: #8E8E93;
+            --border: #38383A;
+            --shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+            --shadow-lg: 0 8px 24px rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.5;
+            transition: var(--transition);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-feature-settings: "kern" 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .dark .header {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+            position: relative;
+            animation: logoGlow 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(0, 122, 255, 0.5);
+        }
+
+                .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            letter-spacing: -0.01em;
+            position: relative;
+            border: 1px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(0, 122, 255, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            flex-direction: column;
+            gap: 4px;
+            transition: var(--transition);
+            z-index: 1001;
+            margin-right: 0.5rem;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Navigation controls group */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Language switcher */
+        .language-switcher {
+            position: relative;
+        }
+
+        .language-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            min-width: 80px;
+            justify-content: center;
+        }
+
+        .language-toggle:hover {
+            background: rgba(0, 122, 255, 0.1);
+            border-color: var(--primary);
+        }
+
+        .current-lang {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 1000;
+            margin-top: 0.5rem;
+        }
+
+        .language-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .language-option:last-child {
+            border-bottom: none;
+        }
+
+        .language-option:hover {
+            background: rgba(0, 122, 255, 0.1);
+            color: var(--primary);
+        }
+
+        .flag {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+        }
+
+        .lang-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            min-height: 40px;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(0, 122, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+                /* Contact section */
+        #contact {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--background) 0%, var(--surface) 100%);
+        }
+
+        #contact::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(0, 122, 255, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(52, 199, 89, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+            position: relative;
+            display: inline-block;
+            padding: 0 2rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            padding: 1rem 0;
+        }
+
+
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .contact-info h3 i {
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--background);
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: var(--text);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-method::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 0;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+        }
+
+        .contact-method:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .contact-method:hover::before {
+            width: 4px;
+        }
+
+                 .contact-method-icon {
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             width: 48px;
+             height: 48px;
+             background: rgba(0, 122, 255, 0.1);
+             border-radius: var(--radius);
+             color: var(--primary);
+             font-size: 1.25rem;
+             flex-shrink: 0;
+             position: relative;
+             z-index: 1;
+         }
+
+        .contact-method-details {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-method-label {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+        }
+
+        .contact-method-value {
+            display: block;
+            font-weight: 600;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        /* Social links */
+        .social-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .social-section h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-section h4 i {
+            color: var(--accent);
+            font-size: 1rem;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem;
+            border-radius: var(--radius);
+            background: var(--background);
+            border: 1px solid var(--border);
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+            gap: 0.5rem;
+        }
+
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
+        .social-link img {
+            width: 18px;
+            height: 18px;
+            border-radius: 2px;
+        }
+
+                /* Contact form */
+        .contact-form {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent) 0%, #FF9500 100%);
+        }
+
+        .contact-form h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .contact-form h3 i {
+            color: var(--accent);
+            font-size: 1.25rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.875rem;
+        }
+
+        .form-label i {
+            color: var(--primary);
+            font-size: 0.875rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--background);
+            color: var(--text);
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            transition: var(--transition);
+            outline: none;
+        }
+
+                 .form-input:focus,
+         .form-textarea:focus {
+             border-color: var(--primary);
+             box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+             transform: translateY(-1px);
+         }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: var(--font-primary);
+        }
+
+        .status-message {
+            display: none;
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+                         .status-message.success {
+            background: rgba(52, 199, 89, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(52, 199, 89, 0.2);
+        }
+
+        .status-message.error {
+            background: rgba(255, 59, 48, 0.1);
+            color: #FF3B30;
+            border: 1px solid rgba(255, 59, 48, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .submit-btn:hover::before {
+            transform: translateX(100%);
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        /* Animations */
+        @keyframes logoGlow {
+            0%, 100% { 
+                text-shadow: 0 0 5px rgba(0, 122, 255, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 0 0 15px rgba(0, 122, 255, 0.6);
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-slide-left {
+            animation: slideInLeft 0.8s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        .animate-slide-right {
+            animation: slideInRight 0.8s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--surface-elevated);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: left 0.3s ease;
+                z-index: 1000;
+                backdrop-filter: blur(20px);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.25rem;
+                padding: 1rem 2rem;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+                order: -1;
+            }
+
+            .hero {
+                padding: 6rem 0 3rem 0;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .social-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .nav-controls {
+                gap: 0.375rem;
+            }
+
+            .language-toggle {
+                padding: 0.375rem 0.625rem;
+                font-size: 0.8rem;
+            }
+
+            .theme-toggle {
+                width: 36px;
+                height: 36px;
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .contact-method {
+                padding: 1rem;
+            }
+
+            .contact-method-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.125rem;
+            }
+
+            .social-link {
+                padding: 0.75rem;
+            }
+
+            .form-input,
+            .form-textarea {
+                padding: 0.875rem;
+            }
+
+            .submit-btn {
+                padding: 0.875rem 1.5rem;
+            }
+        }
+
+        /* Focus indicators for accessibility */
+        .nav-links a:focus,
+        .language-toggle:focus,
+        .theme-toggle:focus,
+        .contact-method:focus,
+        .social-link:focus,
+        .form-input:focus,
+        .form-textarea:focus,
+        .submit-btn:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo" data-en="Sunnat Axmadov" data-uz="Sunnat Axmadov" data-ru="Суннат Ахмадов">Sunnat Axmadov</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" data-en="Home" data-uz="Bosh sahifa" data-ru="Главная">Home</a></li>
+                <li><a href="about.html" data-en="About" data-uz="Haqida" data-ru="Обо мне">About</a></li>
+                <li><a href="skills.html" data-en="Skills" data-uz="Ko'nikmalar" data-ru="Навыки">Skills</a></li>
+                <li><a href="education.html" data-en="Education" data-uz="Ta'lim" data-ru="Образование">Education</a></li>
+                <li><a href="experience.html" data-en="Experience" data-uz="Tajriba" data-ru="Опыт">Experience</a></li>
+                <li><a href="certifications.html" data-en="Certifications" data-uz="Sertifikatlar" data-ru="Сертификаты">Certifications</a></li>
+                <li><a href="contact.html" class="active" data-en="Contact" data-uz="Aloqa" data-ru="Контакты">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <div class="language-switcher">
+                    <button class="language-toggle" id="languageToggle">
+                        <span class="current-lang">EN</span>
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <a href="#" class="language-option" data-lang="en">
+                            <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag">
+                            <span class="lang-name">English</span>
+                        </a>
+                        <a href="#" class="language-option" data-lang="uz">
+                            <img src="https://flagcdn.com/w20/uz.png" alt="Uzbek" class="flag">
+                            <span class="lang-name">O'zbekcha</span>
+                        </a>
+                        <a href="#" class="language-option" data-lang="ru">
+                            <img src="https://flagcdn.com/w20/ru.png" alt="Russian" class="flag">
+                            <span class="lang-name">Русский</span>
+                        </a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h2 class="section-title" data-en="Get In Touch" data-uz="Bog'lanish" data-ru="Связаться">Get In Touch</h2>
+                <p class="section-subtitle" data-en="Let's discuss opportunities and collaborations" data-uz="Keling, imkoniyatlar va hamkorliklarni muhokama qilamiz" data-ru="Давайте обсудим возможности и сотрудничество">Let's discuss opportunities and collaborations</p>
+            </div>
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form animate-slide-left">
+                    <h3>
+                        <i class="fas fa-paper-plane"></i>
+                        <span data-en="Send a Message" data-uz="Xabar yuborish" data-ru="Отправить сообщение">Send a Message</span>
+                    </h3>
+                    
+                    <form id="contactForm">
+                        <div class="status-message" id="formStatus"></div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="name">
+                                    <i class="fas fa-user"></i>
+                                    <span data-en="Full Name" data-uz="To'liq ism" data-ru="Полное имя">Full Name</span>
+                                </label>
+                                <input type="text" id="name" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="email">
+                                    <i class="fas fa-envelope"></i>
+                                    <span data-en="Email Address" data-uz="Elektron pochta" data-ru="Адрес электронной почты">Email Address</span>
+                                </label>
+                                <input type="email" id="email" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label" for="subject">
+                                <i class="fas fa-tag"></i>
+                                <span data-en="Subject" data-uz="Mavzu" data-ru="Тема">Subject</span>
+                            </label>
+                            <input type="text" id="subject" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label" for="message">
+                                <i class="fas fa-comment-dots"></i>
+                                <span data-en="Your Message" data-uz="Sizning xabaringiz" data-ru="Ваше сообщение">Your Message</span>
+                            </label>
+                            <textarea id="message" class="form-textarea" required></textarea>
+                        </div>
+                        
+                        <div style="margin-top: 2rem;">
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                <span data-en="Send Message" data-uz="Xabar yuborish" data-ru="Отправить сообщение">Send Message</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-info animate-slide-right">
+                    <h3>
+                        <i class="fas fa-address-book"></i>
+                        <span data-en="Contact Information" data-uz="Aloqa ma'lumotlari" data-ru="Контактная информация">Contact Information</span>
+                    </h3>
+                    
+                    <div class="contact-methods">
+                        <a href="mailto:sunnatakhmad@gmail.com" class="contact-method">
+                            <div class="contact-method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-method-details">
+                                <span class="contact-method-label" data-en="Email Address" data-uz="Elektron pochta manzili" data-ru="Адрес электронной почты">Email Address</span>
+                                <span class="contact-method-value">sunnatakhmad@gmail.com</span>
+                            </div>
+                        </a>
+                        
+                        <a href="tel:+998337174499" class="contact-method">
+                            <div class="contact-method-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-method-details">
+                                <span class="contact-method-label" data-en="Phone Number" data-uz="Telefon raqami" data-ru="Номер телефона">Phone Number</span>
+                                <span class="contact-method-value">+998 33 717 44 99</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://t.me/sunnakh" target="_blank" class="contact-method">
+                            <div class="contact-method-icon">
+                                <i class="fab fa-telegram"></i>
+                            </div>
+                            <div class="contact-method-details">
+                                <span class="contact-method-label" data-en="Telegram" data-uz="Telegram" data-ru="Телеграм">Telegram</span>
+                                <span class="contact-method-value">@sunnakh</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://github.com/sunnakh" target="_blank" class="contact-method">
+                            <div class="contact-method-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="contact-method-details">
+                                <span class="contact-method-label" data-en="GitHub Profile" data-uz="GitHub profili" data-ru="Профиль GitHub">GitHub Profile</span>
+                                <span class="contact-method-value">github.com/sunnakh</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://www.linkedin.com/in/sunnakh/" target="_blank" class="contact-method">
+                            <div class="contact-method-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="contact-method-details">
+                                <span class="contact-method-label" data-en="LinkedIn Profile" data-uz="LinkedIn profili" data-ru="Профиль LinkedIn">LinkedIn Profile</span>
+                                <span class="contact-method-value">linkedin.com/in/sunnakh</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="social-section">
+                        <h4>
+                            <i class="fas fa-share-alt"></i>
+                            <span data-en="Social Media" data-uz="Ijtimoiy tarmoqlar" data-ru="Социальные сети">Social Media</span>
+                        </h4>
+                        <div class="social-grid">
+                            <a href="https://www.instagram.com/sunnakh_" target="_blank" class="social-link">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram">
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://x.com/sunnakh_" target="_blank" class="social-link">
+                                <strong>X</strong>
+                            </a>
+                            <a href="https://wa.me/998938722477" target="_blank" class="social-link">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/479px-WhatsApp.svg.png" alt="WhatsApp">
+                                <span>WhatsApp</span>
+                            </a>
+                            <a href="https://buymeacoffee.com/sunnakh" target="_blank" class="social-link">
+                                <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy Me a Coffee">
+                                <span>Coffee</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    © 2025 Sunnat Axmadov. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switcher
+        const languageToggle = document.getElementById('languageToggle');
+        const languageDropdown = document.getElementById('languageDropdown');
+        const currentLang = document.querySelector('.current-lang');
+        const languageOptions = document.querySelectorAll('.language-option');
+
+        // Check for saved language preference or default to English
+        const savedLanguage = localStorage.getItem('language') || 'en';
+        document.documentElement.lang = savedLanguage;
+        currentLang.textContent = savedLanguage.toUpperCase();
+        // Apply translation on initial load
+        translateContent(savedLanguage);
+
+        // Toggle dropdown
+        languageToggle && languageToggle.addEventListener('click', function() {
+            languageDropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!languageToggle.contains(event.target) && !languageDropdown.contains(event.target)) {
+                languageDropdown.classList.remove('show');
+            }
+        });
+
+        // Handle language selection
+        languageOptions.forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lang = this.getAttribute('data-lang');
+                currentLang.textContent = lang.toUpperCase();
+                document.documentElement.lang = lang;
+                localStorage.setItem('language', lang);
+                translateContent(lang);
+                languageDropdown.classList.remove('show');
+            });
+        });
+
+        // Translate content function
+        function translateContent(lang) {
+            const elements = document.querySelectorAll(`[data-${lang}]`);
+            elements.forEach(element => {
+                const originalText = element.getAttribute(`data-${lang}`);
+                const nestedSpans = element.querySelectorAll('span[data-en]');
+                if (nestedSpans.length > 0) {
+                    nestedSpans.forEach(span => {
+                        const spanText = span.getAttribute(`data-${lang}`);
+                        if (spanText) span.textContent = spanText;
+                    });
+                } else {
+                    if (originalText && originalText.includes('<strong>')) {
+                        element.innerHTML = originalText;
+                    } else if (originalText) {
+                        element.textContent = originalText;
+                    }
+                }
+            });
+        }
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference or default to light mode
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark');
+            icon.className = 'fas fa-sun';
+        }
+
+        // Add click event listener
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark');
+            if (body.classList.contains('dark')) {
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Contact Form
+        const EMAILJS_SERVICE_ID = 'service_segmk0f';
+        const EMAILJS_TEMPLATE_ID = 'template_iqww91i';
+        const EMAILJS_PUBLIC_KEY = 'ifMdbXRDSmNuhwjN2';
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const formStatus = document.getElementById('formStatus');
+            
+            // Get current language
+            const lang = localStorage.getItem('language') || 'en';
+            
+            // Localized messages
+            const messages = {
+                sending: {
+                    en: 'Sending...',
+                    uz: 'Yuborilmoqda...',
+                    ru: 'Отправка...'
+                },
+                success: {
+                    en: "Thank you for your message! I'll get back to you soon.",
+                    uz: "Xabaringiz uchun rahmat! Tez orada siz bilan bog'lanaman.",
+                    ru: "Спасибо за ваше сообщение! Я скоро свяжусь с вами."
+                },
+                error: {
+                    en: "Sorry, there was an error sending your message. Please try again or contact me directly.",
+                    uz: "Kechirasiz, xabaringizni yuborishda xatolik yuz berdi. Qaytadan urinib ko'ring yoki to'g'ridan-to'g'ri bog'laning.",
+                    ru: "Извините, произошла ошибка при отправке сообщения. Попробуйте еще раз или свяжитесь со мной напрямую."
+                }
+            };
+
+            // Update button state
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${messages.sending[lang]}`;
+            submitBtn.disabled = true;
+            
+            // Hide previous status
+            formStatus.style.display = 'none';
+
+            try {
+                emailjs.init(EMAILJS_PUBLIC_KEY);
+                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                    to_email: "sunnatakhmad@gmail.com",
+                    from_name: name,
+                    from_email: email,
+                    subject: subject,
+                    message: message,
+                    reply_to: email
+                }).then(
+                    function(response) {
+                        // Success
+                        formStatus.className = 'status-message success';
+                        formStatus.innerHTML = `<i class="fas fa-check-circle"></i> ${messages.success[lang]}`;
+                        formStatus.style.display = 'flex';
+                        
+                        // Reset form
+                        document.getElementById('contactForm').reset();
+                        
+                        // Reset button
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        
+                        // Hide success message after 5 seconds
+                        setTimeout(() => {
+                            formStatus.style.display = 'none';
+                        }, 5000);
+                    },
+                    function(error) {
+                        // Error - fallback to mailto
+                        console.error('EmailJS error:', error);
+                        showErrorAndFallback();
+                    }
+                );
+            } catch (error) {
+                // Catch block - fallback to mailto
+                console.error('EmailJS catch error:', error);
+                showErrorAndFallback();
+            }
+            
+            function showErrorAndFallback() {
+                // Show error message
+                formStatus.className = 'status-message error';
+                formStatus.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${messages.error[lang]}`;
+                formStatus.style.display = 'flex';
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Fallback to mailto
+                const emailSubject = `Portfolio Contact: ${subject}`;
+                const emailBody = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+                const mailtoLink = `mailto:sunnatakhmad@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+                
+                // Open mailto after a short delay
+                setTimeout(() => {
+                    window.open(mailtoLink);
+                }, 1000);
+                
+                // Hide error message after 7 seconds
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                }, 7000);
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenuToggle.contains(event.target) && !navLinks.contains(event.target)) {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) translateX(0)';
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        // Observe elements for animation
+        document.querySelectorAll('.animate-fade-up, .animate-slide-left, .animate-slide-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced form validation
+        const formInputs = document.querySelectorAll('.form-input, .form-textarea');
+        
+        formInputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.value.trim() === '' && this.hasAttribute('required')) {
+                    this.style.borderColor = 'var(--danger)';
+                } else {
+                    this.style.borderColor = 'var(--border)';
+                }
+            });
+            
+            input.addEventListener('input', function() {
+                if (this.style.borderColor === 'var(--danger)' && this.value.trim() !== '') {
+                    this.style.borderColor = 'var(--border)';
+                }
+            });
+        });
+
+        // Add loading state to external links
+        document.querySelectorAll('a[target="_blank"]').forEach(link => {
+            link.addEventListener('click', function() {
+                // Add a subtle loading indication
+                this.style.opacity = '0.7';
+                setTimeout(() => {
+                    this.style.opacity = '1';
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
