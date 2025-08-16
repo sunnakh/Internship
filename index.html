@@ -1141,6 +1141,59 @@
                 font-size: 0.9rem;
             }
         }
+
+        /* Landscape Orientation for Phones */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero-content {
+                flex-direction: row;
+                gap: 2rem;
+                align-items: center;
+            }
+            
+            .profile-container {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .hero-text {
+                text-align: left;
+            }
+            
+            .hero-actions {
+                justify-content: flex-start;
+            }
+        }
+
+        /* High DPI Displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .logo::before {
+                border-width: 1px;
+            }
+            
+            .nav-links a::before {
+                border-width: 1px;
+            }
+        }
+
+        /* Large Screens */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1400px;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .profile-container {
+                width: 400px;
+                height: 400px;
+            }
+        }
     </style>
 </head>
 <body>
