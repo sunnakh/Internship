@@ -66,10 +66,10 @@
         /* Animated Background */
         .animated-background {
             position: fixed;
-            top: 0;
+            top: 80px;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: calc(100vh - 160px);
             z-index: 0;
             overflow: hidden;
             pointer-events: none;
@@ -470,6 +470,8 @@
         /* Sections */
         .section {
             padding: 6rem 0;
+            position: relative;
+            z-index: 10;
         }
 
         /* Match contact.html section background */
@@ -963,29 +965,29 @@
                 transform: translateY(-50px) translateX(10px) rotate(18deg);
             }
             15% {
-                transform: translateY(-150px) translateX(20px) rotate(45deg);
+                transform: translateY(-120px) translateX(20px) rotate(45deg);
             }
             30% {
-                transform: translateY(-300px) translateX(-15px) rotate(90deg);
+                transform: translateY(-240px) translateX(-15px) rotate(90deg);
             }
             45% {
-                transform: translateY(-450px) translateX(25px) rotate(135deg);
+                transform: translateY(-360px) translateX(25px) rotate(135deg);
             }
             60% {
-                transform: translateY(-600px) translateX(-20px) rotate(180deg);
+                transform: translateY(-480px) translateX(-20px) rotate(180deg);
             }
             75% {
-                transform: translateY(-750px) translateX(30px) rotate(225deg);
+                transform: translateY(-600px) translateX(30px) rotate(225deg);
             }
             90% {
-                transform: translateY(-900px) translateX(-10px) rotate(315deg);
+                transform: translateY(-720px) translateX(-10px) rotate(315deg);
                 opacity: 0.8;
             }
             95% {
                 opacity: 0.4;
             }
             100% {
-                transform: translateY(-1000px) translateX(15px) rotate(360deg);
+                transform: translateY(-800px) translateX(15px) rotate(360deg);
                 opacity: 0;
             }
         }
@@ -1371,40 +1373,7 @@
         }
     </style>
 </head>
-<body>
-    <!-- Animated Background -->
-    <div class="animated-background">
-        <!-- Floating Tech Icons -->
-        <div class="floating-icons">
-            <!-- AI Icons -->
-            <div class="tech-icon ai-icon"><i class="fas fa-brain"></i></div>
-            <div class="tech-icon ai-icon"><i class="fas fa-robot"></i></div>
-            <div class="tech-icon ai-icon"><i class="fas fa-microchip"></i></div>
-            <div class="tech-icon ai-icon"><i class="fas fa-eye"></i></div>
-            
-            <!-- ML Icons -->
-            <div class="tech-icon ml-icon"><i class="fas fa-project-diagram"></i></div>
-            <div class="tech-icon ml-icon"><i class="fas fa-chart-line"></i></div>
-            <div class="tech-icon ml-icon"><i class="fas fa-network-wired"></i></div>
-            <div class="tech-icon ml-icon"><i class="fas fa-sitemap"></i></div>
-            
-            <!-- Big Data Icons -->
-            <div class="tech-icon data-icon"><i class="fas fa-database"></i></div>
-            <div class="tech-icon data-icon"><i class="fas fa-server"></i></div>
-            <div class="tech-icon data-icon"><i class="fas fa-chart-pie"></i></div>
-            <div class="tech-icon data-icon"><i class="fas fa-cloud"></i></div>
-            <div class="tech-icon data-icon"><i class="fas fa-hdd"></i></div>
-            
-            <!-- Additional Tech Icons -->
-            <div class="tech-icon extra-icon"><i class="fas fa-code"></i></div>
-            <div class="tech-icon extra-icon"><i class="fas fa-cogs"></i></div>
-            <div class="tech-icon extra-icon"><i class="fas fa-laptop-code"></i></div>
-        </div>
-        
-        <!-- Background Gradient Overlay -->
-        <div class="gradient-overlay"></div>
-    </div>
-
+  <body>
     <!-- Header -->
     <header class="header">
         <nav class="nav container">
@@ -1450,6 +1419,39 @@
             </button>
         </nav>
     </header>
+
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <!-- Floating Tech Icons -->
+        <div class="floating-icons">
+            <!-- AI Icons -->
+            <div class="tech-icon ai-icon"><i class="fas fa-brain"></i></div>
+            <div class="tech-icon ai-icon"><i class="fas fa-robot"></i></div>
+            <div class="tech-icon ai-icon"><i class="fas fa-microchip"></i></div>
+            <div class="tech-icon ai-icon"><i class="fas fa-eye"></i></div>
+            
+            <!-- ML Icons -->
+            <div class="tech-icon ml-icon"><i class="fas fa-project-diagram"></i></div>
+            <div class="tech-icon ml-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="tech-icon ml-icon"><i class="fas fa-network-wired"></i></div>
+            <div class="tech-icon ml-icon"><i class="fas fa-sitemap"></i></div>
+            
+            <!-- Big Data Icons -->
+            <div class="tech-icon data-icon"><i class="fas fa-database"></i></div>
+            <div class="tech-icon data-icon"><i class="fas fa-server"></i></div>
+            <div class="tech-icon data-icon"><i class="fas fa-chart-pie"></i></div>
+            <div class="tech-icon data-icon"><i class="fas fa-cloud"></i></div>
+            <div class="tech-icon data-icon"><i class="fas fa-hdd"></i></div>
+            
+            <!-- Additional Tech Icons -->
+            <div class="tech-icon extra-icon"><i class="fas fa-code"></i></div>
+            <div class="tech-icon extra-icon"><i class="fas fa-cogs"></i></div>
+            <div class="tech-icon extra-icon"><i class="fas fa-laptop-code"></i></div>
+        </div>
+        
+        <!-- Background Gradient Overlay -->
+        <div class="gradient-overlay"></div>
+    </div>
 
     <!-- Certifications Section -->
     <section id="certifications" class="section">
