@@ -60,7 +60,7 @@
             margin: 0 auto;
             padding: 0 2rem;
             position: relative;
-            z-index: 1;
+            z-index: 10;
         }
 
         /* Animated Background */
@@ -70,7 +70,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 0;
             overflow: hidden;
             pointer-events: none;
         }
@@ -94,7 +94,9 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             animation: techFloat 25s infinite linear;
             transition: transform 0.3s ease;
-            opacity: 0.8;
+            opacity: 1;
+            bottom: -60px;
+            z-index: 5;
         }
 
         .tech-icon:hover {
@@ -104,9 +106,9 @@
 
         /* AI Icons - Blue/Cyan theme */
         .ai-icon {
-            background: rgba(0, 122, 255, 0.15);
+            background: rgba(0, 122, 255, 0.3);
             color: #007AFF;
-            border: 2px solid rgba(0, 122, 255, 0.3);
+            border: 2px solid rgba(0, 122, 255, 0.6);
         }
 
         .ai-icon:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 30s; }
@@ -116,9 +118,9 @@
 
         /* ML Icons - Green theme */
         .ml-icon {
-            background: rgba(52, 199, 89, 0.15);
+            background: rgba(52, 199, 89, 0.3);
             color: #34C759;
-            border: 2px solid rgba(52, 199, 89, 0.3);
+            border: 2px solid rgba(52, 199, 89, 0.6);
         }
 
         .ml-icon:nth-child(5) { left: 15%; animation-delay: -4s; animation-duration: 33s; }
@@ -128,9 +130,9 @@
 
         /* Big Data Icons - Orange/Red theme */
         .data-icon {
-            background: rgba(255, 149, 0, 0.15);
+            background: rgba(255, 149, 0, 0.3);
             color: #FF9500;
-            border: 2px solid rgba(255, 149, 0, 0.3);
+            border: 2px solid rgba(255, 149, 0, 0.6);
         }
 
         .data-icon:nth-child(9) { left: 10%; animation-delay: -2s; animation-duration: 29s; }
@@ -141,9 +143,9 @@
 
         /* Additional Tech Icons - Purple theme */
         .extra-icon {
-            background: rgba(138, 43, 226, 0.15);
+            background: rgba(138, 43, 226, 0.3);
             color: #8A2BE2;
-            border: 2px solid rgba(138, 43, 226, 0.3);
+            border: 2px solid rgba(138, 43, 226, 0.6);
         }
 
         .extra-icon:nth-child(14) { left: 20%; animation-delay: -6s; animation-duration: 37s; }
@@ -953,36 +955,37 @@
         /* Tech Icon Animation Keyframes */
         @keyframes techFloat {
             0% {
-                transform: translateY(100vh) translateX(0px) rotate(0deg);
+                transform: translateY(0px) translateX(0px) rotate(0deg);
                 opacity: 0;
             }
             5% {
                 opacity: 0.8;
+                transform: translateY(-50px) translateX(10px) rotate(18deg);
             }
             15% {
-                transform: translateY(85vh) translateX(20px) rotate(45deg);
+                transform: translateY(-150px) translateX(20px) rotate(45deg);
             }
             30% {
-                transform: translateY(70vh) translateX(-15px) rotate(90deg);
+                transform: translateY(-300px) translateX(-15px) rotate(90deg);
             }
             45% {
-                transform: translateY(55vh) translateX(25px) rotate(135deg);
+                transform: translateY(-450px) translateX(25px) rotate(135deg);
             }
             60% {
-                transform: translateY(40vh) translateX(-20px) rotate(180deg);
+                transform: translateY(-600px) translateX(-20px) rotate(180deg);
             }
             75% {
-                transform: translateY(25vh) translateX(30px) rotate(225deg);
+                transform: translateY(-750px) translateX(30px) rotate(225deg);
             }
             90% {
-                transform: translateY(10vh) translateX(-10px) rotate(315deg);
+                transform: translateY(-900px) translateX(-10px) rotate(315deg);
                 opacity: 0.8;
             }
             95% {
                 opacity: 0.4;
             }
             100% {
-                transform: translateY(-5vh) translateX(15px) rotate(360deg);
+                transform: translateY(-1000px) translateX(15px) rotate(360deg);
                 opacity: 0;
             }
         }
